@@ -7,7 +7,6 @@ web/app/mu-plugins/*/
 web/app/themes/twentytwentyfour/
 web/app/themes/vyatka-it-wp-theme/vendor
 web/app/upgrade
-web/app/uploads/*
 !web/app/uploads/.gitkeep
 web/app/cache/*
 web/resources/node_modules/
