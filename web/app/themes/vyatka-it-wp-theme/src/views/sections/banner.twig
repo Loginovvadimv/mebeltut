@@ -1,0 +1,16 @@
+<section class="banner">
+  <div class="container">
+    <div class="banner__wrapper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for item in post.banner.banner_imgs %}
+            <img class="banner__slide" src="{{ item.img }}" alt="{{ post.banner.title }}">
+          {% endfor %}
+        </div>
+      </div>
+
+      <h1>{{ post.banner.title }}</h1>
+
+    </div>
+  </div>
+</section>

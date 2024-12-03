@@ -1,0 +1,36 @@
+{% if post.meta('gallery') %}
+    <div class="container">
+        <div class="gallery" data-loadmore>
+            <div class="gallery__title title title_h2 color-ondark">{{ post.gallery_title }}</div>
+            <div class="gallery__items grid" data-loadmore-container>
+                {% for image in post.meta('gallery') %}
+                    {% include 'parts/gallery-item.twig' with {'image': image, 'index': loop.index} %}
+                {% endfor %}
+            </div>
+            <div class="gallery__footer dfrc">
+                <button type="button" class="gallery__btn btn btn--m control-m color-ondark bg-brand1"
+                        data-loadmore-button
+                        data-loadmore-action="/gallery/load"
+                        data-loadmore-page="0">
+                    Показать ещё
+                </button>
+            </div>
+        </div>
+    </div>
+    {% if post.meta('gallery') %}
+        <div class="gallery--mobile">
+            <div class="container">
+                <div class="gallery__title title title_h2 color-ondark">{{ post.gallery_title }}</div>
+            </div>
+            <div class="gallery__slider">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {% for image in post.meta('gallery') %}
+                            {% include 'parts/gallery-item.twig' with {'image': image, 'index': loop.index} %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}

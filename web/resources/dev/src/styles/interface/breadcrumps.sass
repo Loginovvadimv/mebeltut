@@ -1,0 +1,23 @@
+.breadcrumbs
+  padding: 3.6rem 0 3.6rem 0
+  overflow: auto
+  &__list
+    display: flex
+    align-items: center
+    gap: 1.2rem
+  &__item
+    display: flex
+    align-items: center
+    white-space: nowrap
+    gap: 1.2rem
+    svg path
+      fill: #989898
+    &:has(a)
+      &:hover
+        a, span
+          color: #E3E3E3
++max($xs)
+  .breadcrumbs
+    padding: 1.4rem 0 1.6rem 0
+    &__container
+      justify-content: center

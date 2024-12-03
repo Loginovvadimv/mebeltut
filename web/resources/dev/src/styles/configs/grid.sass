@@ -1,0 +1,56 @@
+$container_width: 1888px
+$paddings: 16px
+
+$xs: 640px
+$sm: 768px
+$md: 1024px
+$lg: calc($container_width + calc($paddings * 2))
+
+.container
+	width: 100%
+	max-width: calc($container_width + calc($paddings * 2))
+	padding: 0px $paddings
+	margin: 0 auto
+
+@mixin max($px)
+	@media screen and (max-width: $px)
+		@content
+
+@mixin min($px)
+	@media screen and (min-width: $px)
+		@content
+
+.grid
+	--gap-y: 3.6rem
+	--gap-x: 3.6rem
+	--col: 4
+
+	display: flex
+	justify-content: start
+	flex-wrap: wrap
+	column-gap: var(--gap-x)
+	row-gap: var(--gap-y)
+
+	&>*
+		flex-grow: 0
+		flex-shrink: 0
+		flex-basis: calc((100% / var(--col)) - (var(--gap-x) * (var(--col) - 1)) / var(--col))
+
++max($md)
+	.grid
+		--gap-y: 1.6rem
+		--gap-x: 1.6rem
+		--col: 3
++max($sm)
+	.grid
+		--gap-y: 1.6rem
+		--gap-x: 1.6rem
+		--col: 2
++max($xs)
+	.container
+		padding: 0 1.6rem
+	.grid
+		--gap-y: 1.6rem
+		--gap-x: 1.6rem
+		--col: 1
+

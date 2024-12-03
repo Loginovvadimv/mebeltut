@@ -1,0 +1,12 @@
+$colors: ('main': '#171717','caption': '#616161', 'ondark': '#E3E3E3', 'caption_ondark': '#868686', 'caption2_on_dark': '#A5A5A5', 'main_light': '#EEEEEF', 'main_dark': '#282828', 'secondary_dark': '#3C3C3C', 'dark': '#171717', 'stroke_ondark': '#616060', 'brand1': '#98703F', 'brand2': '#C6AC8F', 'accent': '#925C1B', 'sale': '#D47502')
+
+
+@each $name, $value in $colors
+  .color-#{$name}
+    color: #{$value}
+  .bg-#{$name}
+    background: #{$value}
+
+root
+  @each $name, $value in $colors
+    --color-#{$name}: #{$value}

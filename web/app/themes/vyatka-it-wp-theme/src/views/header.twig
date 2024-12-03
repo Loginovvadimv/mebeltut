@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Название сайта</title>
+
+  <link rel="shortcut icon" href="{{ assets }}/images/favicon.svg" type="image/svg">
+  <link type="image/x-icon" href="{{ assets }}/images/favicon.svg" rel="shortcut icon">
+  <link type="Image/x-icon" href="{{ assets }}/images/favicon.svg" rel="icon">
+
+  <script>
+    window.assets = '{{ assets }}'
+  </script>
+
+  {% if header_code is not empty %}
+    {{ header_code }}
+  {% endif %}
+
+  {{ function('wp_head') }}
+</head>
+<body x-data="page"
+      @popup-opened.window="$el.classList.add('fixed')"
+      @popup-closed.window="$el.classList.remove('fixed')"
+>
+
+<header class="header">
+  <div class="container">
+    <div x-show="isDevice === 'desktop'" x-cloak x-data="{isShowCatalog: false, openFixedMenu: false}"
+         x-init="$watch('isShowCatalog', el=> isBackdrop = el)"
+         class="header__wrapper">
+      {% if post.id != 6 %}
+        <a href="/" class="header__logo">
+          <img loading="lazy" src="{{ assets }}/images/logo.svg" alt="header-logo">
+        </a>
+      {% endif %}
+      {% if post.id == 6 %}
+        <a class="header__logo">
+          <img loading="lazy" src="{{ assets }}/images/logo.svg" alt="header-logo">
+        </a>
+      {% endif %}
+      <div class="header__container">
+        <nav class="header__menu control control-m color-text-main">
+          <ul class="header__menu-items" data-max-items-in-expanded-menu="3"
+              data-button-content='{% include "parts/flexible-menu-button.twig" %}'>
+            {% for item in main_menu.items %}
+              <li class="control_m header__li">
+                <a class="link {{ item.current ? "active" : "" }}" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <div class="header__containerBox">
+          <a href="tel:+{{ cleared_phone }}" class="header__phone control_m" target="_blank">{{ phone }}</a>
+          <div class="header__containerBoxMessegers">
+            <a href="">Whastapp</a>
+            <a href="">Telegram</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div x-show="isDevice !== 'desktop'" x-cloak x-data="{isShowCatalog: false, openFixedMenu: false}"
+         x-init="$watch('isShowCatalog', el=> isBackdrop = el)"
+         class="header--mobile w-full dfrcsb">
+      <div class="header__mobileContainer">
+        <a href="/" class="header__logo header__logo--mobile" :class="openFixedMenu ? 'hidden' : '' ">
+          <img src="{{ assets }}/images/logo.png" alt="header-logo">
+        </a>
+
+
+        <div class="header__wrapper">
+          <button class="header__btn grey-btn control_m" data-modal="orders">Заказать звонок</button>
+          <button @click="openFixedMenu = !openFixedMenu" class="header__hamb" :class="openFixedMenu ? 'header__hamb-open' : ''"
+                  x-init="$watch('openFixedMenu', () => { openFixedMenu ? document.body.classList.add('fixed') : document.body.classList.remove('fixed') })"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+      {% include 'parts/fixedmenu.twig' %}
+    </div>
+  </div>
+</header>
