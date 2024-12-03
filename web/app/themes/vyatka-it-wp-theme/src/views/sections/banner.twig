@@ -8,8 +8,11 @@
           {% endfor %}
         </div>
       </div>
-
-      <h1>{{ post.banner.title }}</h1>
+<div class="banner__text">
+  <h1>{{ post.banner.title }}</h1>
+  <div class="lead text-main-contrast">{{ post.banner.subtitle }}</div>
+  <a href="#" class="btn-white">Перейти в каталог</a>
+</div>
 
     </div>
   </div>
