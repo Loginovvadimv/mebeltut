@@ -12,7 +12,8 @@
             "src/acf.php",
             "src/config.php",
             "src/filters.php",
-            "src/helper.php"
+            "src/helper.php",
+            "src/register.php"
         ]
     },
     "authors": [

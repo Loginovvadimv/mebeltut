@@ -1,0 +1,16 @@
+<section class="catalog section">
+  <div class="container">
+    <h2 class="text-body catalog__title">Каталог</h2>
+    <div class="catalog__wrapper">
+      {% for category in categories_prod %}
+        <a class="catalog__wrap" href="{{ category.link }}">
+          <img class="catalog__wrapFrame" src="{{ assets }}/images/catalog/Frame.png">
+          {% if category.cat_img %}
+            <img class="catalog__wrapImg" src="{{ category.cat_img }}" alt="{{ category.title }}">
+          {% endif %}
+          <div class="catalog__wrapTitle text-main h4">{{ category.title }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

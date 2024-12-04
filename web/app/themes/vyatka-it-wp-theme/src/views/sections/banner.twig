@@ -1,4 +1,5 @@
-<section class="banner">
+<div class="banner__container">
+<section class="banner section">
   <div class="container">
     <div class="banner__wrapper">
       <div class="swiper">
@@ -8,12 +9,30 @@
           {% endfor %}
         </div>
       </div>
-<div class="banner__text">
-  <h1>{{ post.banner.title }}</h1>
-  <div class="lead text-main-contrast">{{ post.banner.subtitle }}</div>
-  <a href="#" class="btn-white Uppercase-M">Перейти в каталог</a>
-</div>
+      <div class="banner__text">
+        <h1 class="text-main-contrast banner__title">{{ post.banner.title }}</h1>
+        <div class="lead text-main-contrast banner__subtitle">{{ post.banner.subtitle }}</div>
+        <a href="#" class="btn-white Uppercase-M banner__link">Перейти в каталог</a>
+      </div>
+
+      <div class="banner__dopInfo">
+        <div class="banner__dopInfoTop">
+          <img class="banner__dopInfoTopIcon" src="{{ post.banner.icon }}" alt="{{ post.banner.title }}">
+          <div class="h5 banner__dopInfoTopText text-body-contrast">{{ post.banner.dop_text }}</div>
+        </div>
+        <div class="banner__dopInfoBottom">
+          <img class="banner__dopInfoBottomLeft" src="{{ assets }}/images/banner/left.png">
+          <img class="banner__dopInfoBottomRight" src="{{ assets }}/images/banner/right.png">
+          {% for adv in post.banner.banner_advs %}
+            <div class="banner__dopInfoBottomText">
+              <div class="banner__dopInfoBottomTitle h3 text-main">{{ adv.adv_title }}</div>
+              <div class="banner__dopInfoBottomSubtitle Uppercase_S text-caption">{{ adv.adv_subtitle }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
 
     </div>
   </div>
 </section>
+</div>

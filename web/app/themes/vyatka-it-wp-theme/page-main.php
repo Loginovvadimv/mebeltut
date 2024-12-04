@@ -10,4 +10,14 @@ $context['products'] = Timber::get_posts([
     'post_type' => 'product',
 ]);
 
+
+$context['categories_prod'] = Timber::get_terms([
+    'taxonomy' => 'categories-product',
+    'orderby' => 'id',
+    'order' => 'ASC',
+    'parent' => 0,
+    'hide_empty' => false
+]);
+
+
 Timber::render('page-main.twig', $context);
