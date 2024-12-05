@@ -65,6 +65,26 @@ export default class Slider {
                 }
             })
         }
+
+      //наши проекты с реальными фото
+      const projects = document.querySelector('.projects__wrapper')
+      if (projects) {
+        this.createSlider(projects, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breadcrumbs: {
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
+
     }
 
     static createSlider(parent, options)

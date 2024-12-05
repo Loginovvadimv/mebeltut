@@ -1,95 +1,71 @@
 .slider
-    //&__opacity
-    //    .swiper
-    //        overflow: visible
-    //        .swiper-slide
-    //            opacity: 0
-    //            transition: opacity 0.3s
-    //    &-2-elements
-    //      .swiper-slide-active,
-    //      .swiper-slide-active + .swiper-slide
-    //        opacity: 1 !important
-    //    &-3-elements
-    //      .swiper-slide-active,
-    //      .swiper-slide-active + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide
-    //        opacity: 1 !important
-    //    &-4-elements
-    //      .swiper-slide-active,
-    //      .swiper-slide-active + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide
-    //        opacity: 1 !important
-    //    &-6-elements
-    //      .swiper-slide-active,
-    //      .swiper-slide-active + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide + .swiper-slide,
-    //      .swiper-slide-active + .swiper-slide + .swiper-slide + .swiper-slide + .swiper-slide + .swiper-slide
-    //        opacity: 1 !important
+  &__arrow
+    background: rgba(255, 255, 255, 1)
+    width: 56px
+    height: 56px
+    top: 0
     position: relative
-    &__arrow
-        position: absolute
-        display: flex
-        align-items: center
-        justify-content: center
-        flex-shrink: 0
-        width: 4.6rem
-        height: 4.6rem
-        border-radius: 4.6rem
-        background-color: #EEEEEF
-        z-index: 2
-        top: 70%
-        --offset: 0
-        &:hover
-            svg path
-                fill: #925C1B
-        svg
-            width: 2rem
-            height: 2rem
-        &--main
-            --offset: 4.8rem
-        &--gallery
-            --offset: 2.4rem
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    &:hover
+      svg
+        path
+          fill: #925C1B
+  &__arrows
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    gap: 16px
+        //&:hover
+        //    svg path
+        //        fill: #925C1B
+        //svg
+        //    width: 24px
+        //    height: 24px
+        //&--main
+        //    --offset: 4.8rem
+        //&--gallery
+        //    --offset: 2.4rem
 
-        &--prev
-            left: 0
-            transform: translate(-50%, -50%)
-        &--next
-            right: 0
-            transform: translate(50%, -50%)
-    &__item
-        img
-            width: 100%
-            height: 20rem
-            object-fit: cover
+        //&--prev
+        //    left: 0
+        //    transform: translate(-50%, -50%)
+        //&--next
+        //    right: 0
+        //    transform: translate(50%, -50%)
+    //&__item
+    //    img
+    //        width: 100%
+    //        height: 20rem
+    //        object-fit: cover
 
-    &__dotted
-        position: absolute
-        right: 50%
-        bottom: 1.6rem
-        z-index: 2
-        transform: translateX(50%)
-        display: flex
-        align-items: center
-        gap: 0.9rem
-        cursor: pointer
-        span
-            display: block
-            height: 1.2rem
-            width: 1.2rem
-            border-radius: 1.2rem
-            border: 0.2rem solid #B2B9CB
-            background: #FFFFFF
-            &.swiper-pagination-bullet-active
-                background: #70309B
-                border: 0.2rem solid #70309B
-                &:hover
-                    cursor: auto
-                    background: #98703F
-            &:hover
-                background: #E3E3E3
+    //&__dotted
+    //    position: absolute
+    //    right: 50%
+    //    bottom: 1.6rem
+    //    z-index: 2
+    //    transform: translateX(50%)
+    //    display: flex
+    //    align-items: center
+    //    gap: 0.9rem
+    //    cursor: pointer
+    //    span
+    //        display: block
+    //        height: 1.2rem
+    //        width: 1.2rem
+    //        border-radius: 1.2rem
+    //        border: 0.2rem solid #B2B9CB
+    //        background: #FFFFFF
+    //        &.swiper-pagination-bullet-active
+    //            background: #70309B
+    //            border: 0.2rem solid #70309B
+    //            &:hover
+    //                cursor: auto
+    //                background: #98703F
+    //        &:hover
+    //            background: #E3E3E3
 
 +max($xs)
     .slider

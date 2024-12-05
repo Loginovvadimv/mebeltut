@@ -1,0 +1,37 @@
+<section class="section projects">
+  <div class="container">
+    <div class="projects__wrapper">
+      <div class="projects__container">
+        <h2 class="projects__title text-body">{{ post.projects.project_title }}</h2>
+        <div class="slider__arrows">
+          <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
+            </svg>
+          </button>
+          <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for item in post.projects.project_obj %}
+            {% set post = get_post(item.ID) %}
+            {% set category = post.terms[0] %}
+            <div class="projects__wrap swiper-slide">
+              <img class="projects__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
+              <img data-fancybox="projects" class="projects__wrapImg" loading="lazy" src="{{ post.thumbnail ? post.thumbnail : plug_url }}" alt="{{ post.title }}">
+              <a href="{{ post.link }}" class="projects__wrapTitle text-main-contrast h5">{{ post.title }}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+    <a class="projects__link text-caption Uppercase-M" href="#">Смотреть все проекты<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.5391 5.08594L13.4609 6.16406L18.5469 11.25H3.5V12.75H18.5469L13.4609 17.8359L14.5391 18.9141L20.9141 12.5391L21.4297 12L20.9141 11.4609L14.5391 5.08594Z" fill="#0C0C0C" fill-opacity="0.4"/>
+      </svg>
+    </a>
+  </div>
+</section>

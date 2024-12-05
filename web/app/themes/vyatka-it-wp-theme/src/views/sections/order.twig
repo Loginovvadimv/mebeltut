@@ -1,0 +1,58 @@
+<section class="order section">
+  <div class="container">
+    <div class="order__wrapper">
+
+      <img class="order__bg" src="{{ post.order.img ? post.order.img : plug_url  }}" alt="{{ post.order.order_title }}">
+      <div class="order__color"></div>
+      <h2 class="text-main-contrast order__title">{{ post.order.order_title }}</h2>
+
+      <div class="order__price">
+        <div class="order__priceTitle h3 text-body">{{ post.order.form_title }}</div>
+        <div class="order__priceCount">
+          {% set total_price = 0 %}
+          {% for item in post.order.price_rep %}
+            {% set total_price = total_price + item.price %}
+            <div class="order__priceArgs h5 text-body args">
+              <div class="order__priceArgsTitle">{{ item.price_text }}</div>
+              <div class="order__priceArgsSub">{{ item.price }} ₽</div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="order__priceResults">
+          <div class="order__priceResult h5 text-body args">
+            <div class="order__priceResultTitle">Итого цена в магазине:</div>
+            <div class="order__priceResultPrice">{{ total_price }} ₽</div>
+          </div>
+
+          <div class="order__newPrice h5 brand-1 args">
+            <div class="order__newPriceTitle">Наша цена:</div>
+            <div class="order__newPriceRes">{{ post.order.new_price }} ₽</div>
+          </div>
+{#          {% set discount = 0 %}#}
+{#          {% set new_price = post.order.new_price %}#}
+{#          {% set discount = ((total_price - new_price) / total_price) * 100 %}#}
+
+          <div class="brand-1 Control_S order__sale">{{ post.order.dop_form_text }}</div>
+
+        </div>
+      </div>
+
+      <div class="order__dopText text-caption h5">
+        <div class="order__dopTextContainer">
+          <svg class="order__frameTop" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 24V0C0 13.2548 10.7452 24 24 24H0Z" fill="#EFEFEF"/>
+          </svg>
+          <svg class="order__frameRight" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 24V0C0 13.2548 10.7452 24 24 24H0Z" fill="#EFEFEF"/>
+          </svg>
+
+          {{ post.order.dop_text }}
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>

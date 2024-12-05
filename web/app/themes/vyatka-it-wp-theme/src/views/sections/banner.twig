@@ -5,7 +5,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
           {% for item in post.banner.banner_imgs %}
-            <img class="banner__slide" src="{{ item.img }}" alt="{{ post.banner.title }}">
+            <img class="banner__slide" src="{{ item.img ? item.img : plug_url }}" alt="{{ post.banner.title }}">
           {% endfor %}
         </div>
       </div>
@@ -21,8 +21,8 @@
           <div class="h5 banner__dopInfoTopText text-body-contrast">{{ post.banner.dop_text }}</div>
         </div>
         <div class="banner__dopInfoBottom">
-          <img class="banner__dopInfoBottomLeft" src="{{ assets }}/images/banner/left.png">
-          <img class="banner__dopInfoBottomRight" src="{{ assets }}/images/banner/right.png">
+          <img class="banner__dopInfoBottomLeft" src="{{ assets }}/images/banner/right.svg">
+          <img class="banner__dopInfoBottomRight" src="{{ assets }}/images/banner/right.svg">
           {% for adv in post.banner.banner_advs %}
             <div class="banner__dopInfoBottomText">
               <div class="banner__dopInfoBottomTitle h3 text-main">{{ adv.adv_title }}</div>
