@@ -1,67 +1,297 @@
 .modal
-    position: fixed
-    top: 0
-    left: 0
-    width: 100vw
-    height: 100vh
-    background: rgba(0, 0, 0, 0.7)
-    overflow-y: auto
+  position: fixed
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  background: rgba(0, 0, 0, 0.7)
+  overflow-y: auto
+  padding: 50px 20px
+  z-index: 999
+  animation: modal-fadeout var(--modal-animation-time) ease-in-out forwards
+  &.open
+    animation: modal-fadein var(--modal-animation-time) ease-in-out forwards
+  &__content
+    width: 100%
+    min-height: 100%
+    height: auto
+    display: flex
+    align-items: center
+    justify-content: center
+    max-height: 100%
+    overflow: visible
+    z-index: 9999
+  &__box
+    background: #fafafa
     padding: 50px 20px
-    z-index: 20
-    animation: modal-fadeout var(--modal-animation-time) ease-in-out forwards
-    &.open
-        animation: modal-fadein var(--modal-animation-time) ease-in-out forwards
-    &__content
-        width: 100%
-        min-height: 100%
-        height: auto
-        display: flex
-        align-items: center
-        justify-content: center
-    &__box
-        background: #fafafa
-        padding: 50px 20px
-        display: flex
-        flex-direction: column
-        align-items: flex-start
-        width: 100%
-        max-width: 500px
-        position: relative
-    &__close
-        cursor: pointer
-        &--fixed
-            position: absolute
-            top: 20px
-            right: 20px
-            background: url(./images/icons/close.svg) center no-repeat
-            width: 14px
-            height: 14px
-    &__title
-        font-weight: 700
-        font-size: 22px
-        margin-bottom: 30px
-    &__description
-        font-size: 16px
-        line-height: 24px
-        margin-bottom: 20px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    width: 100%
+    max-width: 500px
+    position: relative
+  &__close
+    cursor: pointer
+    svg
+      display: none
+    &--fixed
+      position: absolute
+      top: 12px
+      right: 12px
+      background: url(./images/icons/close.svg) center no-repeat
+      width: 38px
+      height: 38px
+      border: 1px solid rgba(0, 0, 0, 0.12)
+      border-radius: 50%
+  &__description
+    font-size: 16px
+    line-height: 24px
+    margin-bottom: 20px
+  &__thankImg
+    width: 100px
+    height: 100px
+    background: rgba(84, 97, 128, 1)
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-bottom: 24px
+  &__close-thank
+    max-width: 185px
+  &__calcSvg
+    position: absolute
+    top: 8px
+    right: 12px
+    display: none
+  &-calcFormWrapBox
+    max-width: 198px
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+  &__calcWrapper
+    max-width: 938px !important
+    width: 100%
+    padding: 48px !important
+    position: relative
+    justify-content: left
+    .swiper
+      width: 100%
+    .form_radio
+      margin-bottom: 16px
+    .calc-form
+      .slider__arrow--next
+        background: rgba(237, 201, 180, 1)
+        &:hover
+          transition: .3s all
+          background: rgba(228, 175, 143, 1)
+
+
+    .form_radio input[type=radio]
+      display: none
+
+    .form_radio label
+      display: inline-block
+      cursor: pointer
+      position: relative
+      padding-left: 25px
+      margin-right: 0
+      line-height: 18px
+
+
+    .form_radio label:before
+      content: ""
+      display: inline-block
+      width: 18px
+      height: 18px
+      position: absolute
+      left: 0
+      bottom: 1px
+      background: transparent
+      border: 1px solid rgba(0, 0, 0, 0.24)
+      border-radius: 50%
+
+    .form_radio input[type=radio]:checked + label:before
+      background: rgba(246, 241, 236, 1)
+      border: 6px solid rgba(237, 201, 180, 1)
+      width: 18px
+      height: 18px
+
+    .swiper-scrollbar
+      height: 6px
+      background: rgba(217, 217, 217, 1)
+      border-radius: 4px
+
+    .swiper-scrollbar-drag
+      height: 6px
+      background: rgba(228, 175, 143, 1)
+      border-radius: 4px
+      opacity: 1
+    .slider__arrow--prev
+      transform: unset
+      left: 48px
+      top: unset
+      bottom: 48px
+      padding: 18px 28px 18px 24px
+      width: 142px
+      height: 58px
+      border-radius: 12px
+      gap: 8px
+      display: flex
+      align-items: center
+      border: 1.5px solid rgba(237, 201, 180, 1)
+    .slider__arrow--next
+      transform: unset
+      right: 48px
+      top: unset
+      bottom: 48px
+      padding: 18px 28px 18px 24px
+      width: 142px
+      height: 58px
+      border-radius: 12px
+      gap: 8px
+      display: flex
+      align-items: center
+      border: 1.5px solid rgba(237, 201, 180, 1)
+  &__types
+    display: grid
+    gap: 16px
+    grid-template-columns: 1fr 1fr 1fr 1fr
+    margin-bottom: 24px
+  &__calcTitle
+    margin-bottom: 16px
+    text-align: left
+    width: 100%
+  &-calcFormWrap
+    max-width: 100%
+    width: 100%
+    &:last-child
+      .modal__calcButton
+        display: block
+    h4
+      margin: 16px 0
+  .slider__arrows
+    display: flex
+    align-items: center
+    justify-content: space-between
+    button
+      position: static !important
+      top: auto !important
+      left: auto !important
+  &__radioImg
+    position: relative
+    height: 148px
+    border-radius: 16px
+    margin-bottom: 6px
+    overflow: hidden
+    img
+      transition: .3s all
+    &:hover
+      img
+        transform: scale(1.05)
+        transition: .3s all
+  &__radio
+    position: relative
+    input[type="radio"]
+      display: none
+    &--type1
+      input:checked + label
+        .modal__radioImg
+          svg
+            display: block
 
 [data-modal]
-    cursor: pointer
-    *
-        pointer-events: none
+  cursor: pointer
+  *
+    pointer-events: none
 
-@keyframes modal-fadeout 
-    0% 
-        transform: scale(1)
-        opacity: 1
-    100% 
-        transform: scale(1.05)
-        opacity: 0
-  
+@keyframes modal-fadeout
+  0%
+    transform: scale(1)
+    opacity: 1
+  100%
+    transform: scale(1.05)
+    opacity: 0
+
 @keyframes modal-fadein
-    0% 
-        transform: scale(1.05)
-        opacity: 0
-    100% 
-        transform: scale(1)
-        opacity: 1
+  0%
+    transform: scale(1.05)
+    opacity: 0
+  100%
+    transform: scale(1)
+    opacity: 1
+
+
+
+
+@media (max-width: 1024px)
+  .modal
+    &__close
+      background: #FFFFFF
+      border-radius: 50%
+      border: 1px solid rgba(218, 223, 237, 1)
+      display: flex
+      align-items: center
+      justify-content: center
+      width: 30px
+      height: 30px
+      &--fixed
+        background: url(./images/icons/close.svg) center no-repeat + #ffffff
+        top: -12px
+        right: 4px
+    &__thankImg
+      width: 60px
+      height: 60px
+      margin-bottom: 16px
+      svg
+        width: 33.6px
+        height: 33.6px
+    &__calcWrapper
+      padding: 16px !important
+      .swiper
+        width: 100%
+    &__calcTitle
+      margin-bottom: 12px
+    &-calcFormWrap
+      h4
+        margin: 12px 0
+    &__types
+      grid-template-columns: 1fr 1fr 1fr
+      gap: 12px
+      margin-bottom: 24px
+    &-calcFormWrapBox
+      img
+        border-radius: 12px
+        width: 100%
+    &-calcWrapName
+      text-align: center
+
+@media (max-width: 500px)
+  .modal
+    &-calcFormWrapBox
+      img
+        height: 67px
+    &__calcButton
+      padding: 18px 12px
+    &__calcWrapper
+      .slider__arrow--prev
+        padding: 18px 12px 18px 12px
+        width: 116px
+        height: 54px
+    &__radioImg
+      height: auto
+    &__radio
+      max-width: 30%
+      width: 100%
+    &__types
+      display: flex
+      flex-wrap: wrap
+
+
+@media (min-width: 500px) and (max-width: 767px)
+  .modal
+    &-calcFormWrapBox
+      img
+        height: 120px
+    &__radioImg
+      height: auto
