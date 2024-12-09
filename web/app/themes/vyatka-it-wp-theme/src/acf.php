@@ -126,14 +126,13 @@ if (function_exists('acf_add_options_page')) {
     ));
 
     acf_add_options_sub_page(array(
-        'page_title'    => 'Секция "Главный экран"',
-        'menu_title'    => 'Секция "Главный экран"',
+        'page_title'    => 'Секция "наша Группа ВКонтакте"',
+        'menu_title'    => 'Секция "наша Группа ВКонтакте"',
         'parent_slug'   => 'content-settings',
     ));
-
     acf_add_options_sub_page(array(
-        'page_title'    => 'Секция "Уровень"',
-        'menu_title'    => 'Секция "Уровень"',
+        'page_title'    => 'Секция "Отзывы"',
+        'menu_title'    => 'Секция "Отзывы"',
         'parent_slug'   => 'content-settings',
     ));
 }

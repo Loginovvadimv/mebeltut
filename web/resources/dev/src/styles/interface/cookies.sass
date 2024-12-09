@@ -1,0 +1,56 @@
+.cookie
+  position: fixed
+  bottom: 48px
+  right: 48px
+  opacity: 0
+  z-index: 999
+  &.show
+    animation: cookie-show 0.3s ease-in-out forwards
+  &__box
+    padding: 16px
+    background: rgba(0, 0, 0, 0.74)
+    border-radius: 12px
+    display: flex
+    align-items: center
+    gap: 24px
+  &__text
+    font-size: 14px
+    line-height: 24px
+    color: #fff
+    a
+      color: rgba(#fff, 0.6)
+      text-decoration: underline
+  .btn
+    color: #FFFFFF
+
+@keyframes cookie-show
+  0%
+    opacity: 0
+    transform: translateX(50px)
+  100%
+    opacity: 1
+    transform: translateX(0px)
+
++max($sm)
+  .cookie
+    bottom: 20px
+    left: 16px
+    right: auto
+    width: calc(100% - 125px)
+    &__box
+      gap: 8px
+      flex-direction: column
+      align-items: flex-start
+    &__text
+      font-size: 12px
+      line-height: 15px
+      br
+        display: none
+
+  @keyframes cookie-show
+    0%
+      opacity: 0
+      transform: translateY(-50px)
+    100%
+      opacity: 1
+      transform: translateY(0px)

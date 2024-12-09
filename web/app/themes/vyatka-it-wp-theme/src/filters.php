@@ -19,6 +19,7 @@ add_filter('timber/context', function ($context) {
     $context[ 'header_code' ] = get_field('header_code', 'options');
     $context[ 'footer_code' ] = get_field('footer_code', 'options');
     $context['plug_url'] = ASSETS . '/images/plug.webp';
+    $context['plug_client'] = ASSETS . '/images/plug_client.webp';
 
     return $context;
 });

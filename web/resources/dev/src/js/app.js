@@ -48,8 +48,77 @@ Alpine.data('page', () => ({
     }
 }))
 
+
 Alpine.start();
+
 
 document.addEventListener('DOMContentLoaded', function() {
 
-})
+
+  const reviewDescs = document.querySelectorAll('.reviews__descr');
+
+  reviewDescs.forEach(desc => {
+    if (desc.offsetHeight > 184) {
+      // Создаем кнопку "Читать целиком"
+      const readMoreButton = document.createElement('button');
+      readMoreButton.textContent = 'Читать целиком';
+      readMoreButton.classList.add('Control_M');
+      readMoreButton.classList.add('text-caption');
+      readMoreButton.setAttribute('data-modal', 'client');
+      desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
+
+      readMoreButton.addEventListener('click', function() {
+        // Открываем модальное окно с содержимым текущего описания
+        const modal = document.querySelector('.modal[data-modal-type="client"]');
+        modal.hidden = false;
+      });
+    }
+  });
+
+
+
+//seo
+
+  const seoWrapper = document.querySelector('.seo__wrapper');
+  const button = document.querySelector('.seo__button');
+
+  if (seoWrapper) {
+
+
+    // Установите желаемую высоту для скрытия текста
+    const maxHeight = 208; // Задайте значение высоты в пикселях
+
+    const checkContentHeight = () => {
+      if (seoWrapper.scrollHeight > maxHeight) {
+        seoWrapper.style.overflow = 'hidden';
+        seoWrapper.style.maxHeight = maxHeight + 'px';
+        button.style.display = 'block';
+      } else {
+        button.style.display = 'none';
+      }
+    };
+
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('data-expanded') === 'true';
+      if (expanded) {
+        seoWrapper.style.overflow = 'hidden';
+        seoWrapper.style.maxHeight = maxHeight + 'px';
+        button.setAttribute('data-expanded', 'false');
+        button.textContent = 'Показать полностью';
+      } else {
+        seoWrapper.style.overflow = 'visible';
+        seoWrapper.style.maxHeight = 'none';
+        button.setAttribute('data-expanded', 'true');
+        button.textContent = 'Скрыть';
+      }
+    });
+    // Проверяем высоту контента при загрузке страницы
+    checkContentHeight();
+
+  }
+  //endSeo
+
+
+
+
+});

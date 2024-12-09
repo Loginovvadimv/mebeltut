@@ -47,7 +47,7 @@ export default class Slider {
                 }
             })
         }
-      // Section Reviews
+      // Section banner
         const banner = document.querySelector('.banner__wrapper')
         if (banner) {
             this.createSlider(banner, {
@@ -66,7 +66,7 @@ export default class Slider {
             })
         }
 
-      //наши проекты с реальными фото
+// наши проекты с реальными фото
       const projects = document.querySelector('.projects__wrapper')
       if (projects) {
         this.createSlider(projects, {
@@ -75,7 +75,27 @@ export default class Slider {
           allowTouchMove: true,
           centeredSlides: false,
           loop: false,
-          breadcrumbs: {
+          breakpoints: {
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
+
+
+      //Отзывы
+      const reviews = document.querySelector('.reviews__wrapper')
+      if (reviews) {
+        this.createSlider(reviews, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breakpoints: {
             1200: {
               slidesPerView: 4,
               spaceBetween: 16,
