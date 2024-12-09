@@ -1,0 +1,73 @@
+.checkbox
+  display: flex
+  align-items: center
+  gap: 4px
+  margin-bottom: 12px
+  label
+    color: #616161
+    font-size: 14px
+    font-style: normal
+    font-weight: 500
+    line-height: 22px
+    display: flex
+    align-items: center
+    a
+      text-decoration-line: revert
+  input[type="checkbox"]
+    position: relative
+    width: 16px
+    height: 16px
+    border-radius: 5px
+    appearance: none
+    cursor: pointer
+    border: 1px solid rgba(60, 60, 60, 1)
+    background-color: rgba(60, 60, 60, 1)
+    padding: 5px
+    overflow: hidden
+  input[type="checkbox"]::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    border: 1px solid transparent
+
+
+  input[type="checkbox"]:checked:before
+    background: url("images/checkbox.svg") center no-repeat
+    background-size: 16px
+    box-shadow: none
+    width: 100%
+    height: 100%
+
+  &__input
+    position: relative
+    input
+      font-size: 18px
+      font-style: normal
+      font-weight: 400
+      line-height: 26px
+      outline: none
+      background: #FFFFFF
+      width: 100%
+      padding: 14px 24px
+      border-radius: 16px
+      overflow: hidden
+  &__policy
+    display: flex
+    gap: 8px
+    a
+      text-decoration: underline
+
+
+@media ( max-width: 767px )
+  .checkbox
+    gap: 6px
+    input[type="checkbox"]
+      height: 16px
+      width: 16px
+      border-radius: 5px
+    &__policy
+      align-items: flex-start
+      text-align: left

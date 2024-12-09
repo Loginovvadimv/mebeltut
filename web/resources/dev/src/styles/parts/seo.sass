@@ -11,9 +11,12 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.16)
     letter-spacing: .7px
     &:hover
-      color: rgba(26, 59, 48, 1)
-      border-bottom: 1px solid rgba(26, 59, 48, 1)
+      color: rgba(249, 92, 119, 1)
+      border-bottom: 1px solid rgba(249, 92, 119, 1)
   &__button
+    display: flex
+    align-items: center
+    gap: 6px
     &:hover
       cursor: pointer
       color: rgba(249, 92, 119, 1)
@@ -29,7 +32,7 @@
       position: absolute
       width: 6px
       height: 6px
-      background: rgba(26, 59, 48, 0.8)
+      background: rgba(249, 92, 119, 1)
       top: 9px
       left: 0
       border-radius: 50%
@@ -51,9 +54,17 @@
     transition: .3s all
     &:hover
       transition: .3s all
-      background: rgba(26, 59, 48, 1)
-      color: rgba(251, 247, 236, 0.8)
-      border: 1px solid rgba(26, 59, 48, 1)
+      background: rgba(249, 92, 119, 1)
+      color: rgba(249, 92, 119, 1)
+      border: 1px solid rgba(249, 92, 119, 1)
+  .rotate
+    transform: rotate(-180deg)
+    transition: .3s all
+  &__buttonUp
+    transition: .3s all
+    &:hover
+      path
+        fill: rgba(249, 92, 119, 1)
 
 
 @media (max-width: 767px)

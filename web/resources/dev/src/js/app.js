@@ -52,35 +52,42 @@ Alpine.data('page', () => ({
 Alpine.start();
 
 
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
+
+  // Отзывы
+
+    const reviewDescs = document.querySelectorAll('.reviews__descr');
+
+    reviewDescs.forEach((desc, i) => {
+      if (desc.offsetHeight > 184) {
+        desc.style.height = '184px';
+        desc.style.overflow = 'hidden';
+        const readMoreButton = document.createElement('button');
+        readMoreButton.textContent = 'Читать целиком';
+        readMoreButton.classList.add('Control_M');
+        readMoreButton.classList.add('text-caption');
+        readMoreButton.classList.add('reviews__show');
+        readMoreButton.setAttribute('data-modal', 'client');
+        desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
+
+        readMoreButton.addEventListener('click', () => {
+          const modal = document.querySelector('.modal[data-modal-type="client"]');
+          const modalContent = modal.querySelector('.modal__wrapper');
+          modalContent.innerHTML = desc.innerHTML + `<button class="modal__close modal__close--fixed" type="button">
+    </button>`;
+          modal.hidden = false;
+        });
+      }
+    });
 
 
-  const reviewDescs = document.querySelectorAll('.reviews__descr');
-
-  reviewDescs.forEach(desc => {
-    if (desc.offsetHeight > 184) {
-      // Создаем кнопку "Читать целиком"
-      const readMoreButton = document.createElement('button');
-      readMoreButton.textContent = 'Читать целиком';
-      readMoreButton.classList.add('Control_M');
-      readMoreButton.classList.add('text-caption');
-      readMoreButton.setAttribute('data-modal', 'client');
-      desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
-
-      readMoreButton.addEventListener('click', function() {
-        // Открываем модальное окно с содержимым текущего описания
-        const modal = document.querySelector('.modal[data-modal-type="client"]');
-        modal.hidden = false;
-      });
-    }
-  });
-
-
+// Конец отзывы
 
 //seo
 
   const seoWrapper = document.querySelector('.seo__wrapper');
   const button = document.querySelector('.seo__button');
+  const pic = document.querySelector('.seo__buttonUp');
 
   if (seoWrapper) {
 
@@ -92,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (seoWrapper.scrollHeight > maxHeight) {
         seoWrapper.style.overflow = 'hidden';
         seoWrapper.style.maxHeight = maxHeight + 'px';
-        button.style.display = 'block';
+        button.style.display = 'flex';
       } else {
         button.style.display = 'none';
       }
@@ -104,12 +111,16 @@ document.addEventListener('DOMContentLoaded', function() {
         seoWrapper.style.overflow = 'hidden';
         seoWrapper.style.maxHeight = maxHeight + 'px';
         button.setAttribute('data-expanded', 'false');
-        button.textContent = 'Показать полностью';
+        button.innerHTML = `Показать еще<svg class="buttonUp" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 7.5L21 9L11.9999 18L3 9L4 7.5L12 15.5L20 7.5Z" fill="#0C0C0C"/>
+        </svg>`;
       } else {
         seoWrapper.style.overflow = 'visible';
         seoWrapper.style.maxHeight = 'none';
         button.setAttribute('data-expanded', 'true');
-        button.textContent = 'Скрыть';
+        button.innerHTML = `Скрыть<svg class="seo__buttonUp rotate" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 7.5L21 9L11.9999 18L3 9L4 7.5L12 15.5L20 7.5Z" fill="#0C0C0C"/>
+        </svg>`;
       }
     });
     // Проверяем высоту контента при загрузке страницы

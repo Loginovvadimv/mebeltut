@@ -35,7 +35,7 @@ export default class Form {
 
         if (response.success) {
             this.form.reset()
-            Modal.openTarget('thanks')
+             window.location.href = '/spasibo-za-zayavku/';
         } else if (response.errors) {
             for (let error in response.errors) {
                 Alert.add(response.errors[error], 'error')

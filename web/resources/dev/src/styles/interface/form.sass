@@ -1,0 +1,53 @@
+.form
+  input
+    width: 100%
+    color: #9D9D9D
+    font-family: Manrope
+    font-size: 16px
+    font-weight: 600
+    line-height: 24px
+    padding: 16px 20px
+    border-radius: 16px
+    background: #FFF
+    z-index: 3
+    &::placeholder
+      color: #C3C3C3
+      font-family: Manrope
+  &__inputWrap
+    position: relative
+    img
+      position: absolute
+      top: 9px
+      right: 8px
+      z-index: 5
+  textarea
+    border-radius: 16px
+    background: var(--Bg-white, #FFF)
+    padding: 16px 20px
+    color: #03011A
+    font-size: 16px
+    font-style: normal
+    font-weight: 400
+    line-height: 24px
+    height: 100px
+    &::placeholder
+      color: #9D9D9D
+      font-family: Manrope
+
+@media (max-width: 424px)
+  .form
+    input
+      padding: 12px 20px
+    &__inputWrap
+      width: 100%
+    &__line
+      display: none
+    &__input
+      margin-bottom: 0
+    textarea
+      height: 90px
+
+@media (min-width: 425px) and (max-width: 767px)
+  .form
+    &__inputWrap
+      width: 100%

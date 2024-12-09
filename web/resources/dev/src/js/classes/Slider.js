@@ -25,46 +25,47 @@ export default class Slider {
         }
 
       // Главный экран
-        const slider = document.querySelector('.main-screen__slider')
-        if (slider) {
-            this.createSlider(slider, {
-                slidesPerView: 1,
-                spaceBetween: 12,
-                allowTouchMove: true,
-                loop: true,
-                autoHeight: false,
-                calculateHeight: false,
-                speed: 1000,
-                autoplay: {
-                    delay: 4000,
-                    disableOnInteraction: true,
-                    pauseOnMouseEnter: false
-                },
-                on: {
-                    init: () => {
-                        slider.classList.add('loaded')
-                    }
-                }
-            })
-        }
-      // Section banner
-        const banner = document.querySelector('.banner__wrapper')
-        if (banner) {
-            this.createSlider(banner, {
-                slidesPerView: 1,
-                spaceBetween: 0,
-                allowTouchMove: false,
-                centeredSlides: false,
-                loop: true,
-                speed: 3000,
-                effect: "fade",
-                autoplay: {
-                  delay: 4000,
-                  disableOnInteraction: true,
-                  pauseOnMouseEnter: false
-                }
-            })
-        }
+      const banner = document.querySelector('.banner__wrapper')
+      if (banner) {
+        this.createSlider(banner, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          allowTouchMove: false,
+          loop: true,
+          autoHeight: false,
+          calculateHeight: false,
+          speed: 1000,
+          effect: "fade",
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: true,
+            pauseOnMouseEnter: false
+          },
+          on: {
+            init: () => {
+              banner.classList.add('loaded')
+            }
+          }
+        })
+      }
+      // // Section banner
+      //   const banner = document.querySelector('.banner__wrapper')
+      //   if (banner) {
+      //       this.createSlider(banner, {
+      //           slidesPerView: 1,
+      //           spaceBetween: 0,
+      //           allowTouchMove: false,
+      //           centeredSlides: false,
+      //           loop: true,
+      //           speed: 3000,
+      //           effect: "fade",
+      //           autoplay: {
+      //               delay: 4000,
+      //               disableOnInteraction: true,
+      //               pauseOnMouseEnter: false
+      //           }
+      //       })
+      //   }
 
 // наши проекты с реальными фото
       const projects = document.querySelector('.projects__wrapper')

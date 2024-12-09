@@ -1,0 +1,126 @@
+<div class="modal open calc" data-modal-type="calc" hidden>
+  <div class="modal__wrapper form__wrapper modal__calcWrapper">
+    <div class="control_m gray modal__calcTitle">Ответьте на 4 вопроса и получите индивидуальный расчет стоимости</div>
+    <form class="form calc-form">
+      <div class="form__input-hidden">
+        <input type="text" name="title" hidden value="Рассчитать стоимость">
+        <input type="text" name="code" hidden value="order">
+      </div>
+
+
+      <div class="swiper">
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-wrapper">
+
+          <div class="modal-calcFormWrap">
+            <h4>1. Тип мероприятия</h4>
+            <div class="modal__types">
+              {% for item in serv_rep %}
+             <div class="modal__radio modal__radio--type1">
+                <input type="radio" name="ask[Тип мероприятия]" id="ask-1-{{ loop.index }}" value="{{ item.serv_name }}" {{ loop.first ? "checked" : "" }}>
+                <label class="modal-calcFormWrapBox" for="ask-1-{{ loop.index }}">
+                  <div class="modal__radioImg">
+                  <img src="{{ item.img }}" alt="Посмотрите, как мы создаем идеальные корпоративы в Москве">
+                    <svg class="modal__calcSvg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="#EDC9B4"/>
+                    </svg>
+                  </div>
+                  <div class="control_m modal-calcWrapName">{{ item.serv_name }}</div>
+                </label>
+
+             </div>
+            {% endfor %}
+            </div>
+          </div>
+
+          <div class="modal-calcFormWrap">
+            <h4>2. Когда планируется мероприятие</h4>
+            <div class="modal__periods">
+              {% set periods = function('generate_periods', 3) %}
+
+              {% for period in periods %}
+                <div class="form_radio">
+                  <input type="radio" name="ask[Когда планируется мероприятие]" id="ask-2-{{ loop.index }}" value="{{ period }}" {{ loop.first ? "checked" : "" }}>
+                  <label for="ask-2-{{ loop.index }}">{{ period }}</label>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+          <div class="modal-calcFormWrap">
+            <h4>3. Количество гостей</h4>
+            <div class="modal__guests">
+              {% set guests = [
+                'До 40',
+                '40 - 70',
+                '70 - 100',
+                'Более 100'
+              ] %}
+
+              {% for guest in guests %}
+                <div class="form_radio">
+                  <input type="radio" name="ask[Количество гостей]" id="ask-3-{{ loop.index }}" value="{{ guest }}" {{ loop.first ? "checked" : "" }}>
+                  <label for="ask-3-{{ loop.index }}">{{ guest }}</label>
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+
+
+          <div class="modal-calcFormWrap">
+            <h4>4. Оставьте Ваши контакты для связи</h4>
+            <div class="modal__formSubmit">
+              <div class="form__input-hidden">
+                <input type="text" name="title" hidden value="Рассчитаем стоимость мероприятия за пару минут">
+                <input type="text" name="code" hidden value="order">
+              </div>
+              <input class="footer__input Control_m" type="text" name="name" placeholder="Имя *" required>
+              <input class="footer__input Control_m" type="tel" name="phone" placeholder="Телефон *" required>
+              <input class="footer__input Control_m" type="email" name="email" placeholder="Email">
+              <input class="footer__input Control_m" type="text" name="company" placeholder="Название компании">
+              <div class="select">
+                <select name="method">
+                  <option class="control_m footer__input" value="По телефону">По телефону</option>
+                  <option value="По Whatsapp" class="control_m footer__input footer__inputSelect">Whatsapp</option>
+                  <option value="По Telegram" class="control_m footer__input footer__inputSelect">Telegram</option>
+                </select>
+                <div class="footer__choise caption gray">Способ связи</div>
+              </div>
+              <div class="footer__checkbox checkbox">
+                <label for="checkbox" class="form__checkbox">
+                  <input type="checkbox" name="checkbox" id="checkbox" checked required>
+                </label>
+                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+      <div class="slider__arrows">
+        <button class="slider__arrow slider__arrow--prev slider__arrow-banner Button_text" data-calc-prev>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.13086 4.66211L10.1191 5.65039L5.45703 10.3125H19.25V11.6875H5.45703L10.1191 16.3496L9.13086 17.3379L3.28711 11.4941L2.81445 11L3.28711 10.5059L9.13086 4.66211Z" fill="#3E342F"/>
+          </svg>
+          Назад
+        </button>
+        <button class="slider__arrow slider__arrow--next slider__arrow-banner" data-calc-next>
+          Далее
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.8691 4.66211L11.8809 5.65039L16.543 10.3125H2.75V11.6875H16.543L11.8809 16.3496L12.8691 17.3379L18.7129 11.4941L19.1855 11L18.7129 10.5059L12.8691 4.66211Z" fill="#3E342F"/>
+          </svg>
+        </button>
+
+
+        <button class="control_m button modal__calcButton" data-calc-submit type="submit" hidden>Узнать стоимость</button>
+      </div>
+
+      <button class="modal__close modal__close--fixed" type="button"></button>
+    </form>
+  </div>
+</div>

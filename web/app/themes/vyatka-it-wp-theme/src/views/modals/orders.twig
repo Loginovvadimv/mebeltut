@@ -1,10 +1,11 @@
 <div class="modal open" data-modal-type="orders" hidden>
   <div class="modal__wrapper form__wrapper">
-    <h2 class="modal__title text-main">Заказать расчет</h2>
-    <div class="modal__subtitle control_m">Оставьте Ваши контакты<br>и мы свяжемся с вами</div>
+    <h4 class="modal__title">Давайте обсудим идеи и бюджет вашего мероприятия</h4>
+    <div class="modal__subtitle control_m">Оставьте ваши контакты и мы свяжемся с Вами
+      в ближайшее время</div>
     <form class="form review-form">
       <div class="form__input-hidden">
-        <input type="text" name="title" hidden value="Заказать расчет">
+        <input type="text" name="title" hidden value="Заказать звонок">
         <input type="text" name="code" hidden value="order">
       </div>
       <div class="form__inputs">
@@ -14,18 +15,14 @@
         <div class="form__input modal__input">
           <input type="tel" required placeholder="Телефон" class="tel" name="phone">
         </div>
-        <textarea class="form__textarea" name="messege" id="messege" cols="30" rows="10" placeholder="Сообщение"></textarea>
       </div>
-      <button class="form__button button btn-black">Оставить заявку</button>
-      <div class="modal__checkbox checkbox">
-        <label for="checkbox" class="form__checkbox">
-          <input class="form__check" type="checkbox" name="term" id="checkbox" checked required>
-        </label>
-        <a class="form__police control_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
-      </div>
-
-
-
+        <div class="modal__checkbox checkbox">
+          <label for="checkbox" class="form__checkbox">
+            <input class="form__check" type="checkbox" name="term" id="checkbox" checked required>
+          </label>
+          <a class="form__police control_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
+        </div>
+        <button class="form__button button">Заказать звонок</button>
       <button class="modal__close modal__close--fixed" type="button">
       </button>
     </form>
