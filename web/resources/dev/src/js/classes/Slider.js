@@ -48,24 +48,7 @@ export default class Slider {
           }
         })
       }
-      // // Section banner
-      //   const banner = document.querySelector('.banner__wrapper')
-      //   if (banner) {
-      //       this.createSlider(banner, {
-      //           slidesPerView: 1,
-      //           spaceBetween: 0,
-      //           allowTouchMove: false,
-      //           centeredSlides: false,
-      //           loop: true,
-      //           speed: 3000,
-      //           effect: "fade",
-      //           autoplay: {
-      //               delay: 4000,
-      //               disableOnInteraction: true,
-      //               pauseOnMouseEnter: false
-      //           }
-      //       })
-      //   }
+
 
 // наши проекты с реальными фото
       const projects = document.querySelector('.projects__wrapper')
@@ -104,6 +87,34 @@ export default class Slider {
           }
         })
       }
+
+      //Рассчет стоимости
+      const calcform = document.querySelector('.calc-form')
+      if (calcform) {
+        const calc = this.createSlider(calcform, {
+          slidesPerView: 1,
+          spaceBetween: 24,
+          allowTouchMove: false,
+          centeredSlides: false,
+          loop: false,
+          scrollbar: {
+            el: '.swiper-scrollbar',
+            draggable: true,
+          },
+        })
+
+        calc.on('slideChange', function (_swiper) {
+          if (_swiper.isEnd) {
+            document.querySelector('[data-calc-next]').hidden = true
+            document.querySelector('[data-calc-submit]').hidden = false
+          } else {
+            document.querySelector('[data-calc-next]').hidden = false
+            document.querySelector('[data-calc-submit]').hidden = true
+          }
+        })
+      }
+
+
 
 
     }

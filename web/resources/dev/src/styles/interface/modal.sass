@@ -36,11 +36,11 @@
       display: none
     &--fixed
       position: absolute
-      top: 12px
-      right: 12px
+      top: 16px
+      right: 16px
       background: url(./images/icons/close.svg) center no-repeat
-      width: 38px
-      height: 38px
+      width: 48px
+      height: 48px
       border: 1px solid rgba(0, 0, 0, 0.12)
       border-radius: 50%
   &__description
@@ -60,9 +60,12 @@
     max-width: 185px
   &__calcSvg
     position: absolute
-    top: 8px
+    top: 12px
     right: 12px
     display: none
+    width: 20px
+    height: 20px
+    z-index: 4
   &-calcFormWrapBox
     max-width: 198px
     img
@@ -156,19 +159,22 @@
   &__types
     display: grid
     gap: 16px
-    grid-template-columns: 1fr 1fr 1fr 1fr
+    grid-template-columns: 1fr 1fr 1fr
     margin-bottom: 24px
+    &-kitchen
+      grid-template-columns: 1fr 1fr 1fr 1fr
   &__calcTitle
     margin-bottom: 16px
     text-align: left
     width: 100%
+    text-transform: uppercase
   &-calcFormWrap
     max-width: 100%
     width: 100%
     &:last-child
       .modal__calcButton
         display: block
-    h4
+    &__title
       margin: 16px 0
   .slider__arrows
     display: flex
@@ -184,7 +190,16 @@
     border-radius: 16px
     margin-bottom: 6px
     overflow: hidden
-    img
+    &-circle
+      width: 20px
+      height: 20px
+      position: absolute
+      top: 12px
+      right: 12px
+      z-index: 3
+      background: #FFFFFF
+      border-radius: 50%
+    &-image
       transition: .3s all
     &:hover
       img
@@ -199,6 +214,11 @@
         .modal__radioImg
           svg
             display: block
+  &__formSubmit
+    display: flex
+    flex-direction: column
+    gap: 16px
+    margin-bottom: 36px
 
 [data-modal]
   cursor: pointer

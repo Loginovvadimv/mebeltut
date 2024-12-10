@@ -1,6 +1,6 @@
 <div class="modal open calc" data-modal-type="calc" hidden>
   <div class="modal__wrapper form__wrapper modal__calcWrapper">
-    <div class="control_m gray modal__calcTitle">Ответьте на 4 вопроса и получите индивидуальный расчет стоимости</div>
+    <div class="h3 modal__calcTitle text-main">Рассчитать стоимость</div>
     <form class="form calc-form">
       <div class="form__input-hidden">
         <input type="text" name="title" hidden value="Рассчитать стоимость">
@@ -13,81 +13,200 @@
         <div class="swiper-wrapper">
 
           <div class="modal-calcFormWrap">
-            <h4>1. Тип мероприятия</h4>
+            <div class="h5 text-caption modal-calcFormWrap__title">1. Выберите, стоимость чего нужно рассчитать</div>
             <div class="modal__types">
-              {% for item in serv_rep %}
-             <div class="modal__radio modal__radio--type1">
-                <input type="radio" name="ask[Тип мероприятия]" id="ask-1-{{ loop.index }}" value="{{ item.serv_name }}" {{ loop.first ? "checked" : "" }}>
-                <label class="modal-calcFormWrapBox" for="ask-1-{{ loop.index }}">
-                  <div class="modal__radioImg">
-                  <img src="{{ item.img }}" alt="Посмотрите, как мы создаем идеальные корпоративы в Москве">
-                    <svg class="modal__calcSvg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="#EDC9B4"/>
-                    </svg>
-                  </div>
-                  <div class="control_m modal-calcWrapName">{{ item.serv_name }}</div>
-                </label>
-
-             </div>
-            {% endfor %}
-            </div>
-          </div>
-
-          <div class="modal-calcFormWrap">
-            <h4>2. Когда планируется мероприятие</h4>
-            <div class="modal__periods">
-              {% set periods = function('generate_periods', 3) %}
-
-              {% for period in periods %}
-                <div class="form_radio">
-                  <input type="radio" name="ask[Когда планируется мероприятие]" id="ask-2-{{ loop.index }}" value="{{ period }}" {{ loop.first ? "checked" : "" }}>
-                  <label for="ask-2-{{ loop.index }}">{{ period }}</label>
+              {% for item in calculation.choiceone_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Стоимость чего нужно рассчитать]" id="ask-1-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-1-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
                 </div>
               {% endfor %}
-
             </div>
           </div>
 
-          <div class="modal-calcFormWrap">
-            <h4>3. Количество гостей</h4>
-            <div class="modal__guests">
-              {% set guests = [
-                'До 40',
-                '40 - 70',
-                '70 - 100',
-                'Более 100'
-              ] %}
 
-              {% for guest in guests %}
-                <div class="form_radio">
-                  <input type="radio" name="ask[Количество гостей]" id="ask-3-{{ loop.index }}" value="{{ guest }}" {{ loop.first ? "checked" : "" }}>
-                  <label for="ask-3-{{ loop.index }}">{{ guest }}</label>
+{#          Шкаф-купе Выбор#}
+
+{#Квиз Шкаф-купе 2#}
+          <div class="modal-calcFormWrap">
+            <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите вариант шкафа-купе</div>
+            <div class="modal__types">
+              {% for item in calculation.choicetwo_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
                 </div>
               {% endfor %}
-
             </div>
           </div>
 
 
+
+          {#  Квиз-шкаф-3#}
           <div class="modal-calcFormWrap">
-            <h4>4. Оставьте Ваши контакты для связи</h4>
+            <div class="h5 text-caption modal-calcFormWrap__title">3. Количество дверей-купе</div>
+            <div class="modal__types modal__types-kitchen">
+              {% for item in calculation.choicethree_numberofdoors_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-3-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-3-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+
+          {#  Квиз-шкаф-4#}
+          <div class="modal-calcFormWrap">
+            <div class="h5 text-caption modal-calcFormWrap__title">4. Внешний вид дверей-купе</div>
+            <div class="modal__types">
+              {% for item in calculation.choicefour_appearance_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+
+          {#          Квиз-шкаф-5#}
+          <div class="modal-calcFormWrap">
+            <div class="h5 text-caption modal-calcFormWrap__title">5. Размеры шкафа по габаритам</div>
             <div class="modal__formSubmit">
               <div class="form__input-hidden">
-                <input type="text" name="title" hidden value="Рассчитаем стоимость мероприятия за пару минут">
+                <input type="text" name="title" hidden value="Размеры шкафа по габаритам">
                 <input type="text" name="code" hidden value="order">
               </div>
-              <input class="footer__input Control_m" type="text" name="name" placeholder="Имя *" required>
-              <input class="footer__input Control_m" type="tel" name="phone" placeholder="Телефон *" required>
-              <input class="footer__input Control_m" type="email" name="email" placeholder="Email">
-              <input class="footer__input Control_m" type="text" name="company" placeholder="Название компании">
-              <div class="select">
-                <select name="method">
-                  <option class="control_m footer__input" value="По телефону">По телефону</option>
-                  <option value="По Whatsapp" class="control_m footer__input footer__inputSelect">Whatsapp</option>
-                  <option value="По Telegram" class="control_m footer__input footer__inputSelect">Telegram</option>
-                </select>
-                <div class="footer__choise caption gray">Способ связи</div>
+              <input class="footer__input Control_L" type="text" name="height" placeholder="Высота">
+              <input class="footer__input Control_L" type="text" name="width" placeholder="Ширина">
+              <input class="footer__input Control_L" type="text" name="depth" placeholder="Глубина">
+            </div>
+          </div>
+
+
+
+
+
+
+
+{#          Квиз кухни 2#}
+{#          <div class="modal-calcFormWrap">#}
+{#            <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите форму кухни</div>#}
+{#            <div class="modal__types modal__types-kitchen">#}
+{#              {% for item in calculation.choicetwokitchen_rep %}#}
+{#                <div class="modal__radio modal__radio--type1">#}
+{#                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
+{#                  <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">#}
+{#                    <div class="modal__radioImg">#}
+{#                      <span class="modal__radioImg-circle"></span>#}
+{#                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">#}
+{#                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>#}
+{#                      </svg>#}
+{#                    </div>#}
+{#                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>#}
+{#                  </label>#}
+{#                </div>#}
+{#              {% endfor %}#}
+{#            </div>#}
+{#          </div>#}
+
+
+
+
+
+
+
+
+          {#  Квиз-кухня-3#}
+{#          <div class="modal-calcFormWrap">#}
+{#            <div class="h5 text-caption modal-calcFormWrap__title">3. Выберите фасады</div>#}
+{#            <div class="modal__types">#}
+{#              {% for item in calculation.choicefour_facades_rep %}#}
+{#                <div class="modal__radio modal__radio--type1">#}
+{#                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
+{#                  <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">#}
+{#                    <div class="modal__radioImg">#}
+{#                      <span class="modal__radioImg-circle"></span>#}
+{#                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">#}
+{#                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>#}
+{#                      </svg>#}
+{#                    </div>#}
+{#                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>#}
+{#                  </label>#}
+{#                </div>#}
+{#              {% endfor %}#}
+{#            </div>#}
+{#          </div>#}
+
+
+
+
+
+
+
+          {#          Квиз-кухня-4#}
+{#          <div class="modal-calcFormWrap">#}
+{#            <div class="h5 text-caption modal-calcFormWrap__title">4. Примерные размеры кухонного гарнитура по стенам</div>#}
+{#            <div class="modal__formSubmit">#}
+{#              <div class="form__input-hidden">#}
+{#                <input type="text" name="title" hidden value="Примерные размеры кухонного гарнитура по стенам">#}
+{#                <input type="text" name="code" hidden value="order">#}
+{#              </div>#}
+{#              <input class="footer__input Control_L" type="text" name="size" placeholder="Введите размер">#}
+{#            </div>#}
+{#          </div>#}
+
+
+          {#          Квиз-общий_финал#}
+          <div class="modal-calcFormWrap">
+            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
+            <div class="modal__formSubmit">
+              <div class="form__input-hidden">
+                <input type="text" name="title" hidden value="Контакты">
+                <input type="text" name="code" hidden value="order">
               </div>
+              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
+              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
+
               <div class="footer__checkbox checkbox">
                 <label for="checkbox" class="form__checkbox">
                   <input type="checkbox" name="checkbox" id="checkbox" checked required>
@@ -96,20 +215,20 @@
               </div>
 
             </div>
-
           </div>
+
 
 
         </div>
       </div>
       <div class="slider__arrows">
-        <button class="slider__arrow slider__arrow--prev slider__arrow-banner Button_text" data-calc-prev>
+        <button class="slider__arrow slider__arrow--prev slider__arrow-banner btn-black" data-calc-prev>
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9.13086 4.66211L10.1191 5.65039L5.45703 10.3125H19.25V11.6875H5.45703L10.1191 16.3496L9.13086 17.3379L3.28711 11.4941L2.81445 11L3.28711 10.5059L9.13086 4.66211Z" fill="#3E342F"/>
           </svg>
           Назад
         </button>
-        <button class="slider__arrow slider__arrow--next slider__arrow-banner" data-calc-next>
+        <button class="slider__arrow slider__arrow--next slider__arrow-banner btn-black" data-calc-next>
           Далее
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12.8691 4.66211L11.8809 5.65039L16.543 10.3125H2.75V11.6875H16.543L11.8809 16.3496L12.8691 17.3379L18.7129 11.4941L19.1855 11L18.7129 10.5059L12.8691 4.66211Z" fill="#3E342F"/>
@@ -117,7 +236,7 @@
         </button>
 
 
-        <button class="control_m button modal__calcButton" data-calc-submit type="submit" hidden>Узнать стоимость</button>
+        <button class="Control_M btn-black modal__calcButton" data-calc-submit type="submit" hidden>Рассчитать</button>
       </div>
 
       <button class="modal__close modal__close--fixed" type="button"></button>

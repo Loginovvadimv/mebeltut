@@ -135,4 +135,9 @@ if (function_exists('acf_add_options_page')) {
         'menu_title'    => 'Секция "Отзывы"',
         'parent_slug'   => 'content-settings',
     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Модальное окно расчета стоимости общее"',
+        'menu_title'    => 'Модальное окно расчета стоимости общее"',
+        'parent_slug'   => 'content-settings',
+    ));
 }
