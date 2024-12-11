@@ -1,0 +1,47 @@
+<section class="populars section">
+  <div class="container">
+    <h2 class="populars__title">популярные проекты</h2>
+  <div class="populars__wrapper">
+      <div class="populars__scroller scroller">
+        <div class="populars__categories">
+          {% for progect in categories_proj %}
+            <a href="{{ progect.link }}" class="populars__category h5 {{ progect.id == term.term_id ? "active" : "" }}">
+              {{ progect.title }}
+            </a>
+          {% endfor %}
+          <div class="slider__arrows">
+            <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+            <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="populars__container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for item in posts %}
+              {% if posts.found_posts is null or posts.found_posts is empty  %}
+                <div class="populars__warning Control_m">Постов не найдено</div>
+              {% endif %}
+              {% set post = get_post(item.ID) %}
+              {% set category = post.terms[0] %}
+              <div class="populars__wrap">
+                <a class="populars__link" href="{{ item.link }}"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      <button class="white-btn populars__btn">Показать еще</button>
+
+
+  </div>
+  </div>
+</section>

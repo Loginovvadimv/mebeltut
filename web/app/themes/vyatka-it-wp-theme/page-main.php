@@ -30,18 +30,10 @@ $context['categories_proj'] = Timber::get_terms([
 ]);
 
 $context['posts'] = Timber::get_posts([
-    'post_type' => 'categories_proj',
+    'post_type' => 'project',
     'posts_per_page' => '-1'
 ]);
 
-//function calculateDiscount($total_price, $new_price) {
-//    $discount = ($total_price - $new_price) / $total_price * 100;
-//    return $discount;
-//}
-//
-//$discount = calculateDiscount($total_price, $new_price);
-//
-//echo "Discount: " . $discount . "%"; // Output: Discount: 30%
 
 
 Timber::render('page-main.twig', $context);

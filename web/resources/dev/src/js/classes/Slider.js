@@ -69,6 +69,24 @@ export default class Slider {
       }
 
 
+      // Популярные проекты
+      const populars = document.querySelector('.populars__wrapper')
+      if (populars) {
+        this.createSlider(populars, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breakpoints: {
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
 
       //Отзывы
       const reviews = document.querySelector('.reviews__wrapper')
