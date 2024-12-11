@@ -1,0 +1,56 @@
+.footer
+  padding: 36px 48px
+  background: rgba(255, 255, 255, 1)
+  &__wrapper
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+  &__wrap
+    display: flex
+    flex-direction: column
+    gap: 16px
+  &__logo
+    margin-bottom: 8px
+  &__wrapText
+    display: flex
+    flex-direction: column
+    gap: 12px
+  &__wrapLinks
+    display: flex
+    flex-direction: column
+    gap: 12px
+  &__wrapLink
+    transition: .3s all
+    &:hover
+      color: rgba(230, 75, 102, 1)
+      transition: .3s all
+  .up
+    max-width: 150px
+    width: 100%
+    background: transparent
+    border: 1px solid rgba(12, 12, 12, 0.12)
+    display: flex
+    gap: 8px
+    align-items: center
+    color: rgba(12, 12, 12, 0.4)
+    padding: 20px
+    border-radius: 12px
+    &:hover
+      &:hover
+        background: rgba(230, 75, 102, 1)
+        color: white
+        svg
+          path
+            fill: white
+  &__buttons
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+  &__button
+    background: rgba(12, 12, 12, 0.4)
+    padding: 20px
+    border-right: 1px solid rgba(255, 255, 255, 0.24)
+    &:hover
+      background: rgba(12, 12, 12, 1)
+    &:last-child
+      border-right: none
+
+

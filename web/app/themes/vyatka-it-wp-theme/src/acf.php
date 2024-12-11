@@ -34,57 +34,15 @@ if (function_exists('acf_add_options_page')) {
                 'type' => 'text',
             ),
             array (
+                'key' => 'address',
+                'label' => 'Адрес',
+                'name' => 'Адрес',
+                'type' => 'text',
+            ),
+            array (
                 'key' => 'tg',
                 'label' => 'Telegram',
                 'name' => 'Telegram',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'ok',
-                'label' => 'Однокласники',
-                'name' => 'Однокласники',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'wa',
-                'label' => 'Whatsapp',
-                'name' => 'Whatsapp',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'vb',
-                'label' => 'Viber',
-                'name' => 'Viber',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'yt',
-                'label' => 'YouTube',
-                'name' => 'YouTube',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'ozon',
-                'label' => 'Ozon',
-                'name' => 'Ozon',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'wb',
-                'label' => 'Wildberries',
-                'name' => 'Wildberries',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'ya',
-                'label' => 'Яндекс Маркет',
-                'name' => 'Яндекс Маркет',
-                'type' => 'text',
-            ),
-            array (
-                'key' => 'sb',
-                'label' => 'Сбер МегаМаркет',
-                'name' => 'Сбер МегаМаркет',
                 'type' => 'text',
             ),
             array (

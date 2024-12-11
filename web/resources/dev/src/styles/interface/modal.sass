@@ -84,11 +84,11 @@
       margin-bottom: 16px
     .calc-form
       .slider__arrow--next
-        background: rgba(237, 201, 180, 1)
+        background: rgba(60, 60, 60, 1)
         &:hover
           transition: .3s all
-          background: rgba(228, 175, 143, 1)
-
+          background: rgba(230, 75, 102, 1)
+          border: 1px solid rgba(230, 75, 102, 1)
 
     .form_radio input[type=radio]
       display: none
@@ -137,12 +137,16 @@
       bottom: 48px
       padding: 18px 28px 18px 24px
       width: 142px
-      height: 58px
+      height: 64px
       border-radius: 12px
       gap: 8px
       display: flex
       align-items: center
-      border: 1.5px solid rgba(237, 201, 180, 1)
+      border: 1.5px solid rgba(60, 60, 60, 1)
+      background: rgba(60, 60, 60, 1)
+      color: white
+      &:hover
+        border: 1px solid rgba(230, 75, 102, 1)
     .slider__arrow--next
       transform: unset
       right: 48px
@@ -150,12 +154,12 @@
       bottom: 48px
       padding: 18px 28px 18px 24px
       width: 142px
-      height: 58px
+      height: 64px
       border-radius: 12px
       gap: 8px
       display: flex
       align-items: center
-      border: 1.5px solid rgba(237, 201, 180, 1)
+      border: 1.5px solid rgba(60, 60, 60, 1)
   &__types
     display: grid
     gap: 16px
@@ -171,6 +175,7 @@
   &-calcFormWrap
     max-width: 100%
     width: 100%
+
     &:last-child
       .modal__calcButton
         display: block
@@ -219,7 +224,7 @@
     flex-direction: column
     gap: 16px
     margin-bottom: 36px
-
+    max-width: 398px
 [data-modal]
   cursor: pointer
   *
