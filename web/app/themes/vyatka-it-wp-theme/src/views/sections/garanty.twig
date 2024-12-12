@@ -1,0 +1,22 @@
+<section class="garanty section">
+  <div class="container">
+    <h1>{{ post.title }}</h1>
+    <div class="garanty__wrapper">
+      <div class="garanty__info">
+        <div class="garanty__infoTitle h3 text-body uppercase">{{ post.garanty_title }}</div>
+        <div class="garanty__infoSubtitle Control_M text-body">{{ post.garanty_subtitle }}</div>
+      </div>
+
+      <div class="garanty__advsWrapper">
+        {% for item in post.gars_advs_rep %}
+          <div class="garanty__advsWrap">
+            <div class="garanty__advsWrapBg"></div>
+            <img src="{{ item.img }}" alt="{{ post.title }}">
+            <div class="h4 text-main-contrast uppercase garanty__advsWrapText">{{ item.text }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+.garanty
+  &__info
+    padding: 56px
+    background: rgba(255, 255, 255, 1)
+    display: flex
+    flex-direction: column
+    gap: 24px
+    align-items: center
+    border-radius: 16px
+    overflow: hidden
+    width: 100%
+    margin-bottom: 16px
+  &__infoTitle
+    max-width: 1229px
+    width: 100%
+    text-align: center
+  &__infoSubtitle
+    max-width: 1229px
+    width: 100%
+    text-align: center
+  &__advsWrapper
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 16px
+  &__advsWrap
+    position: relative
+    height: 336px
+    border-radius: 16px
+    overflow: hidden
+    img
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      z-index: 2
+  &__advsWrapText
+    position: absolute
+    left: 50%
+    transform: translateX(-50%)
+    bottom: 24px
+    z-index: 4
+  &__advsWrapBg
+    background: rgba(0, 0, 0, 0.3)
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    position: absolute
+    z-index: 3
