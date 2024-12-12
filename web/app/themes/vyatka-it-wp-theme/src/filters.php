@@ -21,9 +21,22 @@ add_filter('timber/context', function ($context) {
     $context['plug_url'] = ASSETS . '/images/plug.webp';
     $context['plug_client'] = ASSETS . '/images/plug_client.webp';
     $context['calculation'] = get_field('calculation', 'options');
+    $context['vk_groupe'] = get_field('vk_groupe', 'options');
+
+
+    $context['categories_prod'] = Timber::get_terms([
+        'taxonomy' => 'categories-product',
+        'orderby' => 'id',
+        'order' => 'ASC',
+        'parent' => 0,
+        'hide_empty' => false
+    ]);
 
     return $context;
 });
+
+
+
 
 // Custom PostType
 add_filter('timber/post/classmap', function ($classmap) {

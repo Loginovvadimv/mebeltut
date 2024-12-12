@@ -1,19 +1,19 @@
 <nav class="breadcrumbs">
-    <div class="container">
-        <div class="breadcrumbs__container dfrc">
-            <ul class="breadcrumbs__list">
-                {% for breadcrumb in breadcrumbs %}
-                    <li class="breadcrumbs__item">
-                        {% if breadcrumb.last %}
-                            <p class="breadcrumbs__text breadcrumbs__text--last control-m color-ondark">{{ breadcrumb.name }}</p>
-                        {% else %}
-                            <a class="control_s" href="{{ breadcrumb.href }}"
-                               class="breadcrumbs__text breadcrumbs__text--link control_s">{{ breadcrumb.name }}</a>
-                            <div class="breadcrumbs__ellipce"></div>
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
+  <div class="container">
+    <div class="breadcrumbs__container">
+      <ul class="breadcrumbs__list">
+        {% for breadcrumb in breadcrumbs %}
+          <li class="breadcrumbs__item Control_S">
+            {% if breadcrumb.last %}
+              <p class="breadcrumbs__text breadcrumbs__text--last Control_S">{{ breadcrumb.name }}</p>
+            {% else %}
+              <a class="Control_s" href="{{ breadcrumb.href }}"
+                 class="breadcrumbs__text breadcrumbs__text--link Control_S">{{ breadcrumb.name }}</a>
+              <div class="breadcrumbs__line">/</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
 </nav>

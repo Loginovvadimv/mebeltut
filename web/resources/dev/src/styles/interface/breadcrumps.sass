@@ -1,21 +1,28 @@
 .breadcrumbs
-  padding: 180px 0 3.6rem 0
+  padding: 142px 0 8px 0
   overflow: auto
   &__list
     display: flex
     align-items: center
-    gap: 1.2rem
+    gap: 6px
   &__item
     display: flex
     align-items: center
     white-space: nowrap
-    gap: 1.2rem
+    gap: 6px
+    color: rgba(0, 0, 0, 0.24)
     svg path
-      fill: #989898
+      fill: rgba(0, 0, 0, 0.24)
     &:has(a)
       &:hover
         a, span
-          color: #E3E3E3
+          color: rgba(12, 12, 12, 1)
+  &__line
+    color: rgba(0, 0, 0, 0.24)
+  &__text--link
+    color: rgba(0, 0, 0, 0.24)
+  &__text
+    color: rgba(12, 12, 12, 1)
 +max($xs)
   .breadcrumbs
     padding: 1.4rem 0 1.6rem 0
