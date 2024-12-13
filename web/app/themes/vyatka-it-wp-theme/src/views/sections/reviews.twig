@@ -31,12 +31,14 @@
                             </div>
                           </div>
 
-                          <div class="reviews__descr Control_M text-body">{{ item.descr }}</div>
-                          <div class="reviews__photos">
-                            {% for pic in item.photos %}
-                              <a class="reviews__photo" data-fancybox="reviews" href="{{ pic.photo }}"><img class="reviews__img" src="{{ pic.photo }}" alt></a>
-                            {% endfor %}
+                          <div class="reviews__descr Control_M text-body">{{ item.descr }}
+                            <div class="reviews__photos">
+                              {% for pic in item.photos %}
+                                <a class="reviews__photo" data-fancybox="reviews" href="{{ pic.photo }}"><img class="reviews__img" src="{{ pic.photo }}" alt></a>
+                              {% endfor %}
+                            </div>
                           </div>
+
                         </div>
                       {% endfor %}
                     </div>

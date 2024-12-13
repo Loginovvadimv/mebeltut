@@ -22,6 +22,8 @@ add_filter('timber/context', function ($context) {
     $context['plug_client'] = ASSETS . '/images/plug_client.webp';
     $context['calculation'] = get_field('calculation', 'options');
     $context['vk_groupe'] = get_field('vk_groupe', 'options');
+    $context['howorder'] = get_field('howorder', 'options');
+    $context['reviews'] = get_field('reviews', 'options');
 
 
     $context['categories_prod'] = Timber::get_terms([

@@ -35,7 +35,10 @@ export default class Slider {
           autoHeight: false,
           calculateHeight: false,
           speed: 1000,
-          effect: "fade",
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: false,
+          },
           autoplay: {
             delay: 4000,
             disableOnInteraction: true,
@@ -84,6 +87,34 @@ export default class Slider {
               spaceBetween: 16,
             }
           }
+        })
+      }
+
+
+      //как заказать
+      const howToOrder = document.querySelector('.howToOrder')
+      if (howToOrder) {
+        this.createSlider(howToOrder, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          loop: true,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            renderBullet: function (index, className) {
+              return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
+                // + "<span class='pagination__span'>-</span>";
+            },
+          },
+          autoplay: {
+            disableOnInteraction: true,
+            pauseOnMouseEnter: false
+          },
         })
       }
 

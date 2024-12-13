@@ -98,4 +98,9 @@ if (function_exists('acf_add_options_page')) {
         'menu_title'    => 'Модальное окно расчета стоимости общее"',
         'parent_slug'   => 'content-settings',
     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Как заказать',
+        'menu_title'    => 'Как заказать',
+        'parent_slug'   => 'content-settings',
+    ));
 }

@@ -129,7 +129,15 @@ Alpine.start();
   }
   //endSeo
 
+    //LoaderStart
 
+    const bannerLoader = document.getElementById('bannerLoader');
+    bannerLoader.style.opacity = 0;
+    setTimeout(function () {
+      bannerLoader.remove();
+    }, 300)
+
+    //end
 
 
 });
