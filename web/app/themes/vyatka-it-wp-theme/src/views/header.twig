@@ -22,7 +22,7 @@
 
   {{ function('wp_head') }}
 </head>
-<body x-data="page"
+<body id="body" x-data="page"
       @popup-opened.window="$el.classList.add('fixed')"
       @popup-closed.window="$el.classList.remove('fixed')"
 >

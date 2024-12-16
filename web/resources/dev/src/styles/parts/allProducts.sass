@@ -1,0 +1,262 @@
+.allProducts
+  &__slogan
+    padding: 127px 76px
+    border-radius: 16px
+    overflow: hidden
+    position: relative
+    width: 100%
+    margin-bottom: 36px
+  &__sloganBg
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    z-index: 1
+  &__sloganText
+    z-index: 3
+    position: relative
+  &__categories
+    display: flex
+    gap: 14px
+    width: 100%
+    margin-bottom: 36px
+  &__category
+    padding: 11px 20px
+    color: rgba(12, 12, 12, 0.4)
+    background: #FFFFFF
+    border-radius: 16px
+    cursor: pointer
+    &:hover
+      color: rgba(12, 12, 12, 0.8)
+  .active
+    background: #FFFFFF
+    color: rgba(249, 92, 119, 1)
+  &__categoriesLine
+    border: 1px solid rgba(12, 12, 12, 0.08)
+    width: 100%
+    margin-bottom: 16px
+  &__wrapper
+    display: flex
+    align-items: flex-start
+    gap: 60px
+  &__container
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    gap: 16px
+  &__wrap
+    padding: 24px
+    border-radius: 16px
+    overflow: hidden
+    background: rgba(249, 249, 249, 1)
+  &__wrapImg
+    width: 100%
+    height: 100%
+    transition: .6s all
+  &__wrapLink
+    overflow: hidden
+    width: 100%
+    height: 294px
+    border-radius: 16px
+    display: block
+    margin-bottom: 16px
+    &:hover
+      .allProducts__wrapImg
+        transform: scale(1.1)
+        transition: .6s all
+        cursor: pointer
+  &__wrapTitle
+    transition: .3s all
+    &:hover
+      color: rgba(230, 75, 102, 1)
+      transition: .3s all
+
+
+  &__filterCategory
+    display: flex
+    align-items: center
+    margin-bottom: 7px
+    cursor: pointer
+  &__filterCatBox
+    display: flex
+    flex-direction: column
+  &__filter
+    max-width: 446px
+    width: 100%
+    background: #FFFFFF
+    padding: 24px
+    border-radius: 24px
+    height: 100%
+  &__filterTitle
+    margin-bottom: 10px
+  &__line
+    margin: 20px 0
+    width: 100%
+    height: 1px
+    background: rgba(16, 62, 88, 0.2)
+  &__btn
+    width: 100%
+    padding: 23px
+    border-radius: 36px
+    border: 1px solid rgba(26, 59, 48, 1)
+    cursor: pointer
+    margin-top: 24px
+    transition: .3s all
+    display: block
+    &:hover
+      transition: .3s all
+      background: rgba(26, 59, 48, 1)
+      color: rgba(251, 247, 236, 0.8)
+  &__priceScroll
+    width: 100%
+    height: 4px
+    background: rgba(26, 59, 48, 1)
+    margin-bottom: 18px
+  &__pricesMix
+    display: flex
+    justify-content: space-between
+    align-items: center
+    input
+      padding: 14px 23px
+      border: 1px solid rgba(0, 0, 0, 0.16)
+      border-radius: 30px
+      max-width: 154px
+      font-family: 'Oswald', sans-serif
+      font-weight: 500
+      font-size: 18px
+      line-height: 26px
+    span
+      width: 15px
+      height: 2px
+      border-radius: 2px
+      background: rgba(16, 62, 88, 0.2)
+  &__pricesMixBox
+    display: flex
+    align-items: center
+    gap: 6px
+  &__checkbox
+    margin: 0
+  &__mdg
+    display: flex
+    align-items: center
+    gap: 12px
+  &__buttons
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 20px
+    button
+      cursor: pointer
+      padding: 15px 24px
+  &__container
+    width: 100%
+  &__filterCatChilds
+    padding-left: 46px
+    display: flex
+    flex-direction: column
+    gap: 8px
+    margin-bottom: 6px
+  &__filterCatChild.active
+    padding: 0 8px 0 8px
+    border-radius: 16px
+    background: rgba(26, 59, 48, 0.24)
+    color: rgba(0, 0, 0, 0.72)
+    margin-left: -8px
+  &__topLine
+    margin: 11px 0 20px 0
+    width: 100%
+    height: 1px
+    background: rgba(16, 62, 88, 0.2)
+  &__filterCategoryPrice
+    margin-bottom: 0px
+  &__mdgs
+    padding-left: 25px
+    display: flex
+    flex-direction: column
+    gap: 8px
+  &__label
+    display: flex
+    align-items: center
+    gap: 12px
+  &__labels
+    padding-left: 25px
+    display: flex
+    flex-direction: column
+    gap: 8px
+  .custom-wrapper
+    width: 100%
+    position: relative
+    margin-top: 16px
+  .price-slider
+    background: rgba(26, 59, 48, 1)
+    height: 100%
+    left: 0%
+    right: 0%
+    position: absolute
+    border-radius: 5px
+  .slider-container
+    height: 4px
+    position: relative
+    border-radius: 10px
+    background: rgba(0, 0, 0, 0.28)
+  .range-input
+    position: relative
+    input
+      position: absolute
+      width: 100%
+      height: 5px
+      background: none
+      top: -79px
+      pointer-events: none
+      cursor: pointer
+      -webkit-appearance: none
+  input[type="range"]::-webkit-slider-thumb
+    height: 16px
+    width: 16px
+    border-radius: 70%
+    background: #555
+    pointer-events: auto
+    -webkit-appearance: none
+  &__def
+    width: 15px
+    height: 2px
+    background: rgba(16, 62, 88, 0.2)
+    border-radius: 2px
+  .price-field
+    input
+      padding: 14px
+      border: 1px solid rgba(0, 0, 0, 0.28)
+      border-radius: 30px
+      font-weight: 500
+      font-size: 18px
+      line-height: 26px
+      width: 154px
+  .price-input
+    display: flex
+    align-items: center
+    justify-content: space-between
+  .price-input-container
+    margin-top: 18px
+  .price-field
+    display: flex
+    align-items: center
+    gap: 6px
+  &__filterBtn
+    background: white
+    gap: 8px
+    align-items: center
+    border-radius: 54px
+    width: 100%
+    display: none
+    text-align: center
+    justify-content: center
+    padding: 13px
+    &:hover
+      background: rgba(26, 59, 48, 0.24)
+  &__filterMob
+    display: none
+  .rotate
+    transform: rotate(90deg)
+  .open-form
+    display: block
+

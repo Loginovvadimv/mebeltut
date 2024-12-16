@@ -132,19 +132,71 @@ Alpine.start();
     //LoaderStart
 
     const bannerLoader = document.getElementById('bannerLoader');
+  if (bannerLoader) {
     bannerLoader.style.opacity = 0;
     setTimeout(function () {
       bannerLoader.remove();
-    }, 300)
+    }, 300);
+  }
+
 
 
     const bannerLoader2 = document.getElementById('bannerLoader2');
+  if(bannerLoader2){
     bannerLoader2.style.opacity = 0;
     setTimeout(function () {
       bannerLoader2.remove();
-    }, 300)
+    }, 300);
+  }
+
 
     //end
 
 
-});
+
+
+    // фильтр
+    const customSelect = document.querySelector(".custom-select");
+    const selectBtn = document.querySelectorAll(".select-button");
+
+    const selectedValue = document.querySelector(".selected-value");
+    const optionsList = document.querySelectorAll(".select-dropdown li");
+
+// add click event to select button
+    selectBtn.forEach(item=> {
+      item.addEventListener("click", () => {
+        // add/remove active class on the container element
+        customSelect.classList.toggle("active");
+        // update the aria-expanded attribute based on the current state
+        selectBtn.setAttribute(
+          "aria-expanded",
+          selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+        );
+      });
+    })
+
+    optionsList.forEach((option) => {
+      function handler(e) {
+        // Click Events
+        if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
+          selectedValue.textContent = this.children[1].textContent;
+          customSelect.classList.remove("active");
+        }
+        // Key Events
+        if (e.key === "Enter") {
+          selectedValue.textContent = this.textContent;
+          customSelect.classList.remove("active");
+        }
+      }
+
+      option.addEventListener("keyup", handler);
+      option.addEventListener("click", handler);
+    });
+
+    // конец
+
+
+
+
+
+  });

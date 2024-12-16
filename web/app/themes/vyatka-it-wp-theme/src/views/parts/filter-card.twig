@@ -1,0 +1,40 @@
+<form method="get">
+    <div class="custom-select Control_m">
+        <button type="button"
+                class="select-button Control_M"
+                role="combobox"
+                aria-labelledby="select button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="select-dropdown"
+        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M3 6H21V7.5H3V6ZM3 11H16V12.5H3V11ZM11 16H3V17.5H11V16Z" fill="#0C0C0C" fill-opacity="0.4"/>
+          </svg>
+          Сортировка:
+            <span class="selected-value Control_m">По умолчанию</span>
+            <span class="arrow__down"><svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.6667 0.250001L15.5 1.5L7.99992 9L0.5 1.5L1.33333 0.249999L8 6.91667L14.6667 0.250001Z" fill="black"/>
+</svg>
+</span>
+        </button>
+        <ul class="select-dropdown" role="listbox" id="select-dropdown">
+            <li role="option">
+                <a href="{{ current_url_without_get_params }}?sort=price_asc" class="Control_m">Минимальная цена</a>
+            </li>
+            <li role="option">
+                <a href="{{ current_url_without_get_params }}?sort=price_desc" class="Control_m">Максимальная цена</a>
+            </li>
+            <li role="option">
+                <a href="/new_models/" class="Control_m">Новинки</a>
+            </li>
+            <li role="option">
+                <a href="/popular/" class="Control_m">Популярное</a>
+            </li>
+            {% for item in categories_prod %}
+                <li role="option">
+                    <a href="{{ item.link }}" class="Control_m">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</form>

@@ -1,0 +1,230 @@
+
+<button class="control_m allProducts__filterBtn">Фильтры<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3.5 17V18.5H10V17H3.5ZM3.5 5V6.5H14V5H3.5ZM13 21V18.5H21.5V17H13V15H11.5V21H13ZM8 9V11H3.5V12.5H8V15H9.5V9H8ZM21.5 12.5V11H11V12.5H21.5ZM15.5 9H17V6.5H21.5V5H17V3H15.5V9Z" fill="black"/>
+  </svg></button>
+<form method="GET" class="allProducts__filter" x-data="filterForm()">
+  <div class="allProducts__filterCategories">
+    <div class="allProducts__filterTitle uppercase control_m">Категории</div>
+    <div class="allProducts__filterCatBox">
+      {% for category in categories_p %}
+        <a class="allProducts__filterCategory control_m cat" @click="toggleOpen('{{ category.name }}')">
+          <svg :class="{ 'rotate': open === '{{ category.name }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>
+          </svg>
+          {{ category.name }}
+        </a>
+        <div class="allProducts__filterCatChilds control_s" x-show="open === '{{ category.name }}'">
+          {% for child in category.children %}
+            <a href="{{ child.link }}">{{ child.name }}</a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="allProducts__topLine"></div>
+
+  <div class="allProducts__filterCatBox">
+    <div class="allProducts__filterCategory allProducts__filterCategoryPrice control_m cat" @click="togglePrice()">
+      <svg :class="{ 'rotate': price }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>
+      </svg>
+      ЦЕНА/КГ
+    </div>
+
+    <div class="custom-wrapper" x-show="price">
+      <div class="slider-container">
+        <div class="price-slider">
+        </div>
+      </div>
+
+      <div class="price-input-container">
+        <div class="price-input">
+          <div class="price-field control_s text-disable">
+            <span>от</span>
+            <input type="number"
+                   class="min-input"
+                   name="price[min]"
+                   min="{{ filters.price.min }}"
+                   max="{{ filters.price.max }}"
+                   value="{{ filters.price.min_current }}">
+          </div>
+          <div class="allProducts__def"></div>
+          <div class="price-field control_s text-disable">
+            <span>до</span>
+            <input type="number"
+                   class="max-input"
+                   name="price[max]"
+                   min="{{ filters.price.min }}"
+                   max="{{ filters.price.max }}"
+                   value="{{ filters.price.max_current }}">
+          </div>
+        </div>
+      </div>
+
+      <div class="range-input text-disable">
+        <input type="range"
+               class="min-range"
+               min="{{ filters.price.min }}"
+               max="{{ filters.price.max }}"
+               value="{{ filters.price.min_current }}"
+               step="1">
+        <input type="range"
+               class="max-range"
+               min="{{ filters.price.min }}"
+               max="{{ filters.price.max }}"
+               value="{{ filters.price.max_current }}"
+               step="1">
+      </div>
+    </div>
+  </div>
+
+  <div class="allProducts__line"></div>
+
+  {% for filter in filters.auto %}
+    <div class="allProducts__filterCategory control_m cat" @click="toggleActiveFilter('{{ filter.code }}')">
+      <svg :class="{ 'rotate': activeFilter === '{{ filter.code }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>
+      </svg>
+      {{ filter.name }}
+    </div>
+
+    <div class="allProducts__mdgs" x-show="activeFilter === '{{ filter.code }}'">
+      {% for value_ in filter.values %}
+        <div class="allProducts__mdg control_s">
+          <div class="allProducts__checkbox checkbox">
+            <label for="checkbox" class="form__checkbox">
+              <input type="checkbox" name="attribute[{{ filter.code }}][]" value="{{ value_.value }}" {{ value_.checked ? "checked" : "" }} id="checkbox">
+            </label>
+          </div>
+          {{ value_.value }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="allProducts__line"></div>
+  {% endfor %}
+
+  <div class="allProducts__buttons">
+    <button type="button" class="transparrent-btn control_m " @click="clearFilters">Очистить</button>
+    <button type="submit" class="green-btn control_m">Применить</button>
+  </div>
+</form>
+
+<script>
+  function filterForm() {
+    return {
+      open: null,
+      price: false,
+      activeFilter: null,
+      toggleOpen(category) {
+        this.open = (this.open === category ? null : category);
+      },
+      togglePrice() {
+        this.price = !this.price;
+      },
+      toggleActiveFilter(filterCode) {
+        this.activeFilter = (this.activeFilter === filterCode ? null : filterCode);
+      },
+      clearFilters() {
+        this.open = null;
+        this.price = false;
+        this.activeFilter = null;
+        // Снять все отметки с чекбоксов
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+        let url = new URL(location);
+        location = location.origin + location.pathname;
+
+      }
+    }
+  }
+</script>
+
+<script>
+  document.addEventListener('scripts_start', function () {
+    const rangevalue = document.querySelector(".slider-container .price-slider");
+    const rangeInputvalue = document.querySelectorAll(".range-input input");
+    const priceInputvalue = document.querySelectorAll(".price-input input");
+
+    const min = {{ filters.price.min }};
+    const max = {{ filters.price.max }};
+
+    let priceGap = 20;
+
+    for (let i = 0; i < priceInputvalue.length; i++) {
+      priceInputvalue[i].addEventListener("input", priceInputValueChange);
+      priceInputvalue[i].dispatchEvent(new Event('input'))
+    }
+
+    for (let i = 0; i < rangeInputvalue.length; i++) {
+      rangeInputvalue[i].addEventListener("input", rangeInputValueChange);
+      rangeInputvalue[i].dispatchEvent(new Event('input'))
+    }
+
+    function priceInputValueChange(e)
+    {
+      let minp = parseInt(priceInputvalue[0].value);
+      let maxp = parseInt(priceInputvalue[1].value);
+      let diff = maxp - minp
+
+      if (minp < min) {
+        priceInputvalue[0].value = min;
+        minp = min;
+      }
+
+      if (maxp > max) {
+        priceInputvalue[1].value = max;
+        maxp = max;
+      }
+
+      if (minp > maxp - priceGap) {
+        priceInputvalue[0].value = maxp - priceGap;
+        minp = maxp - priceGap;
+
+        if (minp < min) {
+          priceInputvalue[0].value = min;
+          minp = min;
+        }
+      }
+
+      if (diff >= priceGap && maxp <= rangeInputvalue[1].max) {
+        if (e.target.className === "min-input") {
+          rangeInputvalue[0].value = minp;
+
+          let left = window.math_map(minp, min, max, 0, 100)
+
+          rangevalue.style.left = `${left}%`;
+        } else {
+          rangeInputvalue[1].value = maxp;
+
+          let right = window.math_map(maxp, min, max, 0, 100)
+
+          rangevalue.style.right = `${100 - right}%`;
+        }
+      }
+    }
+
+    function rangeInputValueChange(e)
+    {
+      let minVal = parseInt(rangeInputvalue[0].value);
+      let maxVal = parseInt(rangeInputvalue[1].value);
+      let diff = maxVal - minVal
+
+      if (diff < priceGap) {
+        if (e.target.className === "min-range") {
+          rangeInputvalue[0].value = maxVal - priceGap;
+        } else {
+          rangeInputvalue[1].value = minVal + priceGap;
+        }
+      } else {
+        priceInputvalue[0].value = minVal;
+        priceInputvalue[1].value = maxVal;
+
+        let left = window.math_map(minVal, min, max, 0, 100)
+        let right = window.math_map(maxVal, min, max, 0, 100)
+
+        rangevalue.style.left = `${left}%`;
+        rangevalue.style.right = `${100 - right}%`;
+      }
+    }
+  })
+</script>
