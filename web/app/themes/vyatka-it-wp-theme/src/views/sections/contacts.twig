@@ -1,0 +1,115 @@
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<c2a888d7-28f1-4234-89bb-c4785a857bc4>" type="text/javascript"></script>
+<section class="contacts section">
+  <div class="container">
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // ymaps.ready(ready);
+
+        //lazy загрузка карт
+
+        var Observer = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting === true) {
+            loadMap();
+            Observer.unobserve(entries[0].target); // перестаём отслеживать видимость
+          }
+        }, {threshold: [0]}); // от 0 до 1, % видимой части элемента на экране
+
+        Observer.observe(document.getElementById('map'));
+
+        function loadMap () {
+          let map = document.getElementById('map');
+          if (!map.classList.contains("js--loaded")) {
+            map.classList.add("'js--loaded");
+
+            if (typeof ymaps === "undefined") {
+              let js = document.createElement('script');
+              js.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU";
+              document.getElementsByTagName('head')[0].appendChild(js);
+              js.onload = function() {
+                ymaps.ready(ready);
+              };
+              js.onerror = function() {
+                console.log('error load ymaps');
+              };
+            } else {
+              ymaps.ready(ready);
+            }
+          }
+        }
+
+        //end lazy
+
+        function ready() {
+          const maps = document.querySelectorAll('[data-map]')
+
+          if (maps.length) {
+            maps.forEach(map => {
+              const point = map.dataset.point.split(',')
+              const center = map.dataset.center.split(',')
+
+              let ymap = new ymaps.Map(map, {
+                center: center,
+                zoom: {{ post.zoom }}
+              });
+
+              let placemark = new ymaps.Placemark(point, {}, {
+                iconLayout: 'default#image',
+                iconImageHref: '{{ assets }}/images/icons/geo.svg',
+                iconImageSize: [36, 36],
+                iconImageOffset: [0, 0]
+              });
+
+              ymap.controls.remove('geolocationControl');
+              ymap.controls.remove('searchControl');
+              ymap.controls.remove('trafficControl');
+              ymap.controls.remove('typeSelector');
+              ymap.controls.remove('fullscreenControl');
+              // ymap.controls.remove('zoomControl');
+              ymap.controls.remove('rulerControl');
+              ymap.geoObjects.add(placemark);
+              ymap.behaviors.disable('scrollZoom');
+            })
+          }
+        }
+      });
+    </script>
+
+
+
+    <h1>{{ post.title }}</h1>
+    <div class="contacts__wrapper">
+      <div class="contacts__wrap">
+        <div class="h4 text-main contacts__wrapTitle uppercase">Способы связи с нами</div>
+        <ul class="contacts__wrapUl">
+          <li class="contacts__wrapLi">
+            <div class="contacts__wrapLiName h5 text-caption">Адрес:</div>
+            <div class="contacts__wrapLiAnswer h5 text-body">{{ address }}</div>
+          </li>
+          <div class="contacts__wrapLiLine"></div>
+          <li class="contacts__wrapLi">
+            <div class="contacts__wrapLiName h5 text-caption">Консультация:</div>
+            <a href="{{ cleared_phone2 }}" class="contacts__wrapLiAnswer h5 text-body">{{ phone2 }}</a>
+          </li>
+          <div class="contacts__wrapLiLine"></div>
+          <li class="contacts__wrapLi">
+            <div class="contacts__wrapLiName h5 text-caption">E-mail:</div>
+            <a href="mailto:{{ email }}" class="contacts__wrapLiAnswer h5 text-body">{{ email }}</a>
+          </li>
+          <div class="contacts__wrapLiLine"></div>
+          <li class="contacts__wrapLi">
+            <div class="contacts__wrapLiName h5 text-caption">Социальные сети:</div>
+            <a target="_blank" href="mailto:{{ vk }}" class="contacts__wrapLiAnswer h5 text-body">Vkontakte</a>
+          </li>
+          <div class="contacts__wrapLiLine"></div>
+        </ul>
+        <a class="h5 text-main" target="_blank" href="{{ requisits.link }}">Наши Реквизиты</a>
+      </div>
+      <div class="contacts__map map" data-map data-point="{{ post.point }}" data-center="{{ post.center }}" id="map"></div>
+    </div>
+
+  {% include "parts/contacts_form.twig" %}
+
+
+  </div>
+</section>

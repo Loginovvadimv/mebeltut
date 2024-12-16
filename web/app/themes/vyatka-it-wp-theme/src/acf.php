@@ -22,6 +22,12 @@ if (function_exists('acf_add_options_page')) {
                 'type' => 'text',
             ),
             array (
+                'key' => 'phone2',
+                'label' => 'Консультация',
+                'name' => 'Консультация',
+                'type' => 'text',
+            ),
+            array (
                 'key' => 'email',
                 'label' => 'E-Mail',
                 'name' => 'E-Mail',

@@ -1,0 +1,34 @@
+<div class="contacts__form">
+  <img class="contacts__formBg" src="{{ assets }}/images/contacts/bg.webp" alt="">
+
+  <div class="contacts__formWrapper">
+    <h2 class="text-main contacts__formWrapperTitle">Онлайн запись<br>на замер</h2>
+    <div class="h5 text-caption contacts__formWrapperSubtitle">Оставьте Ваши контакты и мы свяжемся с вами</div>
+    <form class="form review-form">
+      <div class="form__input-hidden">
+        <input type="text" name="title" hidden value="Онлайн запись на замер">
+        <input type="text" name="code" hidden value="zamer">
+      </div>
+      <div class="form__inputs">
+        <div class="form__input modal__input">
+          <input type="text" required="" placeholder="Ваше имя" class="validate-name required" name="name">
+        </div>
+        <div class="form__input modal__input">
+          <input type="tel" required placeholder="Ваш телефон" class="tel" name="phone">
+        </div>
+        <div class="form__textarea">
+          <textarea name="messege" id="messege" cols="55" rows="3" placeholder="Сообщение"></textarea>
+        </div>
+      </div>
+      <button class="form__button btn-black Uppercase-M">Оставить заявку</button>
+      <div class="modal__checkbox checkbox">
+        <label for="checkbox" class="form__checkbox">
+          <input class="form__check" type="checkbox" name="term" id="checkbox" checked required>
+        </label>
+        <a class="form__police text-caption" target="_blank" href="/privacy-policy/">Я даю согласие на <span>обработку персональных данных</span></a>
+      </div>
+    </form>
+  </div>
+
+
+</div>

@@ -101,7 +101,7 @@ export default class Slider {
           loop: true,
           effect: 'fade',
           fadeEffect: {
-            crossFade: true,
+            crossFade: false,
           },
           pagination: {
             el: ".swiper-pagination",
@@ -109,6 +109,33 @@ export default class Slider {
             renderBullet: function (index, className) {
               return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
                 // + "<span class='pagination__span'>-</span>";
+            },
+          },
+          autoplay: {
+            delay: 3000,
+          },
+        })
+      }
+
+
+      //ПРОИЗВОДСТВО МЕБЕЛИ
+      const furnitureManufacturing = document.querySelector('.furnitureManufacturing')
+      if (furnitureManufacturing) {
+        this.createSlider(furnitureManufacturing, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          loop: true,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true,
+          },
+          pagination: {
+            el: ".swiper-pagination2",
+            clickable: true,
+            renderBullet: function (index, className) {
+              return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
+              // + "<span class='pagination__span'>-</span>";
             },
           },
           autoplay: {

@@ -137,6 +137,13 @@ Alpine.start();
       bannerLoader.remove();
     }, 300)
 
+
+    const bannerLoader2 = document.getElementById('bannerLoader2');
+    bannerLoader2.style.opacity = 0;
+    setTimeout(function () {
+      bannerLoader2.remove();
+    }, 300)
+
     //end
 
 

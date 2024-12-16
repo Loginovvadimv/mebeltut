@@ -1,0 +1,48 @@
+<section class="page-howToOrder howToOrder section">
+  <div class="container">
+    <h1>{{ post.title }}</h1>
+    <div class="page-howToOrder__wrapper">
+      {% include "parts/howToOrder.twig" %}
+    </div>
+  </div>
+</section>
+<section class="section furnitureManufacturing">
+  <div class="container">
+    <h2 class="text-body">{{ post.mebelpr_title }}</h2>
+    <div class="furnitureManufacturing__wrapper">
+        <div class="swiper-pagination2 text-caption-contrast"></div>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for item in post.mebelpr_rep %}
+
+              <div class="furnitureManufacturing__wrap">
+                <div class="furnitureManufacturing__wrapColor"></div>
+                <img class="furnitureManufacturing__bg" src="{{ item.img }}" alt>
+                <div class="furnitureManufacturing__text">
+                  <div class="furnitureManufacturing__textTitle h3 text-body">{{ item.title }}<span class="text-caption">0{{ loop.index }}</span></div>
+                  <div class="furnitureManufacturing__textSubtitle lead text-body">{{ item.text }}</div>
+                </div>
+              </div>
+            {% endfor %}
+
+
+
+          </div>
+        </div>
+        <div class="howToOrder__loader" id="bannerLoader2"><svg xmlns='http://www.w3.org/2000/svg' width="150px" height="150px" viewBox='0 0 200 200'><radialGradient id='a5' cx='.66' fx='.66' cy='.3125' fy='.3125' gradientTransform='scale(1.5)'><stop offset='0' stop-color='#FF156D'></stop><stop offset='.3' stop-color='#3355c1' stop-opacity='.9'></stop><stop offset='.6' stop-color='#3355c1' stop-opacity='.6'></stop><stop offset='.8' stop-color='#3355c1' stop-opacity='.3'></stop><stop offset='1' stop-color='#FF156D' stop-opacity='0'></stop></radialGradient><circle transform-origin='center' fill='none' stroke='url(#a5)' stroke-width='15' stroke-linecap='round' stroke-dasharray='200 1000' stroke-dashoffset='0' cx='100' cy='100' r='70'><animateTransform type='rotate' attributeName='transform' calcMode='spline' dur='2' values='360;0' keyTimes='0;1' keySplines='0 0 1 1' repeatCount='indefinite'></animateTransform></circle><circle transform-origin='center' fill='none' opacity='.2' stroke='#FF156D' stroke-width='15' stroke-linecap='round' cx='100' cy='100' r='70'></circle></svg></div>
+      <img class="furnitureManufacturing__wrapRightFrame" src="{{ assets }}/images/manfur/ugol.svg" alt>
+      <img class="furnitureManufacturing__wrapBottomFrame" src="{{ assets }}/images/manfur/ugol.svg" alt>
+
+      <div class="furnitureManufacturing__dop text-caption h5">{{ post.mebelpr_dop }}</div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section contacts">
+  <div class="container">
+    {% include "parts/contacts_form.twig" %}
+  </div>
+</section>
+
