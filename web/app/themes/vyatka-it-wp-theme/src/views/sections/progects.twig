@@ -21,15 +21,15 @@
             {% set category = post.terms[0] %}
             <div class="projects__wrap swiper-slide">
               <img class="projects__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
-              <img data-fancybox="projects" class="projects__wrapImg" loading="lazy" src="{{ post.thumbnail ? post.thumbnail : plug_url }}" alt="{{ post.title }}">
-              <a href="{{ post.link }}" class="projects__wrapTitle text-main-contrast h5">{{ post.title }}</a>
+              <img class="projects__wrapImg" loading="lazy" src="{{ post.thumbnail ? post.thumbnail : plug_url }}" alt="{{ post.title }}">
+              <a class="projects__wrapTitle text-main-contrast h5">{{ post.title }}</a>
             </div>
           {% endfor %}
         </div>
       </div>
 
     </div>
-    <a class="projects__link text-caption Uppercase-M" href="#">Смотреть все проекты<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a class="projects__link text-caption Uppercase-M" href="/nashi-proekty-s-realnymi-foto/">Смотреть все проекты<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14.5391 5.08594L13.4609 6.16406L18.5469 11.25H3.5V12.75H18.5469L13.4609 17.8359L14.5391 18.9141L20.9141 12.5391L21.4297 12L20.9141 11.4609L14.5391 5.08594Z" fill="#0C0C0C" fill-opacity="0.4"/>
       </svg>
     </a>

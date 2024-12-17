@@ -164,6 +164,32 @@ export default class Slider {
         })
       }
 
+
+      //Слайдер продукция сингл
+      const singleProduct = document.querySelector('.product__infoSlider')
+      if (singleProduct) {
+        this.createSlider(singleProduct, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+        })
+      }
+
+
+//Модалка проекты
+      const modalProject = document.querySelector('.modal__wrapperProject')
+      if (modalProject) {
+        this.createSlider(modalProject, {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          allowTouchMove: true,
+          centeredSlides: true,
+          loop: true,
+        })
+      }
+
       //Рассчет стоимости
       const calcform = document.querySelector('.calc-form')
       if (calcform) {

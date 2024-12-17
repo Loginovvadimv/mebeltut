@@ -1,13 +1,13 @@
-<section class="populars section">
+<section class="populars section" x-data="{ tab: '19' }">
   <div class="container">
     <h2 class="populars__title">популярные проекты</h2>
   <div class="populars__wrapper">
       <div class="populars__scroller scroller">
         <div class="populars__categories">
           {% for progect in categories_proj %}
-            <a href="{{ progect.link }}" class="populars__category h5 {{ progect.id == term.term_id ? "active" : "" }}">
+            <div class="populars__category h5" @click="tab = '{{ progect.id }}'" :class="{ 'active': tab === '{{ progect.id }}' }">
               {{ progect.title }}
-            </a>
+            </div>
           {% endfor %}
           <div class="slider__arrows">
             <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,14 +25,17 @@
       <div class="populars__container">
         <div class="swiper">
           <div class="swiper-wrapper">
-            {% for item in posts %}
-              {% if posts.found_posts is null or posts.found_posts is empty  %}
-                <div class="populars__warning Control_m">Постов не найдено</div>
-              {% endif %}
-              {% set post = get_post(item.ID) %}
-              {% set category = post.terms[0] %}
-              <div class="populars__wrap">
-                <a class="populars__link" href="{{ item.link }}"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
+            {% for progect in categories_proj %}
+              <div class="populars__container" x-show="tab === '{{ progect.id }}'">
+                {% for item in progect.posts %}
+                  {% if item.is_popular %}
+                    <div class="populars__wrap" data-modal="project">
+                      <a class="populars__link"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
+                    </div>
+
+
+                  {% endif %}
+                {% endfor %}
               </div>
             {% endfor %}
           </div>

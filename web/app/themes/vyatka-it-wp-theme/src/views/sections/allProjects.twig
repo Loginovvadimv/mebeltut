@@ -1,0 +1,78 @@
+<section class="allProjects section" x-data="{ tab: 'all' }">
+  <div class="container">
+    <h1 class="text-body">{{ post.title }}</h1>
+
+    <div class="allProjects__categories">
+      <div class="allProjects__category h5" @click="tab = 'all'" :class="{ 'active': tab === 'all' }">Все</div>
+      {% for progect in categories_proj %}
+        <div class="allProjects__category h5" @click="tab = '{{ progect.id }}'" :class="{ 'active': tab === '{{ progect.id }}' }">
+          {{ progect.title }}
+        </div>
+      {% endfor %}
+    </div>
+
+      <div class="allProjects__wrapper" x-show="tab === 'all'">
+        {% for progect in categories_proj %}
+          {% for item in progect.posts %}
+            <div class="projects__wrap" data-modal="project">
+              <img class="projects__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
+              <img class="projects__wrapImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+              <div class="projects__wrapTitle text-main-contrast h5">{{ item.title }}</div>
+            </div>
+
+
+          {% endfor %}
+        {% endfor %}
+      </div>
+
+
+
+    <div class="allProjects__wrapper">
+      {% for progect in categories_proj %}
+        {% for item in progect.posts %}
+          <div class="projects__wrap" x-show="tab === '{{ progect.id }}'">
+            <img class="projects__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
+            <img class="projects__wrapImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+            <div class="projects__wrapTitle text-main-contrast h5">{{ item.title }}</div>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+{% for progect in categories_proj %}
+          {% for item in progect.posts %}
+
+            <div class="modal open" data-modal-type="project" hidden>
+              <div class="modal__wrapper form__wrapper modal__wrapperProject">
+{#                                <div class="slider__arrows">#}
+{#                                  <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#                                      <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>#}
+{#                                    </svg>#}
+{#                                  </button>#}
+{#                                  <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#                                      <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>#}
+{#                                    </svg>#}
+{#                                  </button>#}
+{#                                </div>#}
+{#                               <div class="swiper">#}
+{#                                 <div class="swiper-wrapper">#}
+
+                {% for pico in item.project_photos %}
+                  <img src="{{ pico.photo }}" alt="">
+                {% endfor %}
+                {{ item.post_content }}
+                {#                 </div>#}
+                {#               </div>#}
+
+                <button class="modal__close modal__close--fixed" type="button">
+                </button>
+
+              </div>
+            </div>
+
+
+          {% endfor %}
+{% endfor %}

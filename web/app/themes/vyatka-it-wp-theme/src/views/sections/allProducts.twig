@@ -11,9 +11,9 @@
     {% if term.children %}
       <div class="allProducts__categoriesContainer">
         <div class="allProducts__categories">
-          <div class="text-caption h5 allProducts__category" @click="tab = 'all'" :class="{ 'active': tab === 'all' }">Все кухни</div>
+          <div class="text-caption h5 allProducts__category" @click="tab = 'all'" :class="{ 'activeCat': tab === 'all' }">Все кухни</div>
           {% for category in term.children %}
-            <div class="text-caption h5 allProducts__category"  @click="tab = '{{ category.id }}'" :class="{ 'active': tab === '{{ category.id }}' }">{{ category }}</div>
+            <div class="text-caption h5 allProducts__category"  @click="tab = '{{ category.id }}'" :class="{ 'activeCat': tab === '{{ category.id }}' }">{{ category }}</div>
           {% endfor %}
         </div>
         <div class="allProducts__categoriesLine"></div>
@@ -32,7 +32,7 @@
       {% for category in term.children %}
           {% for item in category.posts%}
             <div class="allProducts__wrap">
-              <a class="allProducts__wrapLink href="{{ item.link }}"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
+              <a class="allProducts__wrapLink" href="{{ item.link }}"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
               <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
               <div>от {{ item.kit_price }} ₽</div>
             </div>
@@ -40,15 +40,15 @@
     {% endfor %}
       </div>
 
-<div class="allProducts__container">
+
     {% for category in term.children %}
-      <div x-show="tab === '{{ category.id}}'">
+      <div class="allProducts__container" x-show="tab === '{{ category.id}}'">
           {% for item in category.posts%}
-            <a class="allProducts__wrap" href="{{ item.link }}">
+            <div class="allProducts__wrap" href="{{ item.link }}">
               <a class="allProducts__wrapLink"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
               <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
               <div>от {{ item.kit_price }} ₽</div>
-            </a>
+            </div>
           {% endfor %}
       </div>
     {% endfor %}

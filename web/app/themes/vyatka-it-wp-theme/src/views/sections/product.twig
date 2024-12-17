@@ -1,0 +1,39 @@
+<section class="product section">
+  <div class="container">
+    <div class="product__info section">
+
+      <div class="product__infoSlider">
+        <div class="slider__arrows">
+          <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="rgba(255, 255, 255, 1)"/>
+            </svg>
+          </button>
+          <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="rgba(255, 255, 255, 1)"/>
+            </svg>
+          </button>
+        </div>
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for item in post.product_imgs %}
+              <a class="product__imgLink" data-fancybox="product" href="{{ item }}"><img src="{{ item }}" alt="{{ post.title }}"></a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+      <div class="product__infoWrap">
+        <div class="product__infoText">
+          <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
+          <div class="h5 text-caption">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+        </div>
+
+        <div class="product__infoDescr h5 text-caption">
+          Описание:<div class="text-main Control_M">{{ post.content }}</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
