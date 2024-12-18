@@ -109,4 +109,9 @@ if (function_exists('acf_add_options_page')) {
         'menu_title'    => 'Как заказать',
         'parent_slug'   => 'content-settings',
     ));
+    acf_add_options_sub_page(array(
+        'page_title'    => 'Как строится работа с нами',
+        'menu_title'    => 'Как строится работа с нами',
+        'parent_slug'   => 'content-settings',
+    ));
 }

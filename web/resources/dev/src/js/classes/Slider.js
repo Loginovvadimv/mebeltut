@@ -165,6 +165,44 @@ export default class Slider {
       }
 
 
+      //ОСОБЕННОСТИ
+      const features = document.querySelector('.features__container')
+      if (features) {
+        this.createSlider(features, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breakpoints: {
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
+
+      //Фотографии в интерьере
+      const interior = document.querySelector('.interior__container')
+      if (interior) {
+        this.createSlider(interior, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breakpoints: {
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
+
       //Слайдер продукция сингл
       const singleProduct = document.querySelector('.product__infoSlider')
       if (singleProduct) {

@@ -26,17 +26,17 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for progect in categories_proj %}
-              <div class="populars__container" x-show="tab === '{{ progect.id }}'">
+
                 {% for item in progect.posts %}
                   {% if item.is_popular %}
-                    <div class="populars__wrap" data-modal="project">
+                    <div class="populars__wrap" data-modal="project" x-show="tab === '{{ progect.id }}'">
                       <a class="populars__link"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
                     </div>
 
 
                   {% endif %}
                 {% endfor %}
-              </div>
+
             {% endfor %}
           </div>
         </div>

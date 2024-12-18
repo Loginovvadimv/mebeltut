@@ -40,10 +40,13 @@
       transform: translateY(-50%)
   &__infoWrap
     padding: 36px 24px
-    height: auto
     background: rgba(255, 255, 255, 1)
     border-radius: 16px
     width: 100%
+    height: 688px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
   &__infoText
     margin-bottom: 16px
   &__infoTextTitle
@@ -51,3 +54,61 @@
   &__infoDescr
     span
       margin-top: 4px
+  .read-more
+    display: none
+  &__infoSpecsLi
+    display: flex
+    gap: 8px
+  &__infoSpecsUl
+    margin-top: 4px
+    display: flex
+    flex-direction: column
+    gap: 4px
+  &__infoDescr
+    margin-bottom: 16px
+  &__readmore
+    transition: .3s all
+    cursor: pointer
+    margin-top: 16px
+    &:hover
+      color: rgba(249, 92, 119, 1)
+      transition: .3s all
+  &__applications
+    display: grid
+    grid-template-columns: 1fr 1fr
+    gap: 12px
+    margin-top: auto
+  &__infoReadWrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 100%
+  &__infoReadWrap
+    display: flex
+    flex-direction: column
+    gap: 12px
+    margin-bottom: 24px
+  &__infoReadWrapPrice
+    display: flex
+    gap: 8px
+  &__infoReadDescr
+    display: flex
+    flex-direction: column
+    gap: 4px
+    margin-bottom: 24px
+  &__infoReadSpecs
+    display: flex
+    flex-direction: column
+    gap: 4px
+  &__infoReadSpecsUl
+    display: flex
+    flex-direction: column
+    gap: 4px
+  &__infoReadSpecsLi
+    display: flex
+    gap: 8px
+  &__applications
+    padding-top: 36px
+
+
+

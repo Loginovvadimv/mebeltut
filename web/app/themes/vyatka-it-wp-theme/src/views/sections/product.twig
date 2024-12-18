@@ -1,7 +1,6 @@
 <section class="product section">
   <div class="container">
     <div class="product__info section">
-
       <div class="product__infoSlider">
         <div class="slider__arrows">
           <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,24 +15,185 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for item in post.product_imgs %}
-              <a class="product__imgLink" data-fancybox="product" href="{{ item }}"><img src="{{ item }}" alt="{{ post.title }}"></a>
+              <a class="product__imgLink" data-fancybox="product" href="{{ item ? item : plug_url }}"><img src="{{ item ? item : plug_url }}" alt="{{ post.title }}"></a>
             {% endfor %}
           </div>
         </div>
       </div>
 
       <div class="product__infoWrap">
+        <div class="product__infoWrapContainer">
         <div class="product__infoText">
           <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
           <div class="h5 text-caption">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
         </div>
-
         <div class="product__infoDescr h5 text-caption">
+          Описание:<div class="text-main Control_M">{{ post.excerpt }}</div>
+        </div>
+        <div class="product__infoSpecs h5 text-caption">
+          Характеристики:<ul class="text-main Control_M product__infoSpecsUl">
+            {% for item in post.specifications_rep %}
+              <li class="product__infoSpecsLi"><span>{{ item.specification }}</span><span>{{ item.meaning }}</span></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="Control_M text-caption product__readmore" data-modal="readmore">Подробнее</div>
+        </div>
+        <div class="product__applications">
+          <button class="btn-black Uppercase-M" data-modal="orderkitchen">Оставить заявку</button>
+          <button class="btn-snow Uppercase-M">Задать вопрос</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<div class="modal open modal-readmore" data-modal-type="readmore" hidden>
+  <div class="modal__wrapper form__wrapper">
+    <div class="product__infoReadWrapper">
+
+      <div class="product__infoReadWrapperText">
+        <div class="product__infoReadWrap">
+          <div class="h3 text-body product__infoReadTitle">{{ post.title }}</div>
+          <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+        </div>
+        <div class="product__infoReadDescr h5 text-caption">
           Описание:<div class="text-main Control_M">{{ post.content }}</div>
         </div>
+        <div class="product__infoReadSpecs h5 text-caption">
+          Характеристики:<ul class="text-main Control_M product__infoReadSpecsUl">
+            {% for item in post.specifications_rep %}
+              <li class="product__infoReadSpecsLi"><span>{{ item.specification }}</span><span>{{ item.meaning }}</span></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
 
+
+
+
+      <div class="product__applications">
+        <button class="btn-black Uppercase-M" data-modal="orderkitchen">Оставить заявку</button>
+        <button class="btn-snow Uppercase-M">Задать вопрос</button>
+      </div>
+    </div>
+    <button class="modal__close modal__close--fixed" type="button">
+    </button>
+  </div>
+</div>
+
+
+
+<div class="modal open" data-modal-type="orderkitchen" hidden>
+  <div class="modal__wrapper form__wrapper">
+    <h2 class="modal__title">Заказать расчет</h2>
+    <div class="modal__subtitle h5">Оставьте Ваши контакты и мы свяжемся с Вами</div>
+    <form class="form review-form">
+      <div class="form__input-hidden">
+        <input type="text" name="title" hidden value="Заказать расчет {{ post.title }}">
+        <input type="text" name="code" hidden value="order">
+      </div>
+      <div class="form__inputs">
+        <div class="form__input modal__input">
+          <input type="text" required="" placeholder="Ваше имя" class="validate-name required" name="name">
+        </div>
+        <div class="form__input modal__input">
+          <input type="tel" required placeholder="Ваш телефон" class="tel" name="phone">
+        </div>
+        <div class="form__textarea">
+          <textarea name="messege" id="messege" cols="55" rows="3" placeholder="Сообщение"></textarea>
+        </div>
+      </div>
+      <button class="form__button btn-black Uppercase-M">Оставить заявку</button>
+      <div class="modal__checkbox checkbox">
+        <label for="checkbox" class="form__checkbox">
+          <input class="form__check" type="checkbox" name="term" id="checkbox" checked required>
+        </label>
+        <a class="form__police text-caption" target="_blank" href="/privacy-policy/">Я даю согласие на <span>обработку персональных данных</span></a>
+      </div>
+
+      <button class="modal__close modal__close--fixed" type="button">
+      </button>
+    </form>
+  </div>
+</div>
+
+{% if post.feats %}
+<section class="section features">
+  <div class="container">
+
+<div class="features__container">
+
+
+
+      <div class="features__title">
+        <h2 class="text-body">Особенности</h2>
+        <div class="slider__arrows">
+          <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="rgba(12, 12, 12, 1)"/>
+            </svg>
+          </button>
+          <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="rgba(12, 12, 12, 1)"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    <div class="features__wrapper">
+
+      <div class="swiper">
+        <div class="swiper-wrapper">
+
+
+      {% for item in post.feats %}
+        {% set postic = get_post(item.ID) %}
+        <div class="features__wrap">
+          <img src="{{ postic.thumbnail ? postic.thumbnail : plug_url }}" alt="{{ postic.title }}">
+          <div class="h4 text-main features__wrapTitle">{{ postic.title }}</div>
+          <div class="Control_M text-caption">{{ postic.content }}</div>
+        </div>
+      {% endfor %}
+
+        </div>
+      </div>
+    </div>
+</div>
+  </div>
+</section>
+{% endif %}
+
+
+<section class="section interior">
+  <div class="container">
+    <div class="interior__container">
+      <div class="interior__box">
+        <h2 class="text-body interior__title">{{ post.interior_title }}</h2>
+        <div class="slider__arrows">
+          <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="rgba(12, 12, 12, 1)"/>
+            </svg>
+          </button>
+          <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="rgba(12, 12, 12, 1)"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="interior__swiper">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            {% for item in post.interior_gall %}
+              <a data-fancybox="interior" class="interior__img" href="{{ item ? item : plug_url }}"><img src="{{ item ? item : plug_url }}" alt="{{ post.interior_title }}"></a>
+            {% endfor %}
+          </div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
+

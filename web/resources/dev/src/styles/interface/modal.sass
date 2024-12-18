@@ -234,6 +234,23 @@
     gap: 16px
     margin-bottom: 36px
     max-width: 398px
+  &-readmore
+    overflow: hidden
+    .modal__wrapper
+      top: 0
+      left: unset
+      right: -800px
+      transform: unset
+      height: 100%
+      max-width: 800px
+      padding: 48px
+      transition: right 2s ease
+  &-readmore.open
+    .modal__wrapper
+      right: 0
+      transition: right 2s ease
+
+
 [data-modal]
   cursor: pointer
   *
@@ -254,6 +271,7 @@
   100%
     transform: scale(1)
     opacity: 1
+
 
 
 
