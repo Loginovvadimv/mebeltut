@@ -52,6 +52,12 @@ if (function_exists('acf_add_options_page')) {
                 'type' => 'text',
             ),
             array (
+                'key' => 'wa',
+                'label' => 'Whastapp',
+                'name' => 'Whastapp',
+                'type' => 'text',
+            ),
+            array (
                 'key' => 'requisits',
                 'label' => 'Реквизиты',
                 'name' => 'requisits',

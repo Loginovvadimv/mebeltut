@@ -14,6 +14,13 @@
     left: 50%
     position: absolute
     transform: translate(-50%, -50%)
+    &-header
+      max-width: 1825px
+      top: 140px
+      transform: translateX(-50%)
+      left: 49.7%
+      padding: 121px 56px
+      padding: 121px 56px
     &-thanks
       position: absolute
       top: 50%
@@ -181,6 +188,26 @@
     font-weight: 600
     line-height: 22px
     text-align: left
+  &__catalog
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 24px
+  &__catalogLink
+    transition: .3s all
+    &:hover
+      color: #e64b66
+      transition: .3s all
+  &__catalogLinkPhleft
+    height: 600px
+    top: 36px
+    left: 36px
+    border-radius: 16px
+    position: absolute
+    z-index: 3
+    width: 600px
+    object-fit: cover
 
 
 

@@ -1,6 +1,9 @@
 <section class="product section">
   <div class="container">
     <div class="product__info section">
+      {% if post.product_imgs %}
+
+
       <div class="product__infoSlider">
         <div class="slider__arrows">
           <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,11 +18,20 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for item in post.product_imgs %}
-              <a class="product__imgLink" data-fancybox="product" href="{{ item ? item : plug_url }}"><img src="{{ item ? item : plug_url }}" alt="{{ post.title }}"></a>
+              <a class="product__imgLink" data-fancybox="product" href="{{ item ? item : plug_url }}"><img src="{{ item ? item : plug_url }}" alt="{{ post.title }}">
+              </a>
             {% endfor %}
+
           </div>
         </div>
+        {% if post.product_hit %}
+          <div class="product__imgTop">
+            <div class="text-main-contrast product__imgTopIn Control_S">Хит</div>
+          </div>
+
+        {% endif %}
       </div>
+      {% endif %}
 
       <div class="product__infoWrap">
         <div class="product__infoWrapContainer">
@@ -33,7 +45,7 @@
         <div class="product__infoSpecs h5 text-caption">
           Характеристики:<ul class="text-main Control_M product__infoSpecsUl">
             {% for item in post.specifications_rep %}
-              <li class="product__infoSpecsLi"><span>{{ item.specification }}</span><span>{{ item.meaning }}</span></li>
+              <li class="product__infoSpecsLi Control_M"><span>{{ item.specification }}</span><span>{{ item.meaning }}</span></li>
             {% endfor %}
           </ul>
         </div>
@@ -165,6 +177,8 @@
 </section>
 {% endif %}
 
+{% if post.interior_gall %}
+
 
 <section class="section interior">
   <div class="container">
@@ -197,3 +211,66 @@
   </div>
 </section>
 
+{% endif %}
+
+{% if workprogress.progress_rep %}
+  <section class="workProgress section">
+    <div class="container">
+      <div class="workProgress__wrapper">
+        <h2 class="workProgress__title text-body">{{ workprogress.title }}</h2>
+        <div class="workProgress__progresses">
+          {% for item in workprogress.progress_rep %}
+            <div class="workProgress__progress">
+              <div class="workProgress__progressTitle">
+                <div class="workProgress__progressTitleNum h5 text-disable">0{{ loop.index }}.</div>
+                <div class="workProgress__progressTitleName text-body h5">{{ item.title }}</div>
+              </div>
+              <div class="workProgress__progressSub Control_M text-caption">{{ item.subtitle }}</div>
+              {#              <div class="workProgress__progressLine"></div>#}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+
+
+{% if post.product_cards %}
+<section class="section relatedProducts">
+  <div class="container">
+    <div class="relatedProducts__box">
+    <h2 class="relatedProducts__title text-body">Похожие товары</h2>
+    <div class="slider__arrows">
+      <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="rgba(12, 12, 12, 1)"/>
+        </svg>
+      </button>
+      <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="rgba(12, 12, 12, 1)"/>
+        </svg>
+      </button>
+    </div>
+    </div>
+
+
+    <div class="relatedProducts__wrapper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {% for item in post.product_cards %}
+            {% set postt = get_post(item.ID) %}
+            {% if postt.ID != post.ID %}
+              <div class="relatedProducts__wrap">
+                <a href="{{ postt.link }}" class="relatedProducts__wrapLink"><img class="relatedProducts__wrapImg" src="{{ postt.thumbnail ? postt.thumbnail : plug_url }}" alt="{{ postt.title }}"></a>
+                <a class="relatedProducts__wrapTitle h5 text-caption" href="{{ postt.link }}">{{ postt.title }}</a>
+                <div class="h5 text-main">от {{ postt.kit_price }} ₽</div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %}

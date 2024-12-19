@@ -184,6 +184,25 @@ export default class Slider {
       }
 
 
+      //Продукция похожие товары
+      const relatedProducts = document.querySelector('.relatedProducts')
+      if (relatedProducts) {
+        this.createSlider(relatedProducts, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          centeredSlides: false,
+          loop: false,
+          breakpoints: {
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+            }
+          }
+        })
+      }
+
+
       //Фотографии в интерьере
       const interior = document.querySelector('.interior__container')
       if (interior) {
@@ -217,16 +236,16 @@ export default class Slider {
 
 
 //Модалка проекты
-      const modalProject = document.querySelector('.modal__wrapperProject')
-      if (modalProject) {
-        this.createSlider(modalProject, {
-          slidesPerView: 1,
-          spaceBetween: 0,
-          allowTouchMove: true,
-          centeredSlides: true,
-          loop: true,
-        })
-      }
+//       const modalProject = document.querySelector('.modal__wrapperProject')
+//       if (modalProject) {
+//         this.createSlider(modalProject, {
+//           slidesPerView: 1,
+//           spaceBetween: 0,
+//           allowTouchMove: true,
+//           centeredSlides: true,
+//           loop: true,
+//         })
+//       }
 
       //Рассчет стоимости
       const calcform = document.querySelector('.calc-form')

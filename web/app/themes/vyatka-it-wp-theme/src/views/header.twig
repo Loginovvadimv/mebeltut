@@ -46,20 +46,35 @@
         <nav class="header__menu control control-m color-text-main">
           <ul class="header__menu-items" data-max-items-in-expanded-menu="3"
               data-button-content='{% include "parts/flexible-menu-button.twig" %}'>
+
+
+            <li><button class="menu_control header__li uppercase header__liBtn" data-modal="headermenu"><svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2.5 0H0.5V1.5H2.5V0Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                  <path d="M20.5 0H4.5V1.5H20.5V0Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                  <path d="M20.5 6H4.5V7.5H20.5V6Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                  <path d="M4.5 12H20.5V13.5H4.5V12Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                  <path d="M0.5 6H2.5V7.5H0.5V6Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                  <path d="M2.5 12H0.5V13.5H2.5V12Z" fill="#0C0C0C" fill-opacity="0.8"/>
+                </svg>
+                Каталог</button></li>
+
+
             {% for item in main_menu.items %}
-              <li class="control_m header__li">
+              <li class="menu_control header__li uppercase">
                 <a class="link {{ item.current ? "active" : "" }}" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
               </li>
             {% endfor %}
           </ul>
         </nav>
 
-        <div class="header__containerBox">
-          <a href="tel:+{{ cleared_phone }}" class="header__phone control_m" target="_blank">{{ phone }}</a>
-          <div class="header__containerBoxMessegers">
-            <a href="">Whastapp</a>
-            <a href="">Telegram</a>
-          </div>
+
+      </div>
+
+      <div class="header__containerBox">
+        <a href="tel:+{{ cleared_phone }}" class="header__phone" target="_blank">{{ phone }}</a>
+        <div class="header__containerBoxMessegers">
+          <a class="text-caption Control_S" href="{{ tg }}">Whastapp</a>
+          <a class="text-caption Control_S" href="{{ wa }}">Telegram</a>
         </div>
       </div>
 

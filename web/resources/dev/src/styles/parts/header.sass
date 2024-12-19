@@ -18,6 +18,13 @@
     margin: 4px 0 11px 0
     height: 1px
     background-color: rgba(0, 0, 0, 0.12)
+  &__li
+    border-right: 1px solid rgba(12, 12, 12, 0.08)
+    //border-left: 1px solid rgba(12, 12, 12, 0.08)
+    padding: 26px 35px
+    &:first-child
+      border-left: 1px solid rgba(12, 12, 12, 0.08)
+
   &__messeger
     height: 32px
     width: 32px
@@ -27,7 +34,9 @@
   &__container
     align-items: center
     display: flex
-    justify-content: space-between
+    justify-content: center
+    width: 100%
+
   &__locate
     display: flex
     gap: 8px
@@ -36,11 +45,11 @@
   &__menu
     &-items
       display: flex
-      gap: 27px
       li
         color: rgba(0, 0, 0, 0.72)
         &:hover
-          color: rgba(229, 194, 149, 1)
+          color: #e64b66
+          background: rgba(12, 12, 12, 0.08)
   &__hamb
     width: 46px
     height: 46px
@@ -85,6 +94,7 @@
     display: flex
     align-items: center
     flex-direction: column
+    padding: 0 65px
   &__phone
     display: flex
     align-items: center
@@ -97,7 +107,7 @@
           fill: rgba(26, 59, 48, 1)
   &__logo
     position: relative
-    width: 202px
+    width: 332px
     height: 41px
   &__btn
     background: rgba(26, 59, 48, 0.24)
@@ -114,7 +124,29 @@
     max-width: 1825px
     margin: 0 auto
     background: #FFFFFF
-    padding: 3px 36px
+    padding: 0px 0px 0 36px
+    justify-content: space-between
+  &__phone
+    font-family: Oswald, sans-serif
+    font-weight: 400
+    font-size: 20px
+    line-height: 24px
+    color: rgba(12, 12, 12, 0.8)
+  &__containerBoxMessegers
+    display: flex
+    gap: 12px
+    align-items: flex-start
+  &__liBtn
+    display: flex
+    align-items: center
+    gap: 12px
+    color: rgba(12, 12, 12, 0.8)
+    padding: 26px 98.5px
+    &:hover
+      color: #e64b66
+      svg
+        path
+          fill: #e64b66
 
 
 
