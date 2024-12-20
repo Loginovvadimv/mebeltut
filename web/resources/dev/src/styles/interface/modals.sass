@@ -197,18 +197,33 @@
   &__catalogLink
     transition: .3s all
     &:hover
-      color: #e64b66
+      .modal__catalogLinkPhleft
+        display: block
+      .modal__catalogLinkPhRight
+        display: block
+      color: rgba(12, 12, 12, 1)
       transition: .3s all
+
   &__catalogLinkPhleft
-    height: 600px
-    top: 36px
-    left: 36px
+    height: 100%
+    top: 0
+    left: 0
     border-radius: 16px
     position: absolute
     z-index: 3
-    width: 600px
+    width: 561px
     object-fit: cover
-
+    display: none
+  &__catalogLinkPhRight
+    height: 100%
+    top: 0
+    right: 0
+    border-radius: 16px
+    position: absolute
+    z-index: 3
+    width: 561px
+    object-fit: cover
+    display: none
 
 
 @media (max-width: 767px)

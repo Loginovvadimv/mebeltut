@@ -1,0 +1,24 @@
+<div class="fixed-menu" :class="openFixedMenuCats ? 'fixed-menu-open' : 'fixed-menu-close' ">
+  <div class="fixed-menu__content">
+
+     <div class="fixed-menu__container">
+       <div class="h3 text-main fixed-menu__title">КАТАЛОГ</div>
+
+       <div class="fixed-menu__links">
+         {% for category in categories_prod %}
+           <a class="fixed-menu__catalogLink text-caption h3 uppercase" href="{{ category.link }}">{{ category.title }}</a>
+         {% endfor %}
+       </div>
+     </div>
+
+
+    <img class="fixed-menu__logoBottom" src="{{ assets }}/images/logo.svg" alt="header-logo">
+
+<button class="fixed-menu__close" @click="openFixedMenuCats = !openFixedMenuCats"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="36" height="36" rx="18" fill="white"/>
+    <rect x="0.375" y="0.375" width="35.25" height="35.25" rx="17.625" stroke="#0C0C0C" stroke-opacity="0.12" stroke-width="0.75"/>
+    <path d="M13.0605 12.252L12.252 13.0605L17.1914 18L12.252 22.9395L13.0605 23.748L18 18.8086L22.9395 23.748L23.748 22.9395L18.8086 18L23.748 13.0605L22.9395 12.252L18 17.1914L13.0605 12.252Z" fill="#0C0C0C"/>
+  </svg></button>
+
+  </div>
+</div>

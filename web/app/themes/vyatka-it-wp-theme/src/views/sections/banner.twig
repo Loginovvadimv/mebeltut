@@ -34,6 +34,16 @@
       </div>
 
     </div>
+    <div class="banner__dopInfoBottom banner__dopInfoBottom--mob">
+      <img class="banner__dopInfoBottomLeft" src="{{ assets }}/images/banner/right.svg">
+      <img class="banner__dopInfoBottomRight" src="{{ assets }}/images/banner/right.svg">
+      {% for adv in post.banner.banner_advs %}
+        <div class="banner__dopInfoBottomText">
+          <div class="banner__dopInfoBottomTitle h3 text-main">{{ adv.adv_title }}</div>
+          <div class="banner__dopInfoBottomSubtitle Uppercase_S text-caption">{{ adv.adv_subtitle }}</div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 </div>

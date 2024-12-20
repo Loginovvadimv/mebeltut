@@ -1,16 +1,31 @@
-<div x-show="openFixedMenu" class="fixed-menu">
+<div class="fixed-menu" :class="openFixedMenu ? 'fixed-menu-open' : 'fixed-menu-close' ">
   <div class="fixed-menu__content">
-    <div class="fixed-menu__links">
-      {% for item in main_menu.items %}
-        <li class="fixed-menu__link text-main control_m">
-          <a href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
-        </li>
-      {% endfor %}
+
+     <div class="fixed-menu__container">
+         <img class="fixed-menu__logo" src="{{ assets }}/images/logo.svg" alt="header-logo">
+       <div class="fixed-menu__links">
+         {% for item in main_menu.items %}
+           <li class="fixed-menu__link menu_control text-body uppercase">
+             <a href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
+           </li>
+         {% endfor %}
+       </div>
+     </div>
+
+
+    <div class="fixed-menu__containerBox">
+      <a href="tel:+{{ cleared_phone }}" class="header__phone" target="_blank">{{ phone }}</a>
+      <div class="fixed-menu__containerBoxMessegers">
+        <a class="text-caption Control_S" href="{{ tg }}">Whastapp</a>
+        <a class="text-caption Control_S" href="{{ wa }}">Telegram</a>
+      </div>
     </div>
-    <div class="fixed-menu__contacts">
-      <a href="tel:+{{ cleared_phone }}" class="header__phone control_m gray link" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.01 15.38C18.78 15.38 17.59 15.18 16.48 14.82C16.13 14.7 15.74 14.79 15.47 15.06L13.9 17.03C11.07 15.68 8.42 13.13 7.01 10.2L8.96 8.54C9.23 8.26 9.31 7.87 9.2 7.52C8.83 6.41 8.64 5.22 8.64 3.99C8.64 3.45 8.19 3 7.65 3H4.19C3.65 3 3 3.24 3 3.99C3 13.28 10.73 21 20.01 21C20.72 21 21 20.37 21 19.82V16.37C21 15.83 20.55 15.38 20.01 15.38Z" fill="#1A3B30"/>
-        </svg>{{ phone }}</a>
-    </div>
+
+<button class="fixed-menu__close" @click="openFixedMenu = !openFixedMenu"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="36" height="36" rx="18" fill="white"/>
+    <rect x="0.375" y="0.375" width="35.25" height="35.25" rx="17.625" stroke="#0C0C0C" stroke-opacity="0.12" stroke-width="0.75"/>
+    <path d="M13.0605 12.252L12.252 13.0605L17.1914 18L12.252 22.9395L13.0605 23.748L18 18.8086L22.9395 23.748L23.748 22.9395L18.8086 18L23.748 13.0605L22.9395 12.252L18 17.1914L13.0605 12.252Z" fill="#0C0C0C"/>
+  </svg></button>
+
   </div>
 </div>

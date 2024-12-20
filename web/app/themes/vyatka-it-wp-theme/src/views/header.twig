@@ -31,7 +31,7 @@
   <div class="container">
     <div x-show="isDevice === 'desktop'" x-cloak x-data="{isShowCatalog: false, openFixedMenu: false}"
          x-init="$watch('isShowCatalog', el=> isBackdrop = el)"
-         class="header__wrapper">
+         class="header__wrapper header__desctop">
       {% if post.id != 6 %}
         <a href="/" class="header__logo">
           <img loading="lazy" src="{{ assets }}/images/logo.svg" alt="header-logo">
@@ -80,27 +80,48 @@
 
     </div>
 
-    <div x-show="isDevice !== 'desktop'" x-cloak x-data="{isShowCatalog: false, openFixedMenu: false}"
+    <div x-show="isDevice !== 'desktop'" x-cloak x-data="{isShowCatalog: false, openFixedMenu: false, openFixedMenuCats: false }"
          x-init="$watch('isShowCatalog', el=> isBackdrop = el)"
          class="header--mobile w-full dfrcsb">
       <div class="header__mobileContainer">
-        <a href="/" class="header__logo header__logo--mobile" :class="openFixedMenu ? 'hidden' : '' ">
-          <img src="{{ assets }}/images/logo.svg" alt="header-logo">
-        </a>
+
 
 
         <div class="header__wrapper">
-          <button class="header__btn grey-btn control_m" data-modal="orders">Заказать звонок</button>
-          <button @click="openFixedMenu = !openFixedMenu" class="header__hamb" :class="openFixedMenu ? 'header__hamb-open' : ''"
+          {% if post.id != 6 %}
+          <a href="/" class="header__logo header__logo--mobile">
+            <img src="{{ assets }}/images/logo.svg" alt="header-logo">
+          </a>
+          {% endif %}
+          {% if post.id == 6 %}
+          <a class="header__logo header__logo--mobile">
+            <img src="{{ assets }}/images/logo.svg" alt="header-logo">
+          </a>
+          {% endif %}
+          <div class="header__btns">
+
+
+          <button class="header__btn uppercase text-body" @click="openFixedMenuCats = !openFixedMenuCats"
+                  x-init="$watch('openFixedMenuCats', () => { openFixedMenuCats ? document.body.classList.add('fixed') : document.body.classList.remove('fixed') })"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 3.75H1.5V4.875H3V3.75Z" fill="#0C0C0C" fill-opacity="0.8"/>
+              <path d="M16.5 3.75H4.5V4.875H16.5V3.75Z" fill="#0C0C0C" fill-opacity="0.8"/>
+              <path d="M16.5 8.25H4.5V9.375H16.5V8.25Z" fill="#0C0C0C" fill-opacity="0.8"/>
+              <path d="M4.5 12.75H16.5V13.875H4.5V12.75Z" fill="#0C0C0C" fill-opacity="0.8"/>
+              <path d="M1.5 8.25H3V9.375H1.5V8.25Z" fill="#0C0C0C" fill-opacity="0.8"/>
+              <path d="M3 12.75H1.5V13.875H3V12.75Z" fill="#0C0C0C" fill-opacity="0.8"/>
+            </svg>
+            каталог</button>
+          <button @click="openFixedMenu = !openFixedMenu" class="header__menu uppercase text-body header__btn"
                   x-init="$watch('openFixedMenu', () => { openFixedMenu ? document.body.classList.add('fixed') : document.body.classList.remove('fixed') })"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            меню
           </button>
+
+          </div>
         </div>
       </div>
       {% include 'parts/fixedmenu.twig' %}
+      {% include 'parts/fixedmenu_cats.twig' %}
     </div>
   </div>
 </header>

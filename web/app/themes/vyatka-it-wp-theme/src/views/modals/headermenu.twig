@@ -3,13 +3,14 @@
 
     <div class="modal__catalog">
       {% for category in categories_prod %}
-        <a class="modal__catalogLink text-caption h3" href="{{ category.link }}">{{ category.title }}</a>
-        {% if category.cat_left %}
-          <img class="modal__catalogLinkPhleft" src="{{ category.cat_left }}" alt>
-        {% endif %}
-        {% if category.cat_right %}
-          <img class="modal__catalogLinkPhRight" src="{{ category.cat_right }}" alt>
-        {% endif %}
+        <a class="modal__catalogLink text-caption h3" href="{{ category.link }}">{{ category.title }}
+          {% if category.cat_left %}
+            <img class="modal__catalogLinkPhleft" src="{{ category.cat_left }}" alt>
+          {% endif %}
+          {% if category.cat_right %}
+            <img class="modal__catalogLinkPhRight" src="{{ category.cat_right }}" alt>
+          {% endif %}
+        </a>
 
       {% endfor %}
     </div>
