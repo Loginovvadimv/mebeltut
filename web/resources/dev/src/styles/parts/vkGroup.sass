@@ -15,6 +15,14 @@
     width: 100%
     height: 100%
     object-fit: cover
+  &__bgMob
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
   &__title
     position: relative
     z-index: 3
@@ -24,3 +32,17 @@
     z-index: 3
     max-width: 348px
     width: 100%
+
+
+@media (max-width: 767px)
+  .vkGroup
+    &__bgMob
+      display: block
+    &__bg
+      display: none
+    &__wrapper
+      min-height: 505px
+      padding: 16px
+      display: flex
+      flex-direction: column
+      justify-content: space-between

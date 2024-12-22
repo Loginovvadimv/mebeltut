@@ -63,6 +63,10 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            360: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
             1200: {
               slidesPerView: 4,
               spaceBetween: 16,
@@ -82,6 +86,10 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
             1200: {
               slidesPerView: 3,
               spaceBetween: 16,
@@ -91,31 +99,31 @@ export default class Slider {
       }
 
 
-      //как заказать
-      const howToOrder = document.querySelector('.howToOrder')
-      if (howToOrder) {
-        this.createSlider(howToOrder, {
-          slidesPerView: 1,
-          spaceBetween: 16,
-          allowTouchMove: true,
-          loop: true,
-          effect: 'fade',
-          fadeEffect: {
-            crossFade: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            renderBullet: function (index, className) {
-              return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
-                // + "<span class='pagination__span'>-</span>";
-            },
-          },
-          autoplay: {
-            delay: 3000,
-          },
-        })
-      }
+      // //как заказать
+      // const howToOrder = document.querySelector('.howToOrder')
+      // if (howToOrder) {
+      //   this.createSlider(howToOrder, {
+      //     slidesPerView: 1,
+      //     spaceBetween: 16,
+      //     allowTouchMove: true,
+      //     loop: true,
+      //     effect: 'fade',
+      //     fadeEffect: {
+      //       crossFade: false,
+      //     },
+      //     pagination: {
+      //       el: ".swiper-pagination",
+      //       clickable: true,
+      //       renderBullet: function (index, className) {
+      //         return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
+      //           // + "<span class='pagination__span'>-</span>";
+      //       },
+      //     },
+      //     autoplay: {
+      //       delay: 3000,
+      //     },
+      //   })
+      // }
 
 
       //ПРОИЗВОДСТВО МЕБЕЛИ
@@ -156,6 +164,11 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+              centeredSlides: true,
+            },
             1200: {
               slidesPerView: 4,
               spaceBetween: 16,
