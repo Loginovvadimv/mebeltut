@@ -50,7 +50,7 @@
           <img class="forus__infoLeftVertical forus__infoImg" src="{{ post.info.left_img_vert }}" alt>
           <img class="forus__infoLeftHorizontal forus__infoImg" src="{{ post.info.left_img_horis }}" alt>
         </div>
-        <div class="h3 text-caption forus__infoTitle">{{ post.info.text }}</div>
+        <div class="h3 text-caption forus__infoTitle uppercase">{{ post.info.text }}</div>
         <div class="forus__infoRight wow bounceInRight">
           <img class="forus__infoRightVertical forus__infoImg" src="{{ post.info.right_img_vert }}" alt="">
           <img class="forus__infoRightHorizontal forus__infoImg" src="{{ post.info.right_img_horis }}" alt="">
@@ -63,7 +63,7 @@
         <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bg.webp">
         <h2 class="forus__questionTitle text-body-contrast">{{ post.question.title }}</h2>
         <div class="h5 forus__questionSubtitle text-caption-contrast">{{ post.question.subtitle }}</div>
-        <button class="Uppercase-M btn-black forus__questionBtn">Оставить заявку</button>
+        <button class="Uppercase-M btn-black forus__questionBtn" data-modal="call">Оставить заявку</button>
       </section>
     {% endif %}
 

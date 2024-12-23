@@ -90,6 +90,8 @@ Alpine.start();
   const seoWrapper = document.querySelector('.seo__wrapper');
   const button = document.querySelector('.seo__button');
   const pic = document.querySelector('.seo__buttonUp');
+if (seoWrapper) {
+
 
   if (seoWrapper && mediaQuery.matches) {
 
@@ -167,6 +169,7 @@ Alpine.start();
     // Проверяем высоту контента при загрузке страницы
     checkContentHeight();
   }
+}
   //endSeo
 
     //LoaderStart

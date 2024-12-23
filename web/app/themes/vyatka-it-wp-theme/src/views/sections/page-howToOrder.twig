@@ -8,7 +8,7 @@
 </section>
 <section class="section furnitureManufacturing">
   <div class="container">
-    <h2 class="text-body">{{ post.mebelpr_title }}</h2>
+    <h2 class="text-body furnitureManufacturing__title">{{ post.mebelpr_title }}</h2>
     <div class="furnitureManufacturing__wrapper">
         <div class="swiper-pagination2 text-caption-contrast"></div>
         <div class="swiper">
@@ -19,7 +19,7 @@
                 <div class="furnitureManufacturing__wrapColor"></div>
                 <img class="furnitureManufacturing__bg" src="{{ item.img }}" alt>
                 <div class="furnitureManufacturing__text">
-                  <div class="furnitureManufacturing__textTitle h3 text-body">{{ item.title }}<span class="text-caption">0{{ loop.index }}</span></div>
+                  <div class="furnitureManufacturing__textTitle h3 text-body uppercase">{{ item.title }}<span class="text-caption">0{{ loop.index }}</span></div>
                   <div class="furnitureManufacturing__textSubtitle lead text-body">{{ item.text }}</div>
                 </div>
               </div>
