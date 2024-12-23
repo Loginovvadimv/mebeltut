@@ -46,3 +46,33 @@
   .catalog
     display: none
 
+@media (min-width: 768px) and (max-width: 1023px)
+  .catalog
+    &__wrapper
+      display: grid
+      grid-template-columns: 1fr 1fr
+      gap: 16px
+    &__wrap
+      max-width: unset
+      &:nth-last-child(-n+3)
+        max-width: unset !important
+        width: 100%
+
+@media (min-width: 1024px) and (max-width: 1250px)
+  .catalog
+    &__wrapper
+      display: grid
+      grid-template-columns: 1fr 1fr 1fr
+      gap: 16px
+    &__wrap
+      max-width: unset
+      &:nth-last-child(-n+3)
+        max-width: unset !important
+        width: 100%
+
+@media (min-width: 1251px) and (max-width: 1350px)
+  .catalog
+    &__wrap
+      &:nth-last-child(-n+3)
+        max-width: 32.4%
+        width: 100%

@@ -37,8 +37,12 @@
   .swiper-pagination-bullet-active
     color: rgba(255, 255, 255, 1)
     border-bottom: 1px solid rgba(255, 255, 255, 1)
+  .swiper-pagination-bullet
+    display: flex
+    gap: 12px
   &__wrapper
     position: relative
+    overflow: hidden
   &__wrapText
     margin-top: auto
     display: flex
@@ -113,10 +117,11 @@
 
 
 
-@media (max-width: 767px)
+@media (max-width: 424px)
   .howToOrder
     &__wrap
       flex-direction: column
+      height: unset
     &__wrapLeft
       min-width: unset
       width: 100%
@@ -129,3 +134,126 @@
       margin-bottom: 8px
     &__wrapTextTitle
       margin-bottom: 5px
+    .swiper-pagination
+      top: 16px
+      left: 16px
+      overflow-x: auto
+    &__wrapRightLogo
+      display: none
+    &__wrapRight
+      width: 100%
+    &__wrapRightFrame
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapLeft
+      min-height: 510px
+    &__wrapRight
+      height: 288px
+      object-fit: cover
+
+
+@media (min-width: 425px) and (max-width: 767px)
+  .howToOrder
+    &__wrap
+      flex-direction: column
+      height: unset
+    &__wrapLeft
+      min-width: unset
+      width: 100%
+      padding: 116px 16px 16px 16px
+    &__wrapRec
+      display: none
+    &__wrapTextIcon
+      width: 48px
+      height: 48px
+      margin-bottom: 8px
+    &__wrapTextTitle
+      margin-bottom: 5px
+    .swiper-pagination
+      top: 16px
+      left: 16px
+      overflow-x: auto
+    &__wrapRightLogo
+      display: none
+    &__wrapRight
+      width: 100%
+    &__wrapRightFrame
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapLeft
+      min-height: 510px
+    &__wrapRight
+      height: 288px
+      object-fit: cover
+
+
+@media (min-width: 768px) and (max-width: 1023px)
+  .howToOrder
+    &__wrap
+      flex-direction: column
+      height: unset
+    &__wrapLeft
+      min-width: unset
+      width: 100%
+      padding: 116px 16px 16px 16px
+    &__wrapRec
+      display: none
+    &__wrapTextIcon
+      width: 48px
+      height: 48px
+      margin-bottom: 8px
+    &__wrapTextTitle
+      margin-bottom: 5px
+    .swiper-pagination
+      top: 16px
+      left: 16px
+      overflow-x: auto
+    &__wrapRightLogo
+      display: none
+    &__wrapRight
+      width: 100%
+    &__wrapRightFrame
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapLeft
+      min-height: 510px
+    &__wrapRight
+      height: 288px
+      object-fit: cover
+    &__wrap
+      flex-direction: column
+      height: unset
+    &__wrapLeft
+      min-width: unset
+      width: 100%
+      padding: 70px 16px 16px 16px
+    &__wrapRec
+      display: none
+    &__wrapTextIcon
+      width: 48px
+      height: 48px
+      margin-bottom: 8px
+    &__wrapTextTitle
+      margin-bottom: 5px
+    .swiper-pagination
+      top: 16px
+      left: 16px
+      overflow-x: auto
+    &__wrapRightLogo
+      display: none
+    &__wrapRight
+      width: 100%
+    &__wrapRightFrame
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapLeft
+      min-height: 450px
+    &__wrapRight
+      height: 450px
+      object-fit: cover
+
+

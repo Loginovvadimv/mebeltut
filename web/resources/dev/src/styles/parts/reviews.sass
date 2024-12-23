@@ -61,10 +61,15 @@
 
 @media (max-width: 767px)
   .reviews
+    overflow: hidden
     &__wrap
-      max-width: 296px
       padding: 24px 16px
       height: 330px
     &__wrapFrame
       width: 80px
       height: 36px
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      padding-right: 16px
+    .container
+      padding: 0 0 0 16px

@@ -64,10 +64,30 @@ export default class Slider {
           loop: false,
           breakpoints: {
             360: {
-              slidesPerView: 1,
+              slidesPerView: 1.15,
               spaceBetween: 8,
             },
+            450: {
+              slidesPerView: 1.6,
+              spaceBetween: 8,
+            },
+            767: {
+              slidesPerView: 2,
+              spaceBetween: 12,
+            },
+            900: {
+              slidesPerView: 2.5,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 12,
+            },
             1200: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
+            1400: {
               slidesPerView: 4,
               spaceBetween: 16,
             }
@@ -87,8 +107,20 @@ export default class Slider {
           loop: false,
           breakpoints: {
             320: {
-              slidesPerView: 1,
+              slidesPerView: 1.2,
               spaceBetween: 8,
+            },
+            500: {
+              slidesPerView: 1.5,
+              spaceBetween: 8,
+            },
+            600: {
+              slidesPerView: 2,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 12,
             },
             1200: {
               slidesPerView: 3,
@@ -99,31 +131,31 @@ export default class Slider {
       }
 
 
-      // //как заказать
-      // const howToOrder = document.querySelector('.howToOrder')
-      // if (howToOrder) {
-      //   this.createSlider(howToOrder, {
-      //     slidesPerView: 1,
-      //     spaceBetween: 16,
-      //     allowTouchMove: true,
-      //     loop: true,
-      //     effect: 'fade',
-      //     fadeEffect: {
-      //       crossFade: false,
-      //     },
-      //     pagination: {
-      //       el: ".swiper-pagination",
-      //       clickable: true,
-      //       renderBullet: function (index, className) {
-      //         return '<div class="' + className + '">' + "0" + (index + 1) + "</div>";
-      //           // + "<span class='pagination__span'>-</span>";
-      //       },
-      //     },
-      //     autoplay: {
-      //       delay: 3000,
-      //     },
-      //   })
-      // }
+      //как заказать
+      const howToOrder = document.querySelector('.howToOrder')
+      if (howToOrder) {
+        this.createSlider(howToOrder, {
+          slidesPerView: 1,
+          spaceBetween: 16,
+          allowTouchMove: true,
+          loop: true,
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            renderBullet: function (index, className) {
+              const bulletNumber = "0" + (index + 1);
+              return '<div class="' + className + '">' + bulletNumber + (index < this.slides.length - 1 ? "<span>-</span>" : "") + '</div>';
+            },
+          },
+          autoplay: {
+            delay: 3000,
+          },
+        })
+      }
 
 
       //ПРОИЗВОДСТВО МЕБЕЛИ
@@ -165,11 +197,26 @@ export default class Slider {
           loop: false,
           breakpoints: {
             320: {
-              slidesPerView: 1,
+              slidesPerView: 1.1,
               spaceBetween: 8,
-              centeredSlides: true,
             },
-            1200: {
+            424: {
+              slidesPerView: 1.5,
+              spaceBetween: 8,
+            },
+            600: {
+              slidesPerView: 2,
+              spaceBetween: 8,
+            },
+            767: {
+              slidesPerView: 2.5,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
+            1300: {
               slidesPerView: 4,
               spaceBetween: 16,
             }

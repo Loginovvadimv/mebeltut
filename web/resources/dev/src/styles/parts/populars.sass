@@ -71,7 +71,7 @@
     .container
       padding: 0 0 0 16px
     &__wrap
-      max-width: 282px
+      //max-width: 282px
       border-radius: 16px
       height: auto
       padding: 12px
@@ -105,6 +105,7 @@
       margin-top: 8px
     .swiper
       clip-path: inset(0 -50% 0 -50%)
+      padding-right: 16px
     &__wrapDop
       display: block
 
@@ -113,40 +114,48 @@
 @media (min-width: 424px) and (max-width: 767px)
   .populars
     overflow: hidden
-    &__transf
-      display: none
     &__wrapper
-      display: block
+      gap: 0
+    .container
+      padding: 0 0 0 16px
     &__wrap
-      max-width: 288px
-      border-radius: 20px
+      //max-width: 282px
+      border-radius: 16px
       height: auto
+      padding: 12px
     &__link
-      height: 175px
-      display: block
-      overflow: hidden
       img
-        height: 175px
+        height: 192px
         width: 100%
         object-fit: cover
-    &__group
-      left: 16px
-      top: 16px
-      border-radius: 35px
-      padding: 6px 12px
-    &__text
-      padding: 16px
-      gap: 10px
+        display: block
+        overflow: hidden
     &__btn
       padding: 14px 20px
       width: 100%
       margin-top: 24px
     &__container
       gap: 24px
-      justify-content: center
     &__thumbnail
       height: 175px
       overflow: hidden
+    .slider__arrows
+      display: none
+    &__categories
+      clip-path: inset(0% -500% 0% -50.5%)
+      padding-bottom: 16px
+      gap: 4px
+    &__category
+      padding: 12px 20px
+      height: 50px
+    &__wrapName
+      display: block
+      margin-top: 8px
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      padding-right: 16px
+    &__wrapDop
+      display: block
 
 
 
@@ -156,11 +165,12 @@
       justify-content: center
       gap: 24px
     &__wrap
-      max-width: 48%
+      height: 336px
+
 
 @media (min-width: 1023px) and (max-width: 1260px)
   .populars
     &__container
       justify-content: space-between
     &__wrap
-      max-width: 31.5%
+      height: 370px

@@ -69,6 +69,8 @@
     text-transform: uppercase
     text-align: center
     position: relative
+    &--mob
+      display: none
   &__dopInfoBottomText
     display: flex
     flex-direction: column
@@ -134,6 +136,36 @@
     &__dopInfoBottomSubtitle
       max-width: 142px
       margin: 0 auto
+    &__title
+      max-width: 95%
+    &__subtitle
+      max-width: 95%
+
+@media (min-width: 768px) and (max-width: 1200px)
+  .banner
+    margin-bottom: 226px
+    &__dopInfo
+      display: none
+    &__text
+      bottom: 36px
+      left: 36px
+    &__title
+      font-size: 58px
+      line-height: 66px
+    &__dopInfoBottom
+      justify-content: center
+      &--mob
+        display: flex
+
+@media (min-width: 1201px) and (max-width: 1300px)
+  .banner
+    &__text
+      bottom: 194px
 
 
+@media (min-width: 1301px) and (max-width: 1350px)
+  .banner
+    &__text
+      left: 40px
+      max-width: 735px
 

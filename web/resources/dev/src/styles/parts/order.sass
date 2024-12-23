@@ -90,4 +90,29 @@
 
 @media (max-width: 767px)
   .order
-    display: none
+    &__wrapper
+      padding: 16px
+      flex-direction: column
+    &__price
+      padding: 12px
+      margin: 0 auto
+    &__priceTitle
+      margin-bottom: 12px
+    &__priceCount
+      gap: 6px
+      margin-bottom: 26px
+    &__dopText
+      display: none
+
+@media (min-width: 768px) and (max-width: 1280px)
+  .order
+    &__wrapper
+      padding: 16px
+      flex-direction: column
+    &__dopText
+      display: none
+    &__price
+      margin: 0 auto
+    &__title
+      margin: 0 auto 24px auto
+      text-align: center
