@@ -100,29 +100,64 @@
     background: rgba(0, 0, 0, 0.48)
     z-index: 4
 
+@media (max-width: 767px)
+  .furnitureManufacturing
+    &__title
+      margin-bottom: 17px
+    &__wrap
+      width: 100%
+      padding: 88px 16px 16px 16px
+      overflow: hidden
+    .swiper-pagination2
+      top: 16px
+      left: 16px
+      font-weight: 300
+      font-size: 20px
+      line-height: 28px
+    &__text
+      padding: 16px
+    &__textTitle
+      margin-bottom: 25px
+    &__dop
+      display: none
+    &__wrapBottomFrame
+      display: none
+    span
+      font-weight: 300
+      font-size: 20px
+      line-height: 28px
+    &__wrapRightFrame
+      display: none
+    &__dop
+      display: none
 
-.furnitureManufacturing
-  &__title
-    margin-bottom: 17px
-  &__wrap
-    width: 100%
-    padding: 88px 16px 16px 16px
-    overflow: hidden
-  .swiper-pagination2
-    top: 16px
-    left: 16px
-    font-weight: 300
-    font-size: 20px
-    line-height: 28px
-  &__text
-    padding: 16px
-  &__textTitle
-    margin-bottom: 25px
-  &__dop
-    display: none
-  &__wrapBottomFrame
-    display: none
-  span
-    font-weight: 300
-    font-size: 20px
-    line-height: 28px
+@media (min-width: 768px) and (max-width: 1023px)
+  .furnitureManufacturing
+    &__dop
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapRightFrame
+      display: none
+    &__wrap
+      padding: 116px 48px 48px 48px
+
+
+@media (min-width: 1024px) and (max-width: 1250px)
+  .furnitureManufacturing
+    &__dop
+      padding: 12px
+    &__wrap
+      padding: 116px 48px 150px 48px
+    &__wrapBottomFrame
+      bottom: 120px
+    &__text
+      max-width: none
+
+
+@media (min-width: 1250px) and (max-width: 1450px)
+  .furnitureManufacturing
+    &__wrap
+      padding: 120px 48px 150px 48px
+    &__text
+      max-width: none

@@ -71,6 +71,9 @@
     margin-bottom: 12px
   .checkbox
     justify-content: center
+  &__map
+    border-radius: 16px
+    overflow: hidden
 
 @media (max-width: 767px)
   .contacts
@@ -84,11 +87,16 @@
       max-width: 190px
       text-align: center
       margin: 0 auto 16px auto
+    .contacts__formInput
+      padding: 18px 14px
+      border-radius: 8px
+      font-size: 18px
+      line-height: 26px
     .form
-      input
-        padding: 20px 16px
       input[type="checkbox"]
         padding: 4px
+      &__inputs
+        gap: 8px
     &__button
       margin-bottom: 6px
     &__police
@@ -99,5 +107,63 @@
       gap: 11px
       font-weight: 500
       font-size: 12px
-      line-height: 17px
+      line-height: 19px
+    textarea
+      padding: 11px 14px
+      border-radius: 8px
+      font-size: 18px
+      line-height: 26px
+      height: 132px
+    &__wrap
+      padding: 16px
+    &__wrapper
+      grid-template-columns: 1fr
+      gap: 8px
+      margin-bottom: 36px
+    &__wrapTitle
+      margin-bottom: 24px
+    &__wrapLi
+      display: flex
+      justify-content: space-between
+      gap: 20px
+    &__wrapLiLine
+      margin: 12px 0
+    &__map
+      height: 362px !important
+      border-radius: 16px
+      overflow: hidden
 
+@media (min-width: 768px) and (max-width: 1023px)
+  .contacts
+    &__wrap
+      padding: 24px
+    &__wrapper
+      grid-template-columns: 1fr
+      gap: 24px
+      margin-bottom: 36px
+    &__wrapTitle
+      margin-bottom: 24px
+    &__wrapLi
+      display: flex
+      justify-content: space-between
+      gap: 20px
+    &__wrapLiLine
+      margin: 12px 0
+    &__map
+      height: 450px !important
+      border-radius: 16px
+      overflow: hidden
+
+
+@media (min-width: 1024px) and (max-width: 1280px)
+  .contacts
+    &__wrap
+      padding: 24px
+    &__wrapLi
+      grid-template-columns: 220px 325px
+
+
+@media (min-width: 1281px) and (max-width: 1400px)
+  .contacts
+    &__wrapLi
+      grid-template-columns: 250px 400px

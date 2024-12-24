@@ -54,38 +54,65 @@ Alpine.start();
 
   document.addEventListener('DOMContentLoaded', function() {
 
-  // Отзывы
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+
+    // Отзывы
 
     const reviewDescs = document.querySelectorAll('.reviews__descr');
+    if (reviewDescs) {
+      if(mediaQuery.matches) {
+        reviewDescs.forEach((desc, i) => {
+          if (desc.offsetHeight > 200) {
+            desc.style.height = '200px';
+            desc.style.overflow = 'hidden';
+            const readMoreButton = document.createElement('button');
+            readMoreButton.textContent = 'Читать целиком';
+            readMoreButton.classList.add('Control_M');
+            readMoreButton.classList.add('text-caption');
+            readMoreButton.classList.add('reviews__show');
+            readMoreButton.setAttribute('data-modal', 'client');
+            desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
 
-    reviewDescs.forEach((desc, i) => {
-      if (desc.offsetHeight > 184) {
-        desc.style.height = '184px';
-        desc.style.overflow = 'hidden';
-        const readMoreButton = document.createElement('button');
-        readMoreButton.textContent = 'Читать целиком';
-        readMoreButton.classList.add('Control_M');
-        readMoreButton.classList.add('text-caption');
-        readMoreButton.classList.add('reviews__show');
-        readMoreButton.setAttribute('data-modal', 'client');
-        desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
-
-        readMoreButton.addEventListener('click', () => {
-          const modal = document.querySelector('.modal[data-modal-type="client"]');
-          const modalContent = modal.querySelector('.modal__wrapper');
-          modalContent.innerHTML = desc.innerHTML + `<button class="modal__close modal__close--fixed" type="button">
+            readMoreButton.addEventListener('click', () => {
+              const modal = document.querySelector('.modal[data-modal-type="client"]');
+              const modalContent = modal.querySelector('.modal__wrapper');
+              modalContent.innerHTML = desc.innerHTML + `<button class="modal__close modal__close--fixed" type="button">
     </button>`;
-          modal.hidden = false;
+              modal.hidden = false;
+            });
+          }
         });
-      }
-    });
+      } else {
+        reviewDescs.forEach((desc, i) => {
+          if (desc.offsetHeight > 184) {
+            desc.style.height = '184px';
+            desc.style.overflow = 'hidden';
+            const readMoreButton = document.createElement('button');
+            readMoreButton.textContent = 'Читать целиком';
+            readMoreButton.classList.add('Control_M');
+            readMoreButton.classList.add('text-caption');
+            readMoreButton.classList.add('reviews__show');
+            readMoreButton.setAttribute('data-modal', 'client');
+            desc.parentNode.insertBefore(readMoreButton, desc.nextSibling);
 
+            readMoreButton.addEventListener('click', () => {
+              const modal = document.querySelector('.modal[data-modal-type="client"]');
+              const modalContent = modal.querySelector('.modal__wrapper');
+              modalContent.innerHTML = desc.innerHTML + `<button class="modal__close modal__close--fixed" type="button">
+    </button>`;
+              modal.hidden = false;
+            });
+          }
+        });
+
+      }
+  }
 
 // Конец отзывы
 
 //seo
 
-  const mediaQuery = window.matchMedia('(max-width: 767px)');
+
 
   const seoWrapper = document.querySelector('.seo__wrapper');
   const button = document.querySelector('.seo__button');

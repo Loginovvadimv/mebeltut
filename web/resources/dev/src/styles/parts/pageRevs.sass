@@ -46,3 +46,62 @@
           fill: rgba(239, 239, 239, 1)
           fill-opacity: 1
 
+@media (max-width: 500px)
+  .pageRevs
+    &__linkWrapper
+      flex-direction: column
+      padding: 16px
+      gap: 36px
+      margin-bottom: 24px
+    &__linkWrapperBtn
+      width: 100%
+      display: flex
+      justify-content: center
+    &__wrapper
+      grid-template-columns: repeat(1, 1fr)
+      gap: 8px
+    .reviews__wrapFrame
+      width: 90px
+      height: 42px
+    .reviews__client
+      width: 55px
+      height: 55px
+    .reviews__wrapClient
+      align-items: center
+    .reviews__wrap
+      height: 339px
+
+
+@media (min-width: 501px) and (max-width: 767px)
+  .pageRevs
+    &__wrapper
+      grid-template-columns: repeat(2, 1fr)
+      gap: 8px
+    &__linkWrapper
+      flex-direction: column
+      padding: 16px
+      gap: 36px
+      margin-bottom: 24px
+    &__linkWrapperBtn
+      width: 100%
+      display: flex
+      justify-content: center
+
+@media (min-width: 768px) and (max-width: 1023px)
+  .pageRevs
+    &__wrapper
+      grid-template-columns: repeat(2, 1fr)
+      gap: 12px
+    &__linkWrapper
+      flex-direction: column
+      gap: 24px
+
+
+@media (min-width: 1024px) and (max-width: 1280px)
+  .pageRevs
+    &__wrapper
+      grid-template-columns: repeat(3, 1fr)
+      gap: 12px
+    &__linkWrapper
+      flex-direction: column
+      gap: 24px
