@@ -1,0 +1,40 @@
+<div class="fixed-menu fixed-menu__readmore" :class="openFixedMenuReadMore ? 'fixed-menu-open' : 'fixed-menu-close' ">
+  <div class="fixed-menu__content">
+
+     <div class="fixed-menu__container">
+       <div class="product__infoReadWrapper">
+
+         <div class="product__infoReadWrapperText">
+           <div class="product__infoReadWrap">
+             <div class="h3 text-body product__infoReadTitle">{{ post.title }}</div>
+             <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+           </div>
+           <div class="product__infoReadDescr h5 text-caption">
+             Описание:<div class="text-main Control_M">{{ post.content }}</div>
+           </div>
+           <div class="product__infoReadSpecs h5 text-caption">
+             Характеристики:<ul class="text-main Control_M product__infoReadSpecsUl">
+               {% for item in post.specifications_rep %}
+                 <li class="product__infoReadSpecsLi"><span>{{ item.specification }}</span><span>{{ item.meaning }}</span></li>
+               {% endfor %}
+             </ul>
+           </div>
+         </div>
+
+
+
+
+         <div class="product__applications">
+           <button class="btn-black Uppercase-M" data-modal="orderkitchen">Оставить заявку</button>
+           <button class="btn-snow Uppercase-M">Задать вопрос</button>
+         </div>
+       </div>
+
+<button class="fixed-menu__close" @click="openFixedMenuReadMore = !openFixedMenuReadMore"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="36" height="36" rx="18" fill="white"/>
+    <rect x="0.375" y="0.375" width="35.25" height="35.25" rx="17.625" stroke="#0C0C0C" stroke-opacity="0.12" stroke-width="0.75"/>
+    <path d="M13.0605 12.252L12.252 13.0605L17.1914 18L12.252 22.9395L13.0605 23.748L18 18.8086L22.9395 23.748L23.748 22.9395L18.8086 18L23.748 13.0605L22.9395 12.252L18 17.1914L13.0605 12.252Z" fill="#0C0C0C"/>
+  </svg></button>
+
+  </div>
+</div>

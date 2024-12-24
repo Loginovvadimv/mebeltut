@@ -292,6 +292,10 @@ export default class Slider {
           allowTouchMove: true,
           centeredSlides: false,
           loop: false,
+          pagination: {
+            el: ".pagination__num",
+            type: "fraction",
+          },
         })
       }
 

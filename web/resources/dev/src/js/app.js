@@ -24,7 +24,7 @@ Alpine.data('page', () => ({
     breakpoints: {
         xs: 640,
         mobile: 768,
-        tablet: 1250,
+        tablet: 1251,
         desktop: 5000,
     },
 

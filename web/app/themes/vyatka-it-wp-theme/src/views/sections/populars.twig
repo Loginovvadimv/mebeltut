@@ -1,10 +1,10 @@
-<section class="populars section" x-data="{ tab: '19' }">
+<section class="populars section" x-data="{ tab: '12' }">
   <div class="container">
     <h2 class="populars__title">популярные проекты</h2>
   <div class="populars__wrapper">
       <div class="populars__scroller scroller">
         <div class="populars__categories">
-          {% for progect in categories_proj %}
+          {% for progect in categories_prod %}
             <div class="populars__category h5" @click="tab = '{{ progect.id }}'" :class="{ 'active': tab === '{{ progect.id }}' }">
               {{ progect.title }}
             </div>
@@ -26,7 +26,7 @@
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for progect in categories_prod %}
-{#                {% for item in progect.posts %}#}
+                {% for item in progect.posts %}
                   {% if item.product_hit %}
                     <a href="{{ item.link }}" class="populars__wrap" data-modal="project" x-show="tab === '{{ progect.id }}'">
                       <div class="populars__link"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
@@ -35,7 +35,7 @@
                         <div class="Control_S brand-3 populars__wrapDop">Хит</div>
                     </a>
                   {% endif %}
-{#                {% endfor %}#}
+                {% endfor %}
 
             {% endfor %}
           </div>

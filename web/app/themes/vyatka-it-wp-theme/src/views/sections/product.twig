@@ -1,9 +1,7 @@
-<section class="product section">
+<section class="product section" x-cloak x-data="{openFixedMenuReadMore: false}">
   <div class="container">
     <div class="product__info section">
       {% if post.product_imgs %}
-
-
       <div class="product__infoSlider">
         <div class="slider__arrows">
           <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +13,7 @@
             </svg>
           </button>
         </div>
+        <div class="pagination__num Control_S text-main-contrast"></div>
         <div class="swiper">
           <div class="swiper-wrapper">
             {% for item in post.product_imgs %}
@@ -37,7 +36,7 @@
         <div class="product__infoWrapContainer">
         <div class="product__infoText">
           <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
-          <div class="h5 text-caption">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+          <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
         </div>
         <div class="product__infoDescr h5 text-caption">
           Описание:<div class="text-main Control_M">{{ post.excerpt }}</div>
@@ -49,7 +48,9 @@
             {% endfor %}
           </ul>
         </div>
-        <div class="Control_M text-caption product__readmore" data-modal="readmore">Подробнее</div>
+        <div class="Control_M text-caption product__readmore" @click="openFixedMenuReadMore = !openFixedMenuReadMore"
+        x-init="$watch('openFixedMenuReadMore', () => { openFixedMenuReadMore ? document.body.classList.add('fixed') : document.body.classList.remove('fixed') })"
+        >Подробнее</div>
         </div>
         <div class="product__applications">
           <button class="btn-black Uppercase-M" data-modal="orderkitchen">Оставить заявку</button>
@@ -58,7 +59,7 @@
       </div>
     </div>
   </div>
-
+  {% include 'parts/fixedmenu_readmore.twig' %}
 </section>
 
 
@@ -95,6 +96,9 @@
     </button>
   </div>
 </div>
+
+
+
 
 
 

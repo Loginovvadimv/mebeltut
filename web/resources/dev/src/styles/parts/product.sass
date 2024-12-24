@@ -76,9 +76,12 @@
     transition: .3s all
     cursor: pointer
     margin-top: 16px
+    border-bottom: 1px solid rgba(12, 12, 12, 0.08)
+    display: inline-block
     &:hover
       color: rgba(249, 92, 119, 1)
       transition: .3s all
+      border-bottom: 1px solid rgba(249, 92, 119, 1)
   &__applications
     display: grid
     grid-template-columns: 1fr 1fr
@@ -114,7 +117,7 @@
     display: flex
     gap: 8px
   &__applications
-    padding-top: 36px
+    padding: 36px 0 48px 0
   &__imgTop
     position: absolute
     top: 24px
@@ -127,7 +130,53 @@
     padding: 0 8px
     border-radius: 8px
     background: rgba(12, 12, 12, 0.64)
+  .pagination__num
+    position: absolute
+    bottom: 16px
+    z-index: 3
+    left: 50%
+    transform: translateX(-50%)
+    padding: 8px 24px
+    border-radius: 16px
+    background: rgba(12, 12, 12, 0.64)
+  &__infoPrice
+    display: flex
+    gap: 16px
+    align-items: flex-start
+    white-space: nowrap
 
+
+@media (max-width: 767px)
+  .product
+    &__info
+      flex-direction: column
+      margin-top: 16px
+      gap: 8px
+    &__infoSlider
+      max-width: 100%
+      min-width: 100%
+      height: 186px
+    .slider__arrows
+      display: none
+    &__imgTop
+      top: 12px
+      left: 12px
+    .pagination__num
+      bottom: 12px
+      left: 12px
+      transform: unset
+      border-radius: 16px
+      padding: 8px 26px
+    &__infoWrap
+      padding: 12px
+      height: auto
+    &__infoPrice
+      justify-content: space-between
+    &__applications
+      grid-template-columns: 1fr
+      padding: 0
+      gap: 8px
+      margin-top: 36px
 
 
 
