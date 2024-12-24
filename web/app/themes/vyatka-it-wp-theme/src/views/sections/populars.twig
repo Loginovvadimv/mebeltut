@@ -28,12 +28,12 @@
             {% for progect in categories_proj %}
                 {% for item in progect.posts %}
                   {% if item.is_popular %}
-                    <div class="populars__wrap" data-modal="project" x-show="tab === '{{ progect.id }}'">
+                    <a href="{{ item.link }}" class="populars__wrap" data-modal="project" x-show="tab === '{{ progect.id }}'">
                       <div class="populars__link"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
                       <div class="h5 text-caption populars__wrapName">{{ item.title }}</div>
                       </div>
                         <div class="Control_S brand-3 populars__wrapDop">Хит</div>
-                    </div>
+                    </a>
                   {% endif %}
                 {% endfor %}
 
