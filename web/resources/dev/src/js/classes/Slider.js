@@ -236,6 +236,26 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            320: {
+              slidesPerView: 1.2,
+              spaceBetween: 8,
+            },
+            425: {
+              slidesPerView: 1.5,
+              spaceBetween: 8,
+            },
+            550: {
+              slidesPerView: 1.8,
+              spaceBetween: 8,
+            },
+            767: {
+              slidesPerView: 2.3,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
             1200: {
               slidesPerView: 4,
               spaceBetween: 16,
@@ -255,6 +275,26 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            320: {
+              slidesPerView: 1.2,
+              spaceBetween: 8,
+            },
+            425: {
+              slidesPerView: 1.5,
+              spaceBetween: 8,
+            },
+            550: {
+              slidesPerView: 1.8,
+              spaceBetween: 8,
+            },
+            767: {
+              slidesPerView: 2.3,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
             1200: {
               slidesPerView: 4,
               spaceBetween: 16,
@@ -274,6 +314,26 @@ export default class Slider {
           centeredSlides: false,
           loop: false,
           breakpoints: {
+            320: {
+              slidesPerView: 1.2,
+              spaceBetween: 8,
+            },
+            425: {
+              slidesPerView: 1.5,
+              spaceBetween: 8,
+            },
+            550: {
+              slidesPerView: 1.8,
+              spaceBetween: 8,
+            },
+            767: {
+              slidesPerView: 2.3,
+              spaceBetween: 12,
+            },
+            1023: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+            },
             1200: {
               slidesPerView: 3,
               spaceBetween: 16,

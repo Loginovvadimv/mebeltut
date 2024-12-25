@@ -23,12 +23,17 @@
 
           </div>
         </div>
-        {% if post.product_hit %}
+        {% if post.product_hit or post.kit_pricesale %}
           <div class="product__imgTop">
+            {% if post.product_hit %}
             <div class="text-main-contrast product__imgTopIn Control_S">Хит</div>
+            {% endif %}
+            {% if post.kit_pricesale %}
+              <div class="text-main-contrast product__imgTopIn Control_S">Скидка</div>
+            {% endif %}
           </div>
-
         {% endif %}
+
       </div>
       {% endif %}
 
@@ -36,7 +41,14 @@
         <div class="product__infoWrapContainer">
         <div class="product__infoText">
           <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
-          <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+
+          {% if post.kit_pricesale %}
+            <div class="h5 text-caption product__infoPrice">Цена с установкой: <div class="product__infoPriceFlex"><span class="text-main">от {{ post.kit_pricesale }} руб.</span><del><span class="product__infoDelPrice Old_price_s">от {{ post.kit_price }} руб.</span></del></div></div>
+            {%else %}
+              <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+          {% endif %}
+
+
         </div>
         <div class="product__infoDescr h5 text-caption">
           Описание:<div class="text-main Control_M">{{ post.excerpt }}</div>

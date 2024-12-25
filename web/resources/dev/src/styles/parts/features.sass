@@ -10,7 +10,36 @@
       height: 331px
       margin-bottom: 24px
       object-fit: cover
+      width: 100%
   &__wrapTitle
     margin-bottom: 16px
     text-transform: uppercase
 
+
+@media (max-width: 767px)
+  .features
+    overflow: hidden
+    &__wrap
+      img
+        height: 260px
+        margin-bottom: 12px
+        border-radius: 10px
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      overflow: visible
+    &__wrapTitle
+      margin-bottom: 5px
+
+@media (max-width: 425px)
+  .features
+    &__wrap
+      img
+        height: 210px
+
+
+@media (min-width: 768px) and (max-width: 1023px)
+  .features
+    overflow: hidden
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      overflow: visible

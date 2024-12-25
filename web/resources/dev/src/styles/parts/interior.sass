@@ -12,3 +12,30 @@
       width: 100%
       height: 100%
       object-fit: cover
+
+
+@media (max-width: 767px)
+  .interior
+    overflow: hidden
+    &__img
+      height: 260px
+      border-radius: 10px
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      overflow: visible
+
+
+@media (max-width: 425px)
+  .interior
+    &__img
+      height: 210px
+
+
+@media (min-width: 768px) and (max-width: 1023px)
+  .interior
+    overflow: hidden
+    &__img
+      height: 360px
+    .swiper
+      clip-path: inset(0 -50% 0 -50%)
+      overflow: visible
