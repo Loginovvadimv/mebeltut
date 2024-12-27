@@ -23,13 +23,16 @@
 
           </div>
         </div>
-        {% if post.product_hit or post.kit_pricesale %}
+        {% if post.product_hit or post.kit_pricesale or post.product_new %}
           <div class="product__imgTop">
             {% if post.product_hit %}
             <div class="text-main-contrast product__imgTopIn Control_S">Хит</div>
             {% endif %}
             {% if post.kit_pricesale %}
               <div class="text-main-contrast product__imgTopIn Control_S">Скидка</div>
+            {% endif %}
+            {% if post.product_new %}
+              <div class="text-main-contrast product__imgTopIn Control_S">Новинка</div>
             {% endif %}
           </div>
         {% endif %}

@@ -1,16 +1,14 @@
-.custom-select 
+.custom-select
   position: relative
   width: 400px
   max-width: 100%
   font-size: 1.15rem
   color: #000
-  margin-bottom: 32px
+  margin-bottom: 26px
   z-index: 10
-
-
-.select-button 
+.select-button
   width: 100%
-  padding: 0.675em 1em
+  padding: 0
   cursor: pointer
 
   display: flex
@@ -18,19 +16,19 @@
   align-items: center
 
 
-.selected-value 
+.selected-value
   text-align: left
 
 
 
-.arrow 
+.arrow
   border-left: 5px solid transparent
   border-right: 5px solid transparent
   border-top: 6px solid #000
   transition: transform ease-in-out 0.3s
 
 
-.select-dropdown 
+.select-dropdown
   position: absolute
   list-style: none
   width: 100%
@@ -49,7 +47,7 @@
   visibility: hidden
 
 
-.select-dropdown li 
+.select-dropdown li
   position: relative
   cursor: pointer
   display: flex
@@ -57,7 +55,7 @@
   align-items: center
 
 
-.select-dropdown li label 
+.select-dropdown li label
   width: 100%
   padding: 8px 10px
   cursor: pointer
@@ -66,15 +64,15 @@
   align-items: center
 
 
-.select-dropdown::-webkit-scrollbar 
+.select-dropdown::-webkit-scrollbar
   width: 7px
 
-.select-dropdown::-webkit-scrollbar-track 
+.select-dropdown::-webkit-scrollbar-track
   background: #f1f1f1
   border-radius: 25px
 
 
-.select-dropdown::-webkit-scrollbar-thumb 
+.select-dropdown::-webkit-scrollbar-thumb
   background: #ccc
   border-radius: 25px
 
@@ -89,7 +87,7 @@
 
 
 
-.select-dropdown input[type="radio"] 
+.select-dropdown input[type="radio"]
   position: absolute
   left: 0
   opacity: 0

@@ -4,14 +4,14 @@
     {% if term.slogan %}
       <div class="allProducts__slogan">
         <img class="allProducts__sloganBg" src="{{ assets }}/images/allProducts/slogan.webp" alt="{{ term.name }}">
-        <div class="allProducts__sloganText h3 text-main-contrast">{{ term.slogan }}</div>
+        <div class="allProducts__sloganText h3 text-main-contrast uppercase">{{ term.slogan }}</div>
       </div>
     {% endif %}
 
     {% if term.children %}
       <div class="allProducts__categoriesContainer">
         <div class="allProducts__categories">
-          <div class="text-caption h5 allProducts__category" @click="tab = 'all'" :class="{ 'activeCat': tab === 'all' }">Все кухни</div>
+          <div class="text-caption h5 allProducts__category" @click="tab = 'all'" :class="{ 'activeCat': tab === 'all' }">Все {{ term.name }}</div>
           {% for category in term.children %}
             <div class="text-caption h5 allProducts__category"  @click="tab = '{{ category.id }}'" :class="{ 'activeCat': tab === '{{ category.id }}' }">{{ category }}</div>
           {% endfor %}
@@ -21,43 +21,98 @@
     {% endif %}
 
 
-    {% include 'parts/filter-card.twig' %}
 
-    <div class="allProducts__wrapper">
 
+    <div class="allProducts__wrapper" x-show="tab === 'all'">
       {#  Подключаем шаблон фильтров и передаем в него массив с фильтрами #}
-      {% include "parts/filters.twig" with {filters: filters} %}
+      <div class="allProducts__filterWrapper">
 
-      <div class="allProducts__container" x-show="tab === 'all'">
-      {% for category in term.children %}
-          {% for item in category.posts%}
-            <div class="allProducts__wrap">
-              <a class="allProducts__wrapLink" href="{{ item.link }}"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
-              <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
-              <div>от {{ item.kit_price }} ₽</div>
-            </div>
-          {% endfor %}
-    {% endfor %}
+            <h2>Все {{ term.name }}</h2>
+
+        {% include "parts/filters.twig" with {filters: filters} %}
       </div>
 
 
+<div class="allProducts__containerBox">
+  {% include 'parts/filter-card.twig' %}
+  <div class="allProducts__container">
     {% for category in term.children %}
-      <div class="allProducts__container" x-show="tab === '{{ category.id}}'">
-          {% for item in category.posts%}
-            <div class="allProducts__wrap" href="{{ item.link }}">
-              <a class="allProducts__wrapLink"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}"></a>
-              <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
-              <div>от {{ item.kit_price }} ₽</div>
-            </div>
-          {% endfor %}
-      </div>
+      {% for item in category.posts%}
+{#        {% if item. %}#}
+{#          #}
+{#        {% endif %}#}
+        <div class="allProducts__wrap">
+          <a class="allProducts__wrapLink" href="{{ item.link }}"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+            {% if item.product_hit or item.kit_pricesale or item.product_new %}
+              <div class="allProducts__imgTop">
+                {% if item.product_hit %}
+                  <div class="text-main-contrast allProducts__imgTopIn Control_S">Хит</div>
+                {% endif %}
+                {% if item.kit_pricesale %}
+                  <div class="text-main-contrast allProducts__imgTopIn Control_S">Скидка</div>
+                {% endif %}
+                {% if item.product_new %}
+                  <div class="text-main-contrast allProducts__imgTopIn Control_S">Новинка</div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+          </a>
+          <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
+          <div class="h5 allProducts__wrapPrice">от {{ item.kit_price }} ₽</div>
+
+
+
+
+        </div>
+      {% endfor %}
     {% endfor %}
+  </div>
+  <button class="text-caption Uppercase-M btn-white allProducts__showAll">показать еще<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.25 3.75V11.25H3.75V12.75H11.25V20.25H12.75V12.75H20.25V11.25H12.75V3.75H11.25Z" fill="#0C0C0C" fill-opacity="0.4"/>
+    </svg>
+  </button>
+</div>
 </div>
 
 
+    {% for category in term.children %}
+    <div class="allProducts__wrapper" x-show="tab === '{{ category.id}}'">
+      {#  Подключаем шаблон фильтров и передаем в него массив с фильтрами #}
+      <div class="allProducts__filterWrapper">
+        {% for category in term.children %}
+            <h2 x-show="tab === '{{ category.id}}'">{{ category.title }}</h2>
+        {% endfor %}
+        {% include "parts/filters.twig" with {filters: filters} %}
+      </div>
 
 
+      <div class="allProducts__container" x-show="tab === '{{ category.id}}'">
+          {% for item in category.posts%}
+            <div class="allProducts__wrap" href="{{ item.link }}">
+              <a class="allProducts__wrapLink"><img class="allProducts__wrapImg" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+                {% if item.product_hit or item.kit_pricesale or item.product_new %}
+                  <div class="allProducts__imgTop">
+                    {% if item.product_hit %}
+                      <div class="text-main-contrast allProducts__imgTopIn Control_S">Хит</div>
+                    {% endif %}
+                    {% if item.kit_pricesale %}
+                      <div class="text-main-contrast allProducts__imgTopIn Control_S">Скидка</div>
+                    {% endif %}
+                    {% if item.product_new %}
+                      <div class="text-main-contrast allProducts__imgTopIn Control_S">Новинка</div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </a>
+              <a class="allProducts__wrapTitle h5 text-caption" href="{{ item.link }}">{{ item.title }}</a>
+              <div>от {{ item.kit_price }} ₽</div>
+            </div>
+          {% endfor %}
+      </div>
 
+    </div>
+    {% endfor %}
 
     </div>
 </section>
