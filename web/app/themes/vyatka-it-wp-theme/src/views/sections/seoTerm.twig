@@ -1,0 +1,27 @@
+{% if post.seo.seo_rep %}
+  <section class="seo section">
+    <div class="container">
+      <h2>{{ post.seo.seo_title }}</h2>
+      <div class="line seo__line"></div>
+      <div class="seo__wrapper" data-expanded>
+        {% if post.seo.seo_rep %}
+          {% for item in post.seo.seo_rep %}
+            <p class="seo_text Control_M">{{ item.text }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {% if post.seo.seo_list %}
+          <ul class="seo__ul">
+            {% for item in post.seo.seo_list %}
+              <li class="Control_M seo__li">{{ item.seo_li }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <button class="seo__button Control_M text-main" data-expanded="false">Показать еще<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 7.5L21 9L11.9999 18L3 9L4 7.5L12 15.5L20 7.5Z" fill="#0C0C0C"/>
+        </svg>
+      </button>
+    </div>
+  </section>
+{% endif %}

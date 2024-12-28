@@ -10,12 +10,19 @@
 
     {% if term.children %}
       <div class="allProducts__categoriesContainer">
+        <div class="allProducts__filterSort-mob">
+          <div class="allProducts__filterSort-mobLIne"></div>
+          {% include 'parts/filter-card.twig' %}
+        </div>
+        <div class="allProducts__scroller scroller">
         <div class="allProducts__categories">
           <div class="text-caption h5 allProducts__category" @click="tab = 'all'" :class="{ 'activeCat': tab === 'all' }">Все {{ term.name }}</div>
           {% for category in term.children %}
             <div class="text-caption h5 allProducts__category"  @click="tab = '{{ category.id }}'" :class="{ 'activeCat': tab === '{{ category.id }}' }">{{ category }}</div>
           {% endfor %}
         </div>
+        </div>
+
         <div class="allProducts__categoriesLine"></div>
       </div>
     {% endif %}
@@ -27,14 +34,19 @@
       {#  Подключаем шаблон фильтров и передаем в него массив с фильтрами #}
       <div class="allProducts__filterWrapper">
 
-            <h2>Все {{ term.name }}</h2>
+            <h2 class="allProducts__filterWrapperTitle">Все {{ term.name }}</h2>
 
-        {% include "parts/filters.twig" with {filters: filters} %}
+
+  {% include "parts/filters.twig" with {filters: filters} %}
+
+
       </div>
 
 
 <div class="allProducts__containerBox">
+  <div class="allProducts__filterSort">
   {% include 'parts/filter-card.twig' %}
+  </div>
   <div class="allProducts__container">
     {% for category in term.children %}
       {% for item in category.posts%}
