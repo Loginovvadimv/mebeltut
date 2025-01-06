@@ -10,13 +10,13 @@ $context['products'] = Timber::get_posts([
     'post_type' => 'product',
 ]);
 
-$context['categories_proj'] = Timber::get_terms([
-    'taxonomy' => 'categories-project',
-    'orderby' => 'id',
-    'order' => 'ASC',
-    'parent' => 0,
-    'hide_empty' => false,
-]);
+//$context['categories_proj'] = Timber::get_terms([
+//    'taxonomy' => 'categories-project',
+//    'orderby' => 'id',
+//    'order' => 'ASC',
+//    'parent' => 0,
+//    'hide_empty' => false,
+//]);
 
 $context['posts'] = Timber::get_posts([
     'post_type' => 'project',

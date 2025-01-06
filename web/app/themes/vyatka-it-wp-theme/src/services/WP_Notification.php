@@ -60,10 +60,6 @@ class WP_Notification
             $message .= "Сообщение: {$request->get_param('messege')} \r\n";
         }
 
-        if ($request->get_param('subject')) {
-            $message .= "Дополнительно: {$request->get_param('subject')} \r\n";
-        }
-
         if (!empty($file)) {
             $message .= "Файлы: {$file['url']} \r\n";
         }

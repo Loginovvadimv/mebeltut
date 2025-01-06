@@ -47,12 +47,6 @@ add_filter('timber/context', function ($context) {
     ]);
 
 
-    // Подсчитываем количество терминов
-    $category_count = count($context['categories_proj']);
-
-// Добавляем количество к ссылке
-    $context['work_count'] = $category_count;
-
     return $context;
 });
 
