@@ -12,7 +12,7 @@
       <div class="allProducts__categoriesContainer">
         <div class="allProducts__filterSort-mob">
           <div class="allProducts__filterSort-mobLIne"></div>
-          {% include 'parts/filter-card.twig' %}
+{#          {% include 'parts/filter-card.twig' %}#}
         </div>
         <div class="allProducts__scroller scroller">
         <div class="allProducts__categories">
@@ -125,6 +125,40 @@
 
     </div>
     {% endfor %}
+
+
+    <div class="pagination">
+      {% if posts.pagination.prev %}
+        <a class="pagination__prev pagination__arrow" href="{{ posts.pagination.prev.link }}">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.5002 3.99991L15.0002 2.99991L6.00015 12L15.0002 20.9999L16.5002 19.9999L8.50015 11.9999L16.5002 3.99991Z" fill="black"/>
+          </svg>
+        </a>
+      {% endif %}
+
+      <ul class="pagination__pages">
+        {% for posts in products.pagination.pages %}
+          {% if page.current %}
+            <a href="{{ page.link }}" class="{{ page.class }}"><li class="active pagination__page">
+                {{ page.title }}
+              </li></a>
+          {% else %}
+            <a href="{{ page.link }}" class="{{ page.class }}"><li class="pagination__page">
+                {{ page.title }}
+              </li></a>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      {% if posts.pagination.next %}
+        <a class="pagination__next pagination__arrow" href="{{ posts.pagination.next.link }}">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 20.0001L7.5 21.0001L16.5 12L7.5 3.00009L6 4.00009L14 12.0001L6 20.0001Z" fill="black"/>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
 
     </div>
 </section>
