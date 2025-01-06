@@ -14,6 +14,7 @@ add_filter('timber/context', function ($context) {
     $context[ 'worktime' ] = get_field('worktime', 'options');
     $context[ 'tg' ] = get_field('tg', 'options');
     $context[ 'yt' ] = get_field('yt', 'options');
+    $context[ 'wa' ] = get_field('wa', 'options');
     $context[ 'vk' ] = get_field('vk', 'options');
     $context[ 'ig' ] = get_field('ig', 'options');
     $context[ 'main_menu' ] = Timber::get_menu('header-menu');

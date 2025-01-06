@@ -23,6 +23,7 @@
     flex-direction: column
     justify-content: end
     padding: 48px
+    overflow: hidden
   .swiper-pagination
     font-weight: 300
     font-size: 28px
@@ -34,9 +35,14 @@
     display: flex
     gap: 12px
     cursor: pointer
+    .swiper-pagination-bullet
+      &:last-child
+        span
+          display: none
   .swiper-pagination-bullet-active
     color: rgba(255, 255, 255, 1)
-    border-bottom: 1px solid rgba(255, 255, 255, 1)
+    .howToOrder__bulletNumber
+      border-bottom: 1px solid rgba(255, 255, 255, 1)
   .swiper-pagination-bullet
     display: flex
     gap: 12px

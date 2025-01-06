@@ -132,7 +132,7 @@ export default class Slider {
 
 
       //как заказать
-      const howToOrder = document.querySelector('.howToOrder')
+      const howToOrder = document.querySelector('.howToOrder');
       if (howToOrder) {
         this.createSlider(howToOrder, {
           slidesPerView: 1,
@@ -148,13 +148,13 @@ export default class Slider {
             clickable: true,
             renderBullet: function (index, className) {
               const bulletNumber = "0" + (index + 1);
-              return '<div class="' + className + '">' + bulletNumber + (index < this.slides.length - 1 ? "<span>-</span>" : "") + '</div>';
+              return '<div class="' + className + '"><div class="howToOrder__bulletNumber">' + bulletNumber + '</div>' + (index < this.slides.length - 1 ? "<span>-</span>" : "") + '</div>';
             },
           },
           autoplay: {
             delay: 3000,
           },
-        })
+        });
       }
 
 
