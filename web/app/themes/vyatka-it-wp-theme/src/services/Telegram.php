@@ -6,8 +6,9 @@ use App\System\Log;
 
 class Telegram
 {
-    private $token = '6744119441:AAH1rDLY193VTJ_Mp3CGr2QOWaungQG2ppg'; // Токен
-    private $chat_id = '-4180366127'; // ID канала
+
+    private $token = '8008868628:AAHtrjZb2ffvdj_hk-NnyOBbRDly2LdHJ7Q'; // Токен
+    private $chat_id = '-1002204416048'; // ID канала
 
     public function send($message)
     {
@@ -41,11 +42,12 @@ class Telegram
 
         curl_close($ch);
 
-        Log::write([
-            'request' => $url,
-            'response' => $result
-        ], 'telegram');
+        //Log::write([
+        //    'request' => $url,
+        //    'response' => $result
+        //], 'telegram');
 
         return $result;
     }
 }
+

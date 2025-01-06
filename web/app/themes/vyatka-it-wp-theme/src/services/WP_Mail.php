@@ -8,8 +8,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 class WP_Mail
 {
     private $to         = 's.perminov@vyatka-it.ru';
-    private $from       = 'info@xn----7sbzkmth6f.xn--p1ai';
-    private $from_title = 'Сталь-инжиниринг';
+    private $from       = 'https://mebel.loc';
+    private $from_title = 'Мебель тут';
     private $subject    = 'Новая заявка с сайта';
     private $message    = '';
 

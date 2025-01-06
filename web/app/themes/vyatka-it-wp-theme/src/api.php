@@ -2,6 +2,7 @@
 
 use App\Services\WP_Cart;
 use App\Services\WP_Checkout;
+use App\Services\WP_Gallery;
 use App\Services\WP_Mail;
 use App\Services\WP_Notification;
 use App\Services\WP_Product;
