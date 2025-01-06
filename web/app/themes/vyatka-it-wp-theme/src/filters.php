@@ -38,6 +38,21 @@ add_filter('timber/context', function ($context) {
         'hide_empty' => false
     ]);
 
+    $context['categories_proj'] = Timber::get_terms([
+        'taxonomy' => 'categories-project',
+        'orderby' => 'id',
+        'order' => 'ASC',
+        'parent' => 0,
+        'hide_empty' => false,
+    ]);
+
+
+    // Подсчитываем количество терминов
+    $category_count = count($context['categories_proj']);
+
+// Добавляем количество к ссылке
+    $context['work_count'] = $category_count;
+
     return $context;
 });
 
