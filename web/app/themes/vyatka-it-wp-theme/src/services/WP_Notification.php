@@ -56,6 +56,10 @@ class WP_Notification
             $message .= "E-Mail: {$request->get_param('email')} \r\n";
         }
 
+        if ($request->get_param('messege')) {
+            $message .= "Сообщение: {$request->get_param('messege')} \r\n";
+        }
+
         if ($request->get_param('subject')) {
             $message .= "Дополнительно: {$request->get_param('subject')} \r\n";
         }

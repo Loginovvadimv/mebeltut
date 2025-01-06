@@ -8,7 +8,8 @@ class Telegram
 {
 
     private $token = '8008868628:AAHtrjZb2ffvdj_hk-NnyOBbRDly2LdHJ7Q'; // Токен
-    private $chat_id = '-1002204416048'; // ID канала
+//    private $chat_id = '-1002204416048'; // ID канала
+    private $chat_id = '-4677435572'; // ID канала
 
     public function send($message)
     {
