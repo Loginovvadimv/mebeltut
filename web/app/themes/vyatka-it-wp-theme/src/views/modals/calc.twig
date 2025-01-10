@@ -37,7 +37,7 @@
 {#          Шкаф-купе Выбор#}
 
 {#Квиз Шкаф-купе 2#}
-          <div class="modal-calcFormWrap" x-show="step1 == 0">
+          <div class="modal-calcFormWrap" x-show="step1 == 2">
             <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите вариант шкафа-купе</div>
             <div class="modal__types">
               {% for item in calculation.choicetwo_rep %}
@@ -61,7 +61,7 @@
 
 
           {#  Квиз-шкаф-3#}
-          <div class="modal-calcFormWrap" x-show="step1 == 1">
+          <div class="modal-calcFormWrap" x-show="step1 == 2">
             <div class="h5 text-caption modal-calcFormWrap__title">3. Количество дверей-купе</div>
             <div class="modal__types modal__types-kitchen">
               {% for item in calculation.choicethree_numberofdoors_rep %}
@@ -106,19 +106,15 @@
           </div>
 
 
-          {#          Квиз-шкаф-5#}
-{#          <div class="modal-calcFormWrap" x-show="step1 == 1">#}
-{#            <div class="h5 text-caption modal-calcFormWrap__title">5. Размеры шкафа по габаритам</div>#}
-{#            <div class="modal__formSubmit">#}
-{#              <div class="form__input-hidden">#}
-{#                <input type="text" name="title" hidden value="Размеры шкафа по габаритам">#}
-{#                <input type="text" name="code" hidden value="order">#}
-{#              </div>#}
-{#              <input class="footer__input Control_L" type="text" name="height" placeholder="Высота">#}
-{#              <input class="footer__input Control_L" type="text" name="width" placeholder="Ширина">#}
-{#              <input class="footer__input Control_L" type="text" name="depth" placeholder="Глубина">#}
-{#            </div>#}
-{#          </div>#}
+{#                    Квиз-шкаф-5#}
+          <div class="modal-calcFormWrap" x-show="step1 == 2">
+            <div class="h5 text-caption modal-calcFormWrap__title">5. Размеры шкафа по габаритам</div>
+            <div class="modal__formSubmit">
+              <input class="footer__input Control_L" type="text" name="height" placeholder="Высота">
+              <input class="footer__input Control_L" type="text" name="width" placeholder="Ширина">
+              <input class="footer__input Control_L" type="text" name="depth" placeholder="Глубина">
+            </div>
+          </div>
 
 
 
@@ -156,8 +152,8 @@
 
 
 {#            Квиз-кухня-3#}
-          <div class="modal-calcFormWrap">
-            <div class="h5 text-caption modal-calcFormWrap__title" x-show="step1 == 0">3. Выберите фасады</div>
+          <div class="modal-calcFormWrap" x-show="step1 == 0">
+            <div class="h5 text-caption modal-calcFormWrap__title" >3. Выберите фасады</div>
             <div class="modal__types">
               {% for item in calculation.choicefour_facades_rep %}
                 <div class="modal__radio modal__radio--type1">
@@ -184,7 +180,7 @@
 
 
 {#                    Квиз-кухня-4#}
-          <div class="modal-calcFormWrap" x-show="step1 == 0">
+          <div class="modal-calcFormWrap" x-show="step1 == 3">
             <div class="h5 text-caption modal-calcFormWrap__title">4. Примерные размеры кухонного гарнитура по стенам</div>
             <div class="modal__formSubmit">
 {#              <div class="form__input-hidden">#}

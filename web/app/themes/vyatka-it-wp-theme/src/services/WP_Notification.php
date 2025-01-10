@@ -56,6 +56,18 @@ class WP_Notification
             $message .= "E-Mail: {$request->get_param('email')} \r\n";
         }
 
+        if ($request->get_param('height')) {
+            $message .= "Высота: {$request->get_param('height')} \r\n";
+        }
+
+        if ($request->get_param('width')) {
+            $message .= "Ширина: {$request->get_param('width')} \r\n";
+        }
+
+        if ($request->get_param('depth')) {
+            $message .= "Глубина: {$request->get_param('depth')} \r\n";
+        }
+
         foreach ($request->get_param('ask') as $question => $answer) {
             $message .= "{$question}: {$answer} \r\n";
         }
