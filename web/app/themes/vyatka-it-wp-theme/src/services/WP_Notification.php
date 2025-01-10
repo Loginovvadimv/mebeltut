@@ -56,6 +56,10 @@ class WP_Notification
             $message .= "E-Mail: {$request->get_param('email')} \r\n";
         }
 
+        foreach ($request->get_param('ask') as $question => $answer) {
+            $message .= "{$question}: {$answer} \r\n";
+        }
+
         if ($request->get_param('messege')) {
             $message .= "Сообщение: {$request->get_param('messege')} \r\n";
         }

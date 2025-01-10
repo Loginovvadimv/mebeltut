@@ -37,73 +37,73 @@
 {#          Шкаф-купе Выбор#}
 
 {#Квиз Шкаф-купе 2#}
-{#          <div class="modal-calcFormWrap" x-show="step1 == 1">#}
-{#            <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите вариант шкафа-купе</div>#}
-{#            <div class="modal__types">#}
-{#              {% for item in calculation.choicetwo_rep %}#}
-{#                <div class="modal__radio modal__radio--type1">#}
-{#                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
-{#                  <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">#}
-{#                    <div class="modal__radioImg">#}
-{#                      <span class="modal__radioImg-circle"></span>#}
-{#                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">#}
-{#                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
-{#                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>#}
-{#                      </svg>#}
-{#                    </div>#}
-{#                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>#}
-{#                  </label>#}
-{#                </div>#}
-{#              {% endfor %}#}
-{#            </div>#}
-{#          </div>#}
+          <div class="modal-calcFormWrap" x-show="step1 == 0">
+            <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите вариант шкафа-купе</div>
+            <div class="modal__types">
+              {% for item in calculation.choicetwo_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
 
 
 
           {#  Квиз-шкаф-3#}
-{#          <div class="modal-calcFormWrap" x-show="step1 == 1">#}
-{#            <div class="h5 text-caption modal-calcFormWrap__title">3. Количество дверей-купе</div>#}
-{#            <div class="modal__types modal__types-kitchen">#}
-{#              {% for item in calculation.choicethree_numberofdoors_rep %}#}
-{#                <div class="modal__radio modal__radio--type1">#}
-{#                  <input type="radio" name="ask[Количество дверей-купе]" id="ask-3-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
-{#                  <label class="modal-calcFormWrapBox" for="ask-3-{{ loop.index }}">#}
-{#                    <div class="modal__radioImg">#}
-{#                      <span class="modal__radioImg-circle"></span>#}
-{#                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">#}
-{#                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
-{#                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>#}
-{#                      </svg>#}
-{#                    </div>#}
-{#                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>#}
-{#                  </label>#}
-{#                </div>#}
-{#              {% endfor %}#}
-{#            </div>#}
-{#          </div>#}
+          <div class="modal-calcFormWrap" x-show="step1 == 1">
+            <div class="h5 text-caption modal-calcFormWrap__title">3. Количество дверей-купе</div>
+            <div class="modal__types modal__types-kitchen">
+              {% for item in calculation.choicethree_numberofdoors_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Количество дверей-купе]" id="ask-3-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-3-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
 
 
           {#  Квиз-шкаф-4#}
-{#          <div class="modal-calcFormWrap" x-show="step1 == 1">#}
-{#            <div class="h5 text-caption modal-calcFormWrap__title">4. Внешний вид дверей-купе</div>#}
-{#            <div class="modal__types">#}
-{#              {% for item in calculation.choicefour_appearance_rep %}#}
-{#                <div class="modal__radio modal__radio--type1">#}
-{#                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
-{#                  <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">#}
-{#                    <div class="modal__radioImg">#}
-{#                      <span class="modal__radioImg-circle"></span>#}
-{#                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">#}
-{#                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
-{#                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>#}
-{#                      </svg>#}
-{#                    </div>#}
-{#                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>#}
-{#                  </label>#}
-{#                </div>#}
-{#              {% endfor %}#}
-{#            </div>#}
-{#          </div>#}
+          <div class="modal-calcFormWrap" x-show="step1 == 2">
+            <div class="h5 text-caption modal-calcFormWrap__title">4. Внешний вид дверей-купе</div>
+            <div class="modal__types">
+              {% for item in calculation.choicefour_appearance_rep %}
+                <div class="modal__radio modal__radio--type1">
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">
+                    <div class="modal__radioImg">
+                      <span class="modal__radioImg-circle"></span>
+                      <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
+                      <svg class="modal__calcSvg" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM17.6564 9.3439L10.4243 16.5765L6 12.1522L7.41421 10.7379L10.4241 13.7478L16.2422 7.92969L17.6564 9.3439Z" fill="rgba(230, 75, 102, 1)"/>
+                      </svg>
+                    </div>
+                    <div class="Control_M modal-calcWrapName text-main">{{ item.title }}</div>
+                  </label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
 
 
           {#          Квиз-шкаф-5#}

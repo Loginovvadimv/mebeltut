@@ -55,6 +55,7 @@
     flex-direction: column
     position: relative
     z-index: 3
+    max-height: 450px
   &__wrapTextIcon
     width: 88px
     height: 88px
@@ -127,11 +128,12 @@
   .howToOrder
     &__wrap
       flex-direction: column
-      height: unset
+      min-height: 800px
     &__wrapLeft
       min-width: unset
       width: 100%
       padding: 116px 16px 16px 16px
+      min-height: 510px
     &__wrapRec
       display: none
     &__wrapTextIcon
@@ -152,10 +154,8 @@
       display: none
     &__wrapBottomFrame
       display: none
-    &__wrapLeft
-      min-height: 510px
     &__wrapRight
-      height: 288px
+      height: 100%
       object-fit: cover
 
 
@@ -168,6 +168,7 @@
       min-width: unset
       width: 100%
       padding: 116px 16px 16px 16px
+      min-height: 600px
     &__wrapRec
       display: none
     &__wrapTextIcon
@@ -182,17 +183,15 @@
       overflow-x: auto
     &__wrapRightLogo
       display: none
-    &__wrapRight
-      width: 100%
     &__wrapRightFrame
       display: none
     &__wrapBottomFrame
       display: none
-    &__wrapLeft
-      min-height: 510px
     &__wrapRight
-      height: 288px
+      height: 100%
       object-fit: cover
+    &__wrapText
+      max-height: 530px
 
 
 @media (min-width: 768px) and (max-width: 1023px)
