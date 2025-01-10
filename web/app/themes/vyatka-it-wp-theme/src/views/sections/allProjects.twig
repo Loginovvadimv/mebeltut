@@ -30,13 +30,14 @@
     <div class="allProjects__wrapper">
       {% for progect in categories_proj %}
         {% for item in progect.posts %}
-          <div class="projects__wrap" x-show="tab === '{{ progect.id }}'" data-modal="project{{ loop.index }}">
+          <div class="projects__wrap" x-show="tab === '{{ progect.id }}'" data-modal="projectmodal{{ loop.index }}">
             <img class="projects__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
             <img class="projects__wrapImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
             <div class="projects__wrapTitle text-main-contrast h5">{{ item.title }}</div>
           </div>
         {% endfor %}
       {% endfor %}
+
     </div>
       <button class="text-caption Uppercase-M btn-white allProjects__showAll">показать еще<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M11.25 3.75V11.25H3.75V12.75H11.25V20.25H12.75V12.75H20.25V11.25H12.75V3.75H11.25Z" fill="#0C0C0C" fill-opacity="0.4"/>
@@ -48,7 +49,7 @@
 {% for progect in categories_proj %}
           {% for item in progect.posts %}
 
-            <div class="modal open" data-modal-type="project{{ loop.index }}" hidden>
+            <div class="modal open" data-modal-type="projectmodal{{ loop.index }}" hidden>
               <div class="modal__wrapper form__wrapper modal__wrapperProject modal__wrapperProject-{{ loop.index }}">
                                 <div class="slider__arrows">
                                   <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
