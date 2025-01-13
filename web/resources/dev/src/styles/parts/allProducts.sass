@@ -209,7 +209,7 @@
   .custom-wrapper
     width: 100%
     position: relative
-    margin-top: 16px
+    margin-top: 0px
   .price-slider
     background: rgba(26, 59, 48, 1)
     height: 100%
@@ -302,7 +302,7 @@
         display: none
 
 
-@media (max-width: 767px)
+@media (max-width: 1023px)
   .allProducts
     &__slogan
       padding: 24px
@@ -319,9 +319,7 @@
     &__wrapper
       flex-direction: column
       gap: 0
-    &__container
-      grid-template-columns: 1fr
-      gap: 8px
+
     &__filterWrapper
       min-width: unset
     &__containerBox
@@ -351,3 +349,38 @@
     &__containerBox
       margin-top: 0
 
+@media (max-width: 500px)
+  .allProducts
+    &__container
+      grid-template-columns: 1fr
+      gap: 8px
+
+
+@media (min-width: 501px) and (max-width: 767px)
+  .allProducts
+    &__container
+      grid-template-columns: 1fr 1fr
+      gap: 8px
+
+
+
+@media (min-width: 1024px) and (max-width: 1200px)
+  .allProducts
+    &__wrapper
+      gap: 20px
+    &__container
+      grid-template-columns: 1fr
+
+
+@media (min-width: 1201px) and (max-width: 1350px)
+  .allProducts
+    &__wrapper
+      gap: 20px
+    &__container
+      grid-template-columns: 1fr 1fr
+
+
+@media (min-width: 1351px) and (max-width: 1500px)
+  .allProducts
+    &__wrapper
+      gap: 20px

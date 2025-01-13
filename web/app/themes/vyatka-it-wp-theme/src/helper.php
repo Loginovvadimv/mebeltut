@@ -184,3 +184,198 @@ function display_category_image($category)
     //    echo '<img src="' . $image . '" alt="' . $category->name . '" />';
     //}
 }
+
+
+function generate_filters($category = null)
+{
+    $filters = [];
+
+    // Формируем массивы для выборки самого дешевого и самого дорогого товара
+    $min_price_posts_args = [
+        'ignore_custom_sort' => true,
+        'post_type' => 'product',
+        'meta_key' => 'price',
+        'orderby' => 'meta_value_num',
+        'order' => 'ASC',
+        'numberposts' => 1
+    ];
+
+    $max_price_posts_args = [
+        'ignore_custom_sort' => true,
+        'post_type' => 'product',
+        'meta_key' => 'price',
+        'orderby' => 'meta_value_num',
+        'order' => 'DESC',
+        'numberposts' => 1
+    ];
+
+    // Если в аргумент передадим объект категории то применяем фильтрацию по этим категориям
+    if ($category) {
+        $min_price_posts_args['tax_query'] = [
+            [
+                'taxonomy' => 'categories-products',
+                'field' => 'term_id',
+                'terms' => $category->term_id
+            ]
+        ];
+        $max_price_posts_args['tax_query'] = [
+            [
+                'taxonomy' => 'categories-products',
+                'field' => 'term_id',
+                'terms' => $category->term_id
+            ]
+        ];
+    }
+
+    // Выбираем эти товары (дешевые/дорогие)
+    $min_price_posts = get_posts($min_price_posts_args);
+    $max_price_posts = get_posts($max_price_posts_args);
+
+    // Формируем массив с возможными ценами на основе выборки выше
+    if ($min_price_posts && $max_price_posts) {
+        $min_price = get_field('price', $min_price_posts[0]->ID);
+        $max_price = get_field('price', $max_price_posts[0]->ID);
+
+        $filters['price'] = [
+            'min' => $min_price,
+            'min_current' => !empty($_GET['price']['min']) ? $_GET['price']['min'] : $min_price,
+            'max' => $max_price,
+            'max_current' => !empty($_GET['price']['max']) ? $_GET['price']['max'] : $max_price,
+        ];
+    }
+
+    // Получение объекта ACF поля со всеми его настройками и значениями
+    $style = get_field_object('field_6784eedc5522a'); // Стиль
+
+    if ($style) {
+        // Формируем новый массив значений на основе значений из ACF поля
+        $values = get_attribute_values($style['name'], $style['choices']);
+
+        // Заносим в массив название поля, его код и новые значения
+        $filters['auto']['styles'] = [
+            'name' => $style['label'],
+            'code' => $style['name'],
+            'values' => $values,
+        ];
+    }
+
+    $material = get_field_object('field_6784efe275711'); // Материал
+
+    if ($material) {
+        // Формируем новый массив значений на основе значений из ACF поля
+        $values = get_attribute_values($material['name'], $material['choices']);
+
+        // Заносим в массив название поля, его код и новые значения
+        $filters['auto']['material'] = [
+            'name' => $material['label'],
+            'code' => $material['name'],
+            'values' => $values,
+        ];
+    }
+
+    return $filters;
+}
+
+function get_attribute_values($attribute_name, $values)
+{
+    $data = [];
+
+    // Идем по каждому значению и добавляем его в массив зачений
+    foreach ($values as $choice) {
+        // Проверяем есть ли данное значение в $_GET параметрах, функция вернет true если есть
+        $active = check_attribute_in_parameters($attribute_name, $choice);
+
+        $data[] = [
+            'value' => $choice,
+            'checked' => $active
+        ];
+    }
+
+    return $data;
+}
+
+function check_attribute_in_parameters($attribute, $value)
+{
+    // Проверяем есть ли какие либо аттрибуты и есть ли в этих аттрибутах нужный нам аттрибут
+    if (!empty($_GET['attribute']) && !empty($_GET['attribute'][$attribute])) {
+        // Вернет true если указанное значение есть в аттрибуте из $_GET параметров
+        return in_array($value, $_GET['attribute'][$attribute]);
+    }
+
+    return false;
+}
+
+function apply_product_sort($args)
+{
+    if (isset($_GET['sort']) && !empty($_GET['sort'])) {
+        $parts = explode('_', $_GET['sort']);
+
+        if ('price' === $parts[0]) {
+            $args['orderby'] = [
+                'price' => $parts[1],
+            ];
+
+            if (!empty($args['meta_query'])) {
+                $args['meta_query']['price'] = [
+                    'key' => 'price',
+                    'type' => 'NUMERIC',
+                    'compare' => 'EXISTS'
+                ];
+            } else {
+                $args['meta_query'] = [
+                    'price' => [
+                        'key' => 'price',
+                        'type' => 'NUMERIC',
+                        'compare' => 'EXISTS'
+                    ]
+                ];
+            }
+        } else {
+            $args['orderby'] = 'meta_value';
+            $args['order'] = $parts[1];
+            $args['meta_key'] = $parts[0];
+        }
+    }
+
+    return $args;
+}
+
+function apply_product_filter($args)
+{
+    $defaultPerPage = 12;
+    // Проверяем есть ли аттрибуты в $_GET параметрах
+    if (!empty($_GET['attribute'])) {
+        // Проходимаем по каждому аттрибуту и добавляем его в массив с фильтрами
+        foreach ($_GET['attribute'] as $key => $value) {
+            $args['meta_query'][] = [
+                [
+                    'key'   => $key,
+                    'value' => $value,
+                ]
+            ];
+        }
+    }
+
+    // Проверяем есть ли цена в $_GET параметрах
+    if (!empty($_GET['price'])) {
+        // Добавляем фильтр по цене, делаем вариант "Между двумя значениями"
+        $args['meta_query'][] = [
+            [
+                'key'     => 'price',
+                'value'   => [
+                    $_GET['price']['min'],
+                    $_GET['price']['max'],
+                ],
+                'type'    => 'numeric',
+                'compare' => 'BETWEEN',
+            ]
+        ];
+    }
+    if (!empty($_GET['post_page'])) {
+        // Добавляем фильтр по цене, делаем вариант "Между двумя значениями"
+        $args['posts_per_page'] = $_GET['post_page']*$defaultPerPage;
+    }else{
+        $args['posts_per_page'] =$defaultPerPage;
+    }
+    return $args;
+}

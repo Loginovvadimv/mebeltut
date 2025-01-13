@@ -1,7 +1,7 @@
 <div class="modal open calc" data-modal-type="calc" hidden>
   <div class="modal__wrapper form__wrapper modal__calcWrapper">
     <div class="h3 modal__calcTitle text-main">Рассчитать стоимость</div>
-    <form class="form calc-form" x-data="{step1: ''}">
+    <form class="form calc-form" x-data="{step1: 1}">
       <div class="form__input-hidden">
         <input type="text" name="title" hidden value="Рассчитать стоимость">
         <input type="text" name="code" hidden value="order">
@@ -42,7 +42,7 @@
             <div class="modal__types">
               {% for item in calculation.choicetwo_rep %}
                 <div class="modal__radio modal__radio--type1">
-                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-2-{{ loop.index }}" value="{{ item.title }}">
                   <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">
                     <div class="modal__radioImg">
                       <span class="modal__radioImg-circle"></span>
@@ -60,13 +60,13 @@
 
 
 
-          {#  Квиз-шкаф-3#}
+{#            Квиз-шкаф-3#}
           <div class="modal-calcFormWrap" x-show="step1 == 2">
             <div class="h5 text-caption modal-calcFormWrap__title">3. Количество дверей-купе</div>
             <div class="modal__types modal__types-kitchen">
               {% for item in calculation.choicethree_numberofdoors_rep %}
                 <div class="modal__radio modal__radio--type1">
-                  <input type="radio" name="ask[Количество дверей-купе]" id="ask-3-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+                  <input type="radio" name="ask[Количество дверей-купе]" id="ask-3-{{ loop.index }}" value="{{ item.title }}">
                   <label class="modal-calcFormWrapBox" for="ask-3-{{ loop.index }}">
                     <div class="modal__radioImg">
                       <span class="modal__radioImg-circle"></span>
@@ -83,13 +83,14 @@
           </div>
 
 
-          {#  Квиз-шкаф-4#}
+{#            Квиз-шкаф-4#}
           <div class="modal-calcFormWrap" x-show="step1 == 2">
             <div class="h5 text-caption modal-calcFormWrap__title">4. Внешний вид дверей-купе</div>
             <div class="modal__types">
               {% for item in calculation.choicefour_appearance_rep %}
                 <div class="modal__radio modal__radio--type1">
-                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
+{#                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>#}
+                  <input type="radio" name="ask[Вариант шкафа-купе]" id="ask-4-{{ loop.index }}" value="{{ item.title }}">
                   <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">
                     <div class="modal__radioImg">
                       <span class="modal__radioImg-circle"></span>
@@ -123,13 +124,13 @@
 
 
 {#          Квиз кухни 2#}
-          <div class="modal-calcFormWrap" x-show="step1 == 0">
+          <div class="modal-calcFormWrap" x-show="step1 == 1">
             <div class="h5 text-caption modal-calcFormWrap__title">2. Выберите форму кухни</div>
             <div class="modal__types modal__types-kitchen">
               {% for item in calculation.choicetwokitchen_rep %}
                 <div class="modal__radio modal__radio--type1">
-                  <input type="radio" name="ask[Выберите форму кухни]" id="ask-2-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
-                  <label class="modal-calcFormWrapBox" for="ask-2-{{ loop.index }}">
+                  <input type="radio" name="ask[Выберите форму кухни]" id="ask-5-{{ loop.index }}" value="{{ item.title }}">
+                  <label class="modal-calcFormWrapBox" for="ask-5-{{ loop.index }}">
                     <div class="modal__radioImg">
                       <span class="modal__radioImg-circle"></span>
                       <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
@@ -152,13 +153,13 @@
 
 
 {#            Квиз-кухня-3#}
-          <div class="modal-calcFormWrap" x-show="step1 == 0">
-            <div class="h5 text-caption modal-calcFormWrap__title" >3. Выберите фасады</div>
+          <div class="modal-calcFormWrap" x-show="step1 == 1">
+            <div class="h5 text-caption modal-calcFormWrap__title" >4. Выберите фасады</div>
             <div class="modal__types">
               {% for item in calculation.choicefour_facades_rep %}
                 <div class="modal__radio modal__radio--type1">
-                  <input type="radio" name="ask[Выберите фасады]" id="ask-4-{{ loop.index }}" value="{{ item.title }}" {{ loop.first ? "checked" : "" }}>
-                  <label class="modal-calcFormWrapBox" for="ask-4-{{ loop.index }}">
+                  <input type="radio" name="ask[Выберите фасады]" id="ask-6-{{ loop.index }}" value="{{ item.title }}">
+                  <label class="modal-calcFormWrapBox" for="ask-6-{{ loop.index }}">
                     <div class="modal__radioImg">
                       <span class="modal__radioImg-circle"></span>
                       <img class="modal__radioImg-image" src="{{ item.img }}" alt="{{ item.title }}">
@@ -180,8 +181,8 @@
 
 
 {#                    Квиз-кухня-4#}
-          <div class="modal-calcFormWrap" x-show="step1 == 3">
-            <div class="h5 text-caption modal-calcFormWrap__title">4. Примерные размеры кухонного гарнитура по стенам</div>
+          <div class="modal-calcFormWrap" x-show="step1 == 1">
+            <div class="h5 text-caption modal-calcFormWrap__title">5. Примерные размеры кухонного гарнитура по стенам</div>
             <div class="modal__formSubmit">
 {#              <div class="form__input-hidden">#}
 {#                <input type="text" name="kitwidth" hidden value="Примерные размеры кухонного гарнитура по стенам">#}
@@ -226,8 +227,6 @@
             <path d="M12.8691 4.66211L11.8809 5.65039L16.543 10.3125H2.75V11.6875H16.543L11.8809 16.3496L12.8691 17.3379L18.7129 11.4941L19.1855 11L18.7129 10.5059L12.8691 4.66211Z" fill="rgba(255, 255, 255, 1)"/>
           </svg>
         </button>
-
-
         <button class="Control_M btn-black modal__calcButton" data-calc-submit type="submit" hidden>Рассчитать</button>
       </div>
 

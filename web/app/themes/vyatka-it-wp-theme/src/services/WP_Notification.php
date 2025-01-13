@@ -68,6 +68,10 @@ class WP_Notification
             $message .= "Глубина: {$request->get_param('depth')} \r\n";
         }
 
+        if ($request->get_param('size')) {
+            $message .= "Примерные размеры кухонного гарнитура по стенам: {$request->get_param('size')} \r\n";
+        }
+
         foreach ($request->get_param('ask') as $question => $answer) {
             $message .= "{$question}: {$answer} \r\n";
         }
