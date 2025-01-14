@@ -1,0 +1,46 @@
+.pagination
+  display: flex
+  justify-content: center
+  gap: 16px
+  &__pages
+    display: flex
+    gap: 16px
+  &__page
+    width: 60px
+    height: 60px
+    border-radius: 50%
+    background: #FFFFFF
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 80px
+  .active
+    background: rgba(51, 85, 193, 1)
+    color: #FFFFFF
+  &__arrow
+    width: 60px
+    height: 60px
+    border-radius: 50%
+    background: #FFFFFF
+    display: flex
+    justify-content: center
+    align-items: center
+    margin-top: 80px
+
+
+@media (max-width: 1023px)
+  .pagination
+    gap: 8px
+    &__page
+      width: 28px
+      height: 28px
+      margin-top: 24px
+    &__pages
+      gap: 8px
+    &__arrow
+      width: 28px
+      height: 28px
+      margin-top: 24px
+      svg
+        width: 14px
+        height: 14px

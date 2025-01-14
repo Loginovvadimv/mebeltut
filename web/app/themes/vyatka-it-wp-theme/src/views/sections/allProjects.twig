@@ -5,9 +5,9 @@
     <div class="allProjects__categories">
       <div class="allProjects__category h5" @click="tab = 'all'" :class="{ 'active': tab === 'all' }">Все</div>
       {% for progect in categories_proj %}
-        <div class="allProjects__category h5" @click="tab = '{{ progect.id }}'" :class="{ 'active': tab === '{{ progect.id }}' }">
+        <a href="{{ progect.link }}" class="allProjects__category h5" :class="{ 'active': tab === '{{ progect.id }}' }">
           {{ progect.title }}
-        </div>
+        </a>
       {% endfor %}
     </div>
 
@@ -19,8 +19,6 @@
               <img class="projects__wrapImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
               <div class="projects__wrapTitle text-main-contrast h5">{{ item.title }}</div>
             </div>
-
-
           {% endfor %}
         {% endfor %}
       </div>

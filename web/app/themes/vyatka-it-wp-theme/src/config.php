@@ -2,9 +2,11 @@
 
 Timber::$dirname = 'src/views';
 
-const VERSION = 1.04;
+const VERSION = 1.05;
 const MODE = 0; // 0 - DEV, 1 - PROD
 define('ASSETS', get_home_url() . '/resources/' . (MODE ? 'app' : 'dev') . '/assets');
+
+define('POSTS_PER_PAGE_PRODUCT', 1);
 
 #region Добавление стилей и скриптов
 add_action('wp_enqueue_scripts', 'setup_work_files');

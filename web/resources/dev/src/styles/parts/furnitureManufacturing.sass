@@ -43,9 +43,14 @@
     display: flex
     gap: 12px
     cursor: pointer
+    .swiper-pagination-bullet
+      display: flex
+      align-items: center
+      gap: 12px
   .swiper-pagination-bullet-active
-    color: rgba(255, 255, 255, 1)
-    border-bottom: 1px solid rgba(255, 255, 255, 1)
+    .howToOrder__bulletNumber
+      color: rgba(255, 255, 255, 1)
+      border-bottom: 1px solid rgba(255, 255, 255, 1)
   .swiper-slide-active
     .furnitureManufacturing__bg
       transform: scale(1.1)
@@ -99,6 +104,10 @@
     height: 100%
     background: rgba(0, 0, 0, 0.48)
     z-index: 4
+  .swiper-pagination-bullet
+    &:last-child
+      span
+        display: none
 
 @media (max-width: 767px)
   .furnitureManufacturing
@@ -114,6 +123,7 @@
       font-weight: 300
       font-size: 20px
       line-height: 28px
+
     &__text
       padding: 16px
     &__textTitle

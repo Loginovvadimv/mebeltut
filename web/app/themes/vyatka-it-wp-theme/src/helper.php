@@ -357,7 +357,8 @@ function apply_product_sort($args)
 
 function apply_product_filter($args)
 {
-    $defaultPerPage = 12;
+    $defaultPerPage = POSTS_PER_PAGE_PRODUCT;
+
     // Проверяем есть ли аттрибуты в $_GET параметрах
     if (!empty($_GET['attribute'])) {
         // Проходимаем по каждому аттрибуту и добавляем его в массив с фильтрами
@@ -389,8 +390,14 @@ function apply_product_filter($args)
     if (!empty($_GET['post_page'])) {
         // Добавляем фильтр по цене, делаем вариант "Между двумя значениями"
         $args['posts_per_page'] = $_GET['post_page']*$defaultPerPage;
-    }else{
+    } else {
         $args['posts_per_page'] =$defaultPerPage;
     }
+
     return $args;
+}
+
+function format_price($price)
+{
+    return number_format($price, 0, '.', ' ');
 }

@@ -22,6 +22,7 @@
     border-right: 1px solid rgba(12, 12, 12, 0.08)
     //border-left: 1px solid rgba(12, 12, 12, 0.08)
     padding: 26px 35px
+    position: relative
     &:first-child
       border-left: 1px solid rgba(12, 12, 12, 0.08)
 
@@ -102,7 +103,17 @@
           fill: #e64b66
   &--mobile
     display: none
-
+  &__progsCount
+    font-family: WixMadeforText, sans-serif
+    font-weight: 500
+    font-size: 12px
+    line-height: 16px
+    text-align: center
+    color: rgba(0, 0, 0, 0.24)
+    position: absolute
+    bottom: 12px
+    left: 50%
+    transform: translateX(-50%)
 
 
 @media (max-width: 767px)

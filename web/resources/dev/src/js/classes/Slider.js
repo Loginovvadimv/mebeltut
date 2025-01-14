@@ -175,7 +175,7 @@ export default class Slider {
             clickable: true,
             renderBullet: function (index, className) {
               const bulletNumber2 = "0" + (index + 1);
-              return '<div class="' + className + '">' + bulletNumber2 + (index < this.slides.length - 1 ? "<span>-</span>" : "") + '</div>';
+              return '<div class="' + className + '"><div class="howToOrder__bulletNumber">' + bulletNumber2 + '</div>' + (index < this.slides.length - 1 ? "<span>-</span>" : "") + '</div>';
               // + "<span class='pagination__span'>-</span>";
             },
           },

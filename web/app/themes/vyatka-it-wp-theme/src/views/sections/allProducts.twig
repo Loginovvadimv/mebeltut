@@ -26,8 +26,9 @@
       </div>
     {% endif %}
 
-
+    <h2 class="allProducts__termTitle">Все {{ term.title }}</h2>
     <div class="allProducts__wrapper">
+
 {#        Подключаем шаблон фильтров и передаем в него массив с фильтрами#}
       <div class="allProducts__filterWrapper">
 {#            <h2 class="allProducts__filterWrapperTitle">Все {{ term.name }}</h2>#}
@@ -39,6 +40,7 @@
   {% include 'parts/filter-card.twig' %}
   </div>
   <div class="allProducts__container">
+
 
       {% for item in posts%}
         <div class="allProducts__wrap">
@@ -68,41 +70,16 @@
       <path d="M11.25 3.75V11.25H3.75V12.75H11.25V20.25H12.75V12.75H20.25V11.25H12.75V3.75H11.25Z" fill="#0C0C0C" fill-opacity="0.4"/>
     </svg>
   </button>
+
+  {% include 'parts/pagination.twig' with {posts: posts} %}
+
 </div>
 </div>
 
 
-    <div class="pagination">
-      {% if posts.pagination.prev %}
-        <a class="pagination__prev pagination__arrow" href="{{ posts.pagination.prev.link }}">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.5002 3.99991L15.0002 2.99991L6.00015 12L15.0002 20.9999L16.5002 19.9999L8.50015 11.9999L16.5002 3.99991Z" fill="black"/>
-          </svg>
-        </a>
-      {% endif %}
+{#{% include 'parts/pagination.twig' with {posts: posts} %}#}
 
-      <ul class="pagination__pages">
-        {% for posts in products.pagination.pages %}
-          {% if page.current %}
-            <a href="{{ page.link }}" class="{{ page.class }}"><li class="active pagination__page">
-                {{ page.title }}
-              </li></a>
-          {% else %}
-            <a href="{{ page.link }}" class="{{ page.class }}"><li class="pagination__page">
-                {{ page.title }}
-              </li></a>
-          {% endif %}
-        {% endfor %}
-      </ul>
 
-      {% if posts.pagination.next %}
-        <a class="pagination__next pagination__arrow" href="{{ posts.pagination.next.link }}">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 20.0001L7.5 21.0001L16.5 12L7.5 3.00009L6 4.00009L14 12.0001L6 20.0001Z" fill="black"/>
-          </svg>
-        </a>
-      {% endif %}
-    </div>
     </div>
 </section>
 

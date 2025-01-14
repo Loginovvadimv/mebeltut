@@ -41,14 +41,21 @@
       {% endif %}
 
       <div class="product__infoWrap">
+
+
+        <script src="https://yastatic.net/share2/share.js"></script>
+        <div class="ya-share2 product__ya-share2-desc" data-curtain data-size="l" data-limit="0" data-more-button-type="short" data-services="vkontakte,odnoklassniki,telegram,whatsapp"></div>
+        <div class="ya-share2 product__ya-share2-mob" data-curtain data-size="m" data-limit="0" data-more-button-type="short" data-services="vkontakte,odnoklassniki,telegram,whatsapp"></div>
+
+
         <div class="product__infoWrapContainer">
         <div class="product__infoText">
           <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
 
           {% if post.kit_pricesale %}
-            <div class="h5 text-caption product__infoPrice">Цена с установкой: <div class="product__infoPriceFlex"><span class="text-main">от {{ post.kit_pricesale }} руб.</span><del><span class="product__infoDelPrice Old_price_s">от {{ post.price }} руб.</span></del></div></div>
+            <div class="h5 text-caption product__infoPrice">Цена с установкой: <div class="product__infoPriceFlex"><span class="text-main">от {{function('format_price', post.kit_pricesale) }} руб.</span><del><span class="product__infoDelPrice Old_price_s">от {{function('format_price', post.price) }} руб.</span></del></div></div>
             {%else %}
-              <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.price }} руб.</span></div>
+              <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ function('format_price', post.price) }} руб.</span></div>
           {% endif %}
 
 
@@ -75,6 +82,9 @@
     </div>
   </div>
   {% include 'parts/fixedmenu_readmore.twig' %}
+
+
+
 </section>
 
 
@@ -85,7 +95,7 @@
       <div class="product__infoReadWrapperText">
         <div class="product__infoReadWrap">
           <div class="h3 text-body product__infoReadTitle">{{ post.title }}</div>
-          <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ post.price }} руб.</span></div>
+          <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ function('format_price', post.price) }} руб.</span></div>
         </div>
         <div class="product__infoReadDescr h5 text-caption">
           Описание:<div class="text-main Control_M">{{ post.content }}</div>

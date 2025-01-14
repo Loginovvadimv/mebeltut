@@ -49,6 +49,7 @@
     flex-direction: column
     justify-content: space-between
     max-width: 600px
+    position: relative
   &__infoText
     margin-bottom: 16px
   &__infoTextTitle
@@ -117,7 +118,7 @@
     display: flex
     gap: 8px
   &__applications
-    padding: 36px 0 48px 0
+    padding: 36px 0 0px 0
   &__imgTop
     position: absolute
     top: 24px
@@ -149,7 +150,15 @@
     gap: 8px
     flex-wrap: wrap
     align-items: center
-
+  &__ya-share2-desc
+    position: absolute
+    top: 36px
+    right: 24px
+  &__ya-share2-mob
+    display: none
+    position: absolute
+    top: 12px
+    right: 12px
 
 @media (max-width: 767px)
   .product
@@ -189,6 +198,10 @@
       gap: 8px
       flex-wrap: wrap
       align-items: center
+    &__ya-share2-desc
+      display: none
+    &__ya-share2-mob
+      display: block
 
 
 @media (max-width: 500px)

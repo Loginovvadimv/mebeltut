@@ -29,7 +29,6 @@ add_filter('timber/context', function ($context) {
     $context['howorder'] = get_field('howorder', 'options');
     $context['reviews'] = get_field('reviews', 'options');
 
-
     $context['categories_prod'] = Timber::get_terms([
         'taxonomy' => 'categories-product',
         'orderby' => 'id',
@@ -45,7 +44,6 @@ add_filter('timber/context', function ($context) {
         'parent' => 0,
         'hide_empty' => false,
     ]);
-
 
     return $context;
 });

@@ -58,10 +58,25 @@
                 </svg>
                 Каталог</button></li>
 
+            {% set projects_count = post.project|length %}
+
+
+            {% set total_posts = 0 %}
+            {% for progect in categories_proj %}
+              {% for item in progect.posts %}
+                {% set total_posts = total_posts + 1 %}
+              {% endfor %}
+            {% endfor %}
 
             {% for item in main_menu.items %}
               <li class="menu_control header__li uppercase">
-                <a class="link {{ item.current ? "active" : "" }}" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>{{ item.title }}</a>
+                <a class="link {{ item.current ? "active" : "" }}" href="{{ item.link }}" {{ item.is_target_blank ? 'target="_blank"' }}>
+                  {% if item.title == "Наши работы" %}
+                    {{ item.title }} <div class="header__progsCount">({{ total_posts }})</div>
+                  {% else %}
+                    {{ item.title }}
+                  {% endif %}
+                </a>
               </li>
             {% endfor %}
           </ul>

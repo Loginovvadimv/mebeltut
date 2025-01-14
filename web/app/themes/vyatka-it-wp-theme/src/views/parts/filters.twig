@@ -23,8 +23,8 @@
   <div class="allProducts__topLine"></div>
 
   <div class="allProducts__filterCatBox">
-    <div class="allProducts__filterCategory allProducts__filterCategoryPrice Control_M cat" @click="togglePrice()">ЦЕНА/КГ
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div class="allProducts__filterCategory allProducts__filterCategoryPrice Control_M cat" @click="togglePrice()">Цена
+      <svg :class="{ 'rotate': activeFilter === 'price' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M7 15L12 10.5L17 15L18 14L12 8L6 14L7 15Z" fill="#0C0C0C" fill-opacity="0.4"/>
       </svg>
     </div>
@@ -33,7 +33,6 @@
       <div class="price-input-container">
         <div class="price-input">
           <div class="price-field control_s text-disable">
-            <span>от</span>
             <input type="number"
                    class="min-input"
                    name="price[min]"
@@ -43,7 +42,6 @@
           </div>
           <div class="allProducts__def"></div>
           <div class="price-field control_s text-disable">
-            <span>до</span>
             <input type="number"
                    class="max-input"
                    name="price[max]"
@@ -59,11 +57,15 @@
   <div class="allProducts__line"></div>
 
   {% for filter in filters.auto %}
-    <div class="allProducts__filterCategory control_m cat" @click="toggleActiveFilter('{{ filter.code }}')">
+    <div class="allProducts__filterCategory Control_M text-caption cat" @click="toggleActiveFilter('{{ filter.code }}')">{{ filter.name }}
+{#      <svg :class="{ 'rotate': activeFilter === '{{ filter.code }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#        <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>#}
+{#      </svg>#}
+
       <svg :class="{ 'rotate': activeFilter === '{{ filter.code }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>
+        <path d="M7 15L12 10.5L17 15L18 14L12 8L6 14L7 15Z" fill="#0C0C0C" fill-opacity="0.4"/>
       </svg>
-      {{ filter.name }}
+
     </div>
 
     <div class="allProducts__mdgs" x-show="activeFilter === '{{ filter.code }}'">
@@ -83,8 +85,9 @@
   {% endfor %}
 
   <div class="allProducts__buttons">
-    <button type="button" class="transparrent-btn control_m " @click="clearFilters">Очистить</button>
-    <button type="submit" class="green-btn control_m">Применить</button>
+    <button type="submit" class="Control_M uppercase">Применить</button>
+    <div class="allProducts__line"></div>
+    <button type="button" class="Control_M uppercase" @click="clearFilters">Сбросить все</button>
   </div>
 </form>
 <script>
@@ -98,6 +101,7 @@
       },
       togglePrice() {
         this.price = !this.price;
+        this.activeFilter = this.activeFilter === 'price' ? '' : 'price';
       },
       toggleActiveFilter(filterCode) {
         this.activeFilter = (this.activeFilter === filterCode ? null : filterCode);
