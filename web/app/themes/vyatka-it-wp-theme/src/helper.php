@@ -273,6 +273,21 @@ function generate_filters($category = null)
         ];
     }
 
+    $fasade = get_field_object('field_6784f11db828f'); // Фасад
+
+    if ($fasade) {
+        // Формируем новый массив значений на основе значений из ACF поля
+        $values = get_attribute_values($fasade['name'], $fasade['choices']);
+
+        // Заносим в массив название поля, его код и новые значения
+        $filters['auto']['fasade'] = [
+            'name' => $fasade['label'],
+            'code' => $fasade['name'],
+            'values' => $values,
+        ];
+    }
+
+
     return $filters;
 }
 

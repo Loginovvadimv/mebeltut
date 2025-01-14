@@ -46,9 +46,9 @@
           <div class="h3 text-body product__infoTextTitle">{{ post.title }}</div>
 
           {% if post.kit_pricesale %}
-            <div class="h5 text-caption product__infoPrice">Цена с установкой: <div class="product__infoPriceFlex"><span class="text-main">от {{ post.kit_pricesale }} руб.</span><del><span class="product__infoDelPrice Old_price_s">от {{ post.kit_price }} руб.</span></del></div></div>
+            <div class="h5 text-caption product__infoPrice">Цена с установкой: <div class="product__infoPriceFlex"><span class="text-main">от {{ post.kit_pricesale }} руб.</span><del><span class="product__infoDelPrice Old_price_s">от {{ post.price }} руб.</span></del></div></div>
             {%else %}
-              <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+              <div class="h5 text-caption product__infoPrice">Цена с установкой: <span class="text-main">от {{ post.price }} руб.</span></div>
           {% endif %}
 
 
@@ -85,7 +85,7 @@
       <div class="product__infoReadWrapperText">
         <div class="product__infoReadWrap">
           <div class="h3 text-body product__infoReadTitle">{{ post.title }}</div>
-          <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ post.kit_price }} руб.</span></div>
+          <div class="h5 text-caption product__infoReadWrapPrice">Цена с установкой: <span class="text-main">от {{ post.price }} руб.</span></div>
         </div>
         <div class="product__infoReadDescr h5 text-caption">
           Описание:<div class="text-main Control_M">{{ post.content }}</div>
@@ -282,7 +282,7 @@
               <div class="relatedProducts__wrap">
                 <a href="{{ postt.link }}" class="relatedProducts__wrapLink"><img class="relatedProducts__wrapImg" src="{{ postt.thumbnail ? postt.thumbnail : plug_url }}" alt="{{ postt.title }}"></a>
                 <a class="relatedProducts__wrapTitle h5 text-caption" href="{{ postt.link }}">{{ postt.title }}</a>
-                <div class="h5 text-main">от {{ postt.kit_price }} ₽</div>
+                <div class="h5 text-main">от {{ postt.price }} ₽</div>
               </div>
             {% endif %}
           {% endfor %}
