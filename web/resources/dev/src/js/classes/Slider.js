@@ -359,18 +359,40 @@ export default class Slider {
         })
       }
 
+      //Слайдер проекты все (Цикл слайдеров)
+      const projectPopupSliders = document.querySelectorAll('.modal__wrapperProject')
+      if (projectPopupSliders.length) {
+        projectPopupSliders.forEach(projectPopupSlider => {
+          this.createSlider(projectPopupSlider, {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            allowTouchMove: true,
+            centeredSlides: false,
+            loop: false,
+            // pagination: {
+            //   el: ".pagination__photos",
+            //   type: "fraction",
+            // },
+          })
+        })
+      }
 
-//Модалка проекты
-//       const modalProject = document.querySelector('.modal__wrapperProject')
-//       if (modalProject) {
-//         this.createSlider(modalProject, {
-//           slidesPerView: 1,
-//           spaceBetween: 0,
-//           allowTouchMove: true,
-//           centeredSlides: true,
-//           loop: true,
-//         })
-//       }
+
+      const wrapperProjectMini = document.querySelectorAll('.modal__wrapperProject-mini')
+      if (wrapperProjectMini.length) {
+        wrapperProjectMini.forEach(slider => {
+          this.createSlider(slider, {
+            slidesPerView: 5,
+            spaceBetween: 12,
+            allowTouchMove: true,
+            loop: false,
+            autoHeight: false,
+            calculateHeight: false,
+          })
+        })
+      }
+
+
 
       //Рассчет стоимости
       const calcform = document.querySelector('.calc-form')

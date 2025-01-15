@@ -1,4 +1,4 @@
-<div class="modal open calc" data-modal-type="calc" hidden>
+<div class="modal open calc modal__calc" data-modal-type="calc" hidden>
   <div class="modal__wrapper form__wrapper modal__calcWrapper">
     <div class="h3 modal__calcTitle text-main">Рассчитать стоимость</div>
     <form class="form calc-form" x-data="{step1: 1}">
@@ -194,7 +194,41 @@
 
 
           {#          Квиз-общий_финал#}
-          <div class="modal-calcFormWrap">
+          <div class="modal-calcFormWrap" x-show="step1 == 1">
+            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
+            <div class="modal__formSubmit">
+              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
+              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
+
+              <div class="footer__checkbox checkbox">
+                <label for="checkbox" class="form__checkbox">
+                  <input type="checkbox" name="checkbox" id="checkbox" checked required>
+                </label>
+                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="modal-calcFormWrap" x-show="step1 == 2">
+            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
+            <div class="modal__formSubmit">
+              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
+              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
+
+              <div class="footer__checkbox checkbox">
+                <label for="checkbox" class="form__checkbox">
+                  <input type="checkbox" name="checkbox" id="checkbox" checked required>
+                </label>
+                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="modal-calcFormWrap final-quiz-wrap" x-show="step1 == 3">
             <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
             <div class="modal__formSubmit">
               <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
@@ -234,3 +268,21 @@
     </form>
   </div>
 </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const radios = document.querySelectorAll('input[name="ask[Стоимость чего нужно рассчитать]"]');
+
+    radios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'Пример') {
+          // Здесь добавьте код для перехода на финальный квиз
+          // Например, скрываем текущий модал и показываем финальный
+          document.querySelectorAll('.modal-calcFormWrap').style.display = 'none'; // Пример скрытия
+          document.querySelector('.final-quiz-wrap').style.display = 'block'; // Пример показа финального квиза
+        }
+      });
+    });
+  });
+</script>

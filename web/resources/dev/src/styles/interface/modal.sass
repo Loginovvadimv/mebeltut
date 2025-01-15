@@ -43,6 +43,11 @@
       height: 48px
       border: 1px solid rgba(0, 0, 0, 0.12)
       border-radius: 50%
+      background-color: white
+      &:hover
+        background-color: rgba(230, 75, 102, 1) !important
+        background: url(./images/icons/closeWh.svg) center no-repeat
+
   &__description
     font-size: 16px
     line-height: 24px
@@ -184,14 +189,15 @@
         display: block
     &__title
       margin: 16px 0
-  .slider__arrows
-    display: flex
-    align-items: center
-    justify-content: space-between
-    button
-      position: static !important
-      top: auto !important
-      left: auto !important
+  &__calc
+    .slider__arrows
+      display: flex
+      align-items: center
+      justify-content: space-between
+      button
+        position: static !important
+        top: auto !important
+        left: auto !important
   &__radioImg
     position: relative
     height: 148px
@@ -223,14 +229,32 @@
           svg
             display: block
   &__wrapperProject
-    max-width: 1000px !important
+    max-width: 1210px !important
     padding: 0 !important
     border-radius: unset !important
     position: relative !important
+    .slider__arrow
+      position: absolute
+      top: 50%
+      transform: translateY(-100%)
+      z-index: 3
+      &--prev
+        left: 16px
+      &--next
+        right: 16px
+
     .modal__close
       z-index: 10
+    .modal__close--fixed
+      width: 55px
+      height: 56px
+      background-color: white
   &__wrapperProjectImg
     width: 100%
+  &__wrapperProjectImage
+    height: 680px
+    width: 100%
+    object-fit: cover
   &__formSubmit
     display: flex
     flex-direction: column
@@ -252,6 +276,30 @@
     .modal__wrapper
       right: 0
       transition: right 2s ease
+  &__wrapperProject-mini
+    position: absolute
+    display: flex
+    gap: 12px
+    bottom: 22px
+    z-index: 3
+    left: 50%
+    transform: translateX(-50%)
+    width: 90%
+    img
+      max-width: 76px
+      height: 52px
+      border-radius: 16px
+      cursor: pointer
+    .active
+      width: 75px
+      height: 51px
+      border: 1px solid rgba(51, 85, 193, 1)
+  .dotted
+    display: none
+  &__wrapperProjectInfo
+    padding: 36px
+    width: 100%
+
 
 
 [data-modal]
@@ -372,7 +420,20 @@
         width: 140px
         height: 56px
         border-radius: 8px
-
+    &__wrapperProjectImage
+      height: 300px
+      min-height: 300px
+    &__wrapperProject
+      overflow: auto
+      width: 98%
+      .modal__close--fixed
+        top: 8px
+        right: 8px
+        width: 24px
+        height: 24px
+    &__wrapperProjectInfo
+      width: 100%
+      padding: 16px
 
 
 @media (min-width: 500px) and (max-width: 767px)
@@ -382,8 +443,31 @@
         height: 120px
     &__radioImg
       height: auto
+    &__wrapperProjectImage
+      height: 450px
+      min-height: 450px
+    &__wrapperProject
+      overflow: auto
+      width: 95%
+      .modal__close--fixed
+        top: 16px
+        right: 16px
+        width: 36px
+        height: 36px
+    &__wrapperProjectInfo
+      width: 100%
+      padding: 24px
 
 
-
-
+@media (min-width: 768px) and (max-width: 1023px)
+  .modal
+    &__wrapperProjectImage
+      height: 600px
+      min-height: 450px
+    &__wrapperProject
+      overflow: auto
+      width: 95%
+    &__wrapperProjectInfo
+      width: 100%
+      padding: 24px
 
