@@ -6,7 +6,8 @@ const VERSION = 1.06;
 const MODE = 0; // 0 - DEV, 1 - PROD
 define('ASSETS', get_home_url() . '/resources/' . (MODE ? 'app' : 'dev') . '/assets');
 
-define('POSTS_PER_PAGE_PRODUCT', 1);
+define('POSTS_PER_PAGE_PRODUCT', 9);
+define('POSTS_PER_PAGE_PROJECT', 9);
 
 #region Добавление стилей и скриптов
 add_action('wp_enqueue_scripts', 'setup_work_files');

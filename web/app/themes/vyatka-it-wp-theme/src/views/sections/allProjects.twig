@@ -37,32 +37,38 @@
   </div>
 </section>
 
-{% for progect in categories_proj %}
-    {% for item in progect.posts %}
-      <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
-        <div class="modal__wrapper form__wrapper modal__wrapperProject">
-                         <div class="swiper modal__swiper">
-                           <div class="swiper-wrapper">
+{% for item in posts %}
+    <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
+      <div class="modal__wrapper form__wrapper modal__wrapperProject" data-slide-toggle>
+         <div class="swiper modal__swiper">
+           <div class="swiper-wrapper">
+              {% for pico in item.project_photos %}
+                {% if pico.photo %}
+                  <img class="modal__wrapperProjectImage" src="{{ pico.photo }}" alt>
+                {% endif %}
+              {% endfor %}
+           </div>
+         </div>
+
+        <div class="">
           {% for pico in item.project_photos %}
             {% if pico.photo %}
-              <img class="modal__wrapperProjectImage" src="{{ pico.photo }}" alt>
+              <img style="width: 50px; height: 50px" src="{{ pico.photo }}" alt data-slide-target="{{ loop.index0 }}">
             {% endif %}
-
           {% endfor %}
-                           </div>
-                         </div>
-          {% if item.project_photos %}
-            <div class="slider__arrows">
-              <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
-                </svg>
-              </button>
-              <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
-                </svg>
-              </button>
-            </div>
-          {% endif %}
+        </div>
+        {% if item.project_photos %}
+          <div class="slider__arrows">
+            <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+            <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+          </div>
+        {% endif %}
 
 
 {#          <div class="modal__wrapperProject-mini">#}
@@ -81,16 +87,15 @@
 {#            </div>#}
 {#          </div>#}
 
-          <button class="modal__close modal__close--fixed" type="button">
-          </button>
+        <button class="modal__close modal__close--fixed" type="button">
+        </button>
 
 
-          <div class="modal__wrapperProjectInfo">
-            <div class="h5 text-caption">{{ item.title }}</div>
-            <div class="Control_L text-body">{{ item.post_content }}</div>
-          </div>
-
+        <div class="modal__wrapperProjectInfo">
+          <div class="h5 text-caption">{{ item.title }}</div>
+          <div class="Control_L text-body">{{ item.post_content }}</div>
         </div>
+
       </div>
-    {% endfor %}
+    </div>
 {% endfor %}

@@ -45,6 +45,13 @@ add_filter('timber/context', function ($context) {
         'hide_empty' => false,
     ]);
 
+    $total_posts = \Timber\Timber::get_posts([
+        'post_type' => 'project',
+        'posts_per_page' => -1
+    ])->count();
+
+    $context['total_posts'] = $total_posts;
+
     return $context;
 });
 
