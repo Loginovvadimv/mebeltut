@@ -34,8 +34,11 @@
     padding: 24px
     height: 456px
     &:hover
-      img
-        transform: scale(1.1)
+      .populars__linkImg
+        transition: .3s all
+        display: none
+      .populars__imgHover
+        display: block
         transition: .3s all
   &__link
     height: 100%
@@ -65,6 +68,7 @@
     display: flex
     align-items: flex-start
     gap: 5px
+    display: none
   &__wrapDop
     top: 24px
     left: 24px
@@ -73,6 +77,9 @@
     background: rgba(12, 12, 12, 0.64)
     position: absolute
     display: none
+  &__imgHover
+    display: none
+
 
 @media (max-width: 424px)
   .populars
@@ -120,6 +127,7 @@
     &__imgTop
       top: 16.7px
       left: 16.7px
+      display: flex
     &__wrapDop
       position: absolute
       top: 16.5px
@@ -128,6 +136,10 @@
       border-radius: 8px
       background: rgba(12, 12, 12, 0.64)
       display: flex
+    &__imgTopIn
+      background-color: rgba(12, 12, 12, 0.64)
+      padding: 2px 8px
+      border-radius: 8px
 
 
 @media (min-width: 424px) and (max-width: 767px)
@@ -184,6 +196,11 @@
     &__imgTop
       top: 16.7px
       left: 16.7px
+      display: flex
+    &__imgTopIn
+      background-color: rgba(12, 12, 12, 0.64)
+      padding: 2px 8px
+      border-radius: 8px
 
 
 

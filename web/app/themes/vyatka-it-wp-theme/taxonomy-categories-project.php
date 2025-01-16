@@ -1,6 +1,4 @@
 <?php
-// Template Name: Наши проекты с реальными фото
-
 use Timber\Helper;
 
 $context = \Timber\Timber::context();
@@ -8,12 +6,12 @@ $context = \Timber\Timber::context();
 //if (!isset($paged) || !$paged) {
 //    $paged = 1;
 //}
-
-$context['breadcrumbs'] = generate_crumbs();
-
+//
 //$object = get_queried_object();
 //
-// //Формируем массив запроса за товарами
+$context['breadcrumbs'] = generate_crumbs();
+//
+//// Формируем массив запроса за товарами
 //$args = [
 //    'post_type' => 'project',
 //    'posts_per_page' => POSTS_PER_PAGE_PRODUCT,
@@ -21,7 +19,7 @@ $context['breadcrumbs'] = generate_crumbs();
 //    'meta_query' => [],
 //    'tax_query' => [
 //        [
-//            'taxonomy' => 'categories-project',
+//            'taxonomy' => 'categories-product',
 //            'field' => 'term_id',
 //            'terms' => $object->term_id
 //        ]
@@ -38,11 +36,6 @@ $context['breadcrumbs'] = generate_crumbs();
 //$context['posts']->pagination([
 //    'end_size' => 1,
 //    'mid_size' => 1
-//]);
-//
-//$context['posts'] = Timber::get_posts([
-//    'post_type' => 'project',
-//    'posts_per_page' => '-1'
 //]);
 
 

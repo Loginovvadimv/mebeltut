@@ -4,8 +4,10 @@
 
       <img class="order__bg" src="{{ post.order.img ? post.order.img : plug_url  }}" alt>
       <div class="order__color"></div>
-      <h2 class="text-main-contrast order__title">{{ post.order.order_title }}</h2>
 
+
+      <div class="order__wrapperContainer">
+      <h2 class="text-main-contrast order__title">{{ post.order.order_title }}</h2>
       <div class="order__price">
         <div class="order__priceTitle h3 text-body">{{ post.order.form_title }}</div>
         <div class="order__priceCount">
@@ -34,6 +36,9 @@
         </div>
         <button class="btn-black order__priceBtn Uppercase-M" data-modal="orders">Заказать расчет</button>
       </div>
+      </div>
+
+
       <div class="order__dopText text-caption h5">
         <div class="order__dopTextContainer">
           <svg class="order__frameTop" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

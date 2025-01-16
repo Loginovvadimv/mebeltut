@@ -1,13 +1,13 @@
-<section class="populars section" x-data="{ tab: '12' }">
+<section class="populars section">
   <div class="container">
     <h2 class="populars__title">популярные проекты</h2>
   <div class="populars__wrapper">
       <div class="populars__scroller scroller">
         <div class="populars__categories">
           {% for progect in categories_prod %}
-            <div class="populars__category h5" @click="tab = '{{ progect.id }}'" :class="{ 'active': tab === '{{ progect.id }}' }">
+            <a href="{{ progect.link }}" class="populars__category h5 {{ progect.id == term.term_id ? "active" : "" }}">
               {{ progect.title }}
-            </div>
+            </a>
           {% endfor %}
           <div class="slider__arrows">
             <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -28,8 +28,9 @@
             {% for progect in categories_prod %}
                 {% for item in progect.posts %}
                   {% if item.product_hit %}
-                    <a href="{{ item.link }}" class="populars__wrap" data-modal="project" x-show="tab === '{{ progect.id }}'">
-                      <div class="populars__link"><img loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+                    <a href="{{ item.link }}" class="populars__wrap" data-modal="project">
+                      <div class="populars__link"><img class="populars__linkImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+                        <img class="populars__imgHover" src="{{ item.product_imghover ? item.product_imghover : plug_url }}" alt="{{ item.title }}">
                         <div class="h5 text-caption populars__wrapName">{{ item.title }}</div>
                       </div>
 

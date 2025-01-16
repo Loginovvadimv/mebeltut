@@ -21,7 +21,21 @@
           {% endfor %}
         </div>
         </div>
-
+        <div class="allProducts__categoriesLine"></div>
+      </div>
+    {% else %}
+      <div class="allProducts__categoriesContainer">
+        <div class="allProducts__filterSort-mob">
+          <div class="allProducts__filterSort-mobLIne"></div>
+        </div>
+        <div class="allProducts__scroller scroller">
+          <div class="allProducts__categories">
+            <div class="text-caption h5 allProducts__category">Все {{ term.name }}</div>
+            {% for category in term %}
+              <a href="{{ category.link }}" class="text-caption h5 allProducts__category">{{ category }}</a>
+            {% endfor %}
+          </div>
+        </div>
         <div class="allProducts__categoriesLine"></div>
       </div>
     {% endif %}
@@ -71,13 +85,16 @@
     </svg>
   </button>
 
-  {% include 'parts/pagination.twig' with {posts: posts} %}
+
 
 </div>
 </div>
 
 
-{#{% include 'parts/pagination.twig' with {posts: posts} %}#}
+
+
+    {% include 'parts/pagination.twig' with {posts: posts} %}
+
 
 
     </div>
