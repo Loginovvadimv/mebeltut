@@ -32,6 +32,8 @@
         </div>
       </div>
 
+
+
     </div>
     <a class="projects__link text-caption Uppercase-M" href="/nashi-proekty-s-realnymi-foto/">Смотреть все проекты<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M14.5391 5.08594L13.4609 6.16406L18.5469 11.25H3.5V12.75H18.5469L13.4609 17.8359L14.5391 18.9141L20.9141 12.5391L21.4297 12L20.9141 11.4609L14.5391 5.08594Z" fill="#0C0C0C" fill-opacity="0.4"/>
@@ -56,6 +58,15 @@
         {% endfor %}
       </div>
     </div>
+
+    <div class="modal__imgPagination">
+      {% for pico in item.project_photos %}
+        {% if pico.photo %}
+          <img src="{{ pico.photo }}" alt data-slide-target="{{ loop.index0 }}">
+        {% endif %}
+      {% endfor %}
+    </div>
+
     {% if item.project_photos %}
       <div class="slider__arrows">
         <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

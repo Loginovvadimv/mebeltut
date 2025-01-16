@@ -2,7 +2,7 @@
 
 Timber::$dirname = 'src/views';
 
-const VERSION = 1.06;
+const VERSION = 1.07;
 const MODE = 0; // 0 - DEV, 1 - PROD
 define('ASSETS', get_home_url() . '/resources/' . (MODE ? 'app' : 'dev') . '/assets');
 
