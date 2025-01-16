@@ -29,8 +29,8 @@
           <div class="allProducts__filterSort-mobLIne"></div>
         </div>
         <div class="allProducts__scroller scroller">
-          <div class="allProducts__categories">
-            <div class="text-caption h5 allProducts__category">Все {{ term.name }}</div>
+          <div class="allProducts__categories allProducts__categories2">
+{#            <div class="text-caption h5 allProducts__category">Все {{ term.name }}</div>#}
             {% for category in term %}
               <a href="{{ category.link }}" class="text-caption h5 allProducts__category">{{ category }}</a>
             {% endfor %}
@@ -80,10 +80,10 @@
       {% endfor %}
 
   </div>
-  <button class="text-caption Uppercase-M btn-white allProducts__showAll">показать еще<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.25 3.75V11.25H3.75V12.75H11.25V20.25H12.75V12.75H20.25V11.25H12.75V3.75H11.25Z" fill="#0C0C0C" fill-opacity="0.4"/>
-    </svg>
-  </button>
+{#  <button class="text-caption Uppercase-M btn-white allProducts__showAll">показать еще<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+{#      <path d="M11.25 3.75V11.25H3.75V12.75H11.25V20.25H12.75V12.75H20.25V11.25H12.75V3.75H11.25Z" fill="#0C0C0C" fill-opacity="0.4"/>#}
+{#    </svg>#}
+{#  </button>#}
 
 
 

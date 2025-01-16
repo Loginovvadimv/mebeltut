@@ -299,6 +299,23 @@
   &__wrapperProjectInfo
     padding: 36px
     width: 100%
+  &__imgPagination
+    position: absolute
+    z-index: 3
+    display: flex
+    gap: 12px
+    top: 612px
+    width: 100%
+    justify-content: center
+    img
+      width: 80px
+      height: 44px
+      border-radius: 12px
+      overflow: hidden
+    .active
+      border: 1px solid rgba(255, 255, 255, 1)
+      width: 79px
+      height: 43px
 
 
 
@@ -434,6 +451,8 @@
     &__wrapperProjectInfo
       width: 100%
       padding: 16px
+    &__imgPagination
+      display: none
 
 
 @media (min-width: 500px) and (max-width: 767px)
@@ -457,6 +476,8 @@
     &__wrapperProjectInfo
       width: 100%
       padding: 24px
+    &__imgPagination
+      display: none
 
 
 @media (min-width: 768px) and (max-width: 1023px)
@@ -470,4 +491,12 @@
     &__wrapperProjectInfo
       width: 100%
       padding: 24px
+    &__imgPagination
+      top: 530px
+      img
+        width: 50px
+        height: 36px
+      .active
+        width: 49px
+        height: 35px
 
