@@ -58,12 +58,12 @@ Alpine.start();
 
     // Отзывы
 
-    const reviewDescs = document.querySelectorAll('.reviews__descr');
+    const reviewDescs = document.querySelectorAll('.reviews__wrapContainer');
     if (reviewDescs) {
       if(mediaQuery.matches) {
         reviewDescs.forEach((desc, i) => {
           if (desc.offsetHeight > 200) {
-            desc.style.height = '200px';
+            desc.style.height = '270px';
             desc.style.overflow = 'hidden';
             const readMoreButton = document.createElement('button');
             readMoreButton.textContent = 'Читать целиком';
@@ -85,7 +85,7 @@ Alpine.start();
       } else {
         reviewDescs.forEach((desc, i) => {
           if (desc.offsetHeight > 184) {
-            desc.style.height = '184px';
+            desc.style.height = '250px';
             desc.style.overflow = 'hidden';
             const readMoreButton = document.createElement('button');
             readMoreButton.textContent = 'Читать целиком';

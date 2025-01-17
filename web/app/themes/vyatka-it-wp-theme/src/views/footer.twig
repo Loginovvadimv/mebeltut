@@ -13,8 +13,8 @@
               <script>
                 const data = document.querySelector('.year').textContent = new Date().getFullYear();
               </script>
-              <a class="Control_M text-caption" href="/privacy-policy/">Политика конфиденциальности</a>
-              <a target="_blank" class="Control_M text-caption" href="https://vyatka-it.ru/">Разработка сайта: Вятка IT</a>
+              <a class="Control_M text-caption footer__link" href="/privacy-policy/">Политика конфиденциальности</a>
+              <a target="_blank" class="Control_M text-caption footer__link" href="https://vyatka-it.ru/">Разработка сайта: Вятка IT</a>
             </div>
           </div>
 
@@ -44,8 +44,8 @@
             <div class="h5 text-disable">Контакты</div>
             <div class="footer__wrapText text-body Control_M">
               <div>{{ address }}</div>
-              <div>{{ phone }}</div>
-              <div>{{ email }}</div>
+              <a href="tel:+{{ cleared_phone }}" class="footer__link">{{ phone }}</a>
+              <a href="mailto:{{ email }}" class="footer__link">{{ email }}</a>
             </div>
             <a href="#body" class="up Uppercase-M">Наверх<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5.125 9.96484L6.20312 11.043L11.2891 5.95703L11.2891 21.0039L12.7891 21.0039L12.7891 5.95703L17.875 11.043L18.9531 9.96484L12.5781 3.58984L12.0391 3.07422L11.5 3.58984L5.125 9.96484Z" fill="rgba(12, 12, 12, 0.4)"/>

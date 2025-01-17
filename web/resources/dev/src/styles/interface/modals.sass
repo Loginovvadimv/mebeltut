@@ -187,22 +187,6 @@
     font-weight: 600
     line-height: 22px
     text-align: left
-  &__catalog
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    gap: 24px
-  &__catalogLink
-    transition: .3s all
-    &:hover
-      .modal__catalogLinkPhleft
-        display: block
-      .modal__catalogLinkPhRight
-        display: block
-      color: rgba(12, 12, 12, 1)
-      transition: .3s all
-
   &__catalogLinkPhleft
     height: 100%
     top: 0
@@ -212,7 +196,8 @@
     z-index: 3
     width: 561px
     object-fit: cover
-    display: none
+    opacity: 0
+    transition: .5s all
   &__catalogLinkPhRight
     height: 100%
     top: 0
@@ -222,7 +207,26 @@
     z-index: 3
     width: 561px
     object-fit: cover
-    display: none
+    opacity: 0
+    transition: .5s all
+  &__catalog
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    gap: 24px
+  &__catalogLink
+    transition: .5s all
+    &:hover
+      color: rgba(0, 0, 0, 0.72)
+      .modal__catalogLinkPhleft
+        opacity: 1
+        transition: .5s all
+      .modal__catalogLinkPhRight
+        opacity: 1
+        transition: .5s all
+
+
 
 
 @media (max-width: 767px)

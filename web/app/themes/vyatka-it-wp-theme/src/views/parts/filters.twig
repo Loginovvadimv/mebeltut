@@ -24,9 +24,11 @@
 
   <div class="allProducts__filterCatBox">
     <div class="allProducts__filterCategory allProducts__filterCategoryPrice Control_M cat" @click="togglePrice()">Цена
+
       <svg :class="{ 'rotate': activeFilter === 'price' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 15L12 10.5L17 15L18 14L12 8L6 14L7 15Z" fill="#0C0C0C" fill-opacity="0.4"/>
+        <path d="M7 9L12 13.5L17 9L18 10.0001L12 16.0001L6 10.0001L7 9Z" fill="#0C0C0C" fill-opacity="0.4"/>
       </svg>
+
     </div>
 
     <div class="custom-wrapper" x-show="price">
@@ -58,12 +60,9 @@
 
   {% for filter in filters.auto %}
     <div class="allProducts__filterCategory Control_M text-caption cat" @click="toggleActiveFilter('{{ filter.code }}')">{{ filter.name }}
-{#      <svg :class="{ 'rotate': activeFilter === '{{ filter.code }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">#}
-{#        <path d="M9 17L13.5 12L9 7L10 6L16 12L10 18L9 17Z" fill="black" fill-opacity="0.72"/>#}
-{#      </svg>#}
 
       <svg :class="{ 'rotate': activeFilter === '{{ filter.code }}' }" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7 15L12 10.5L17 15L18 14L12 8L6 14L7 15Z" fill="#0C0C0C" fill-opacity="0.4"/>
+        <path d="M7 9L12 13.5L17 9L18 10.0001L12 16.0001L6 10.0001L7 9Z" fill="#0C0C0C" fill-opacity="0.4"/>
       </svg>
 
     </div>

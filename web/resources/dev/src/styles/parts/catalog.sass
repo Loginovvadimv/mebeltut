@@ -17,16 +17,16 @@
     max-width: 24%
     width: 100%
     height: 250px
-    border: 2px solid rgba(0, 0, 0, 0.08)
+    border: 1px solid rgba(12, 12, 12, 0.10)
     &:nth-last-child(-n+3)
       max-width: 32.5%
     &:hover
       .catalog__wrapImg
         transform: scale(1.1)
-        transition: .3s all
+        transition: 1s all
       .catalog__wrapTitle
         color: rgba(249, 92, 119, 1)
-        transition: .3s all
+        transition: .5s all
   &__wrapFrame
     position: absolute
     top: 0
@@ -36,11 +36,11 @@
     position: absolute
     bottom: 24px
     left: 24px
-    transition: .3s all
+    transition: .5s all
     text-transform: uppercase
   &__wrapImg
     max-width: 339px
-    transition: .3s all
+    transition: 1s all
 
 @media (max-width: 767px)
   .catalog

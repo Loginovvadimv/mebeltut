@@ -19,7 +19,7 @@ $args = [
     'meta_query' => [],
     'tax_query' => [
         [
-            'taxonomy' => 'categories-product',
+            'taxonomy' => 'categories-project',
             'field' => 'term_id',
             'terms' => $object->term_id
         ]
