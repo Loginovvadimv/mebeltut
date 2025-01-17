@@ -6,7 +6,7 @@
     <div class="forus__wrapper">
       {% if post.start_text %}
         <section class="forus__startBanner section">
-          <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bg.webp">
+          <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bgss.webp">
           <img class="forus__startBannerLogo" src="{{ assets }}/images/forus/mebel.svg" alt>
           <div class="h5 text-body-contrast forus__startBannerText">{{ post.start_text }}</div>
         </section>
@@ -15,7 +15,7 @@
 
       {% if post.average_title or post.average_subtitle or post.average_doptext %}
         <section class="forus__averageBanner section">
-          <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bg2.webp">
+          <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bgss.webp">
           {% if post.average_title %}
             <h2 class="text-body-contrast forus__averageBannerTitle">{{ post.average_title }}</h2>
           {% endif %}
@@ -60,7 +60,7 @@
 
     {% if post.question %}
       <section class="forus__question section">
-        <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bg.webp">
+        <img class="forus__startBannerBg" src="{{ assets }}/images/forus/bgss.webp">
         <h2 class="forus__questionTitle text-body-contrast">{{ post.question.title }}</h2>
         <div class="h5 forus__questionSubtitle text-caption-contrast">{{ post.question.subtitle }}</div>
         <button class="Uppercase-M btn-black forus__questionBtn" data-modal="call">Оставить заявку</button>
