@@ -65,13 +65,27 @@ function svg_upload_allow( $mimes ) {
     return $mimes;
 }
 
-function add_custom_button() {
-    global $post;
 
-    if ($post->post_type == 'projects') {
-        echo '<div class="misc-pub-section">';
-        echo '<a href="http://example.com/download?id=' . $post->ID . '" class="button button-primary">Скачать проект</a>';
-        echo '</div>';
-    }
-}
-add_action('post_submitbox_start', 'add_custom_button');
+
+////Кнопка VK
+//function custom_button_next_to_update() {
+//    echo '<button id="vk-button" class="button">Опубликовать ВК</button>';
+//}
+//add_action('post_submitbox_misc_actions', 'custom_button_next_to_update');
+//
+////Стили для кнопки ВК
+//function my_custom_styles() {
+//    echo '<style>
+//        #vk-button{
+//            margin: 15px;
+//        }
+//  </style>';
+//}
+//add_action('admin_head', 'my_custom_styles');
+
+//js для кнпоки вк
+//function enqueue_custom_script() {
+//    wp_enqueue_script('vk-button-script', get_template_directory_uri() . '/vk-script.js', array('jquery'), VERSION, true);
+//}
+//
+//add_action('admin_enqueue_scripts', 'enqueue_custom_script');
