@@ -2,6 +2,102 @@
 
 use App\System\Webp;
 
+//if (!function_exists('generate_crumbs')) {
+//    function generate_crumbs($data = null): array
+//    {
+//        $breadcrumbs = [];
+//
+//        $object = get_queried_object();
+//
+//        $breadcrumbs[] = [
+//            'name' => 'Главная',
+//            'href' => '/'
+//        ];
+//
+//        if (isset($data['parent'])) {
+//            $parent = $data['parent'];
+//
+//            $name = $parent->post_title ?? $parent->term_id;
+//
+//            $href =
+//                isset($parent->ID)
+//                    ? get_permalink($parent->ID)
+//                    : (
+//                isset($parent->term_id)
+//                    ? get_term_link($parent)
+//                    : ''
+//                );
+//
+//            $breadcrumbs[] = [
+//                'name' => $name,
+//                'href' => $href
+//            ];
+//        }
+//
+//        if (isset($object->post_parent) && $object->post_parent != 0) {
+//            $parent = get_post($object->post_parent);
+//
+//            $breadcrumbs[] = [
+//                'last' => false,
+//                'name' => $parent->post_title,
+//                'href' => get_permalink($object->post_parent)
+//            ];
+//        }
+//
+//        if (isset($object->ID)) {
+//            $terms = [];
+//            $taxonomies = get_taxonomies();
+//
+//            foreach ($taxonomies as $taxonomy) {
+//                if ($taxonomy !== 'product_cat') continue;
+//
+//                $taxonomy_terms = wp_get_post_terms($object->ID, $taxonomy);
+//
+//                if (!empty($taxonomy_terms)) {
+//                    $taxonomy_term = $taxonomy_terms[0];
+//                    $taxonomy_parent_id = wp_get_term_taxonomy_parent_id($taxonomy_term->term_id, $taxonomy_term->taxonomy);
+//                    $taxonomy_parent = get_term($taxonomy_parent_id, $taxonomy_term->taxonomy);
+//
+//                    if (!empty($taxonomy_parent) && isset($taxonomy_parent->error)) {
+//                        $breadcrumbs[] = [
+//                            'last' => false,
+//                            'name' => $taxonomy_parent->name,
+//                            'href' => get_term_link($taxonomy_parent->term_id)
+//                        ];
+//                    }
+//
+//                    $breadcrumbs[] = [
+//                        'last' => false,
+//                        'name' => $taxonomy_term->name,
+//                        'href' => get_term_link($taxonomy_term->term_id)
+//                    ];
+//                }
+//            }
+//
+//            $breadcrumbs[] = [
+//                'last' => true,
+//                'name' => $object->post_title,
+//                'href' => ''
+//            ];
+//        } else if (isset($object->term_id)) {
+//            $breadcrumbs[] = [
+//                'last' => true,
+//                'name' => $object->name,
+//                'href' => ''
+//            ];
+//        } else if (isset($object->has_archive) && $object->has_archive) {
+//            $breadcrumbs[] = [
+//                'last' => true,
+//                'name' => $object->label,
+//                'href' => ''
+//            ];
+//        }
+//
+//        return $breadcrumbs;
+//    }
+//}
+
+
 if (!function_exists('generate_crumbs')) {
     function generate_crumbs($data = null): array
     {
@@ -11,7 +107,7 @@ if (!function_exists('generate_crumbs')) {
 
         $breadcrumbs[] = [
             'name' => 'Главная',
-            'href' => '/'
+            'href' => get_home_url()
         ];
 
         if (isset($data['parent'])) {
@@ -34,22 +130,39 @@ if (!function_exists('generate_crumbs')) {
             ];
         }
 
-        if (isset($object->post_parent) && $object->post_parent != 0) {
-            $parent = get_post($object->post_parent);
+        //if (isset($object->ID)) {
+        //    $terms = [];
+        //    $taxonomies = get_taxonomies();
+        //
+        //    foreach ($taxonomies as $taxonomy) {
+        //        $taxonomy_terms = wp_get_post_terms($object->ID, $taxonomy);
+        //
+        //        if (!empty($taxonomy_terms)) {
+        //        var_dump($taxonomy_terms);
+        //                //$terms = get_term_path();
+        //        }
+        //    }
+        //
+        //    $breadcrumbs[] = [
+        //        'last' => true,
+        //        'name' => $object->post_title,
+        //        'href' => ''
+        //    ];
+        //} else if (isset($object->term_id)) {
+        //    $breadcrumbs[] = [
+        //        'last' => true,
+        //        'name' => $object->name,
+        //        'href' => ''
+        //    ];
+        //}
 
-            $breadcrumbs[] = [
-                'last' => false,
-                'name' => $parent->post_title,
-                'href' => get_permalink($object->post_parent)
-            ];
-        }
 
         if (isset($object->ID)) {
             $terms = [];
             $taxonomies = get_taxonomies();
 
             foreach ($taxonomies as $taxonomy) {
-                if ($taxonomy !== 'product_cat') continue;
+                if ($taxonomy !== 'categories-product') continue;
 
                 $taxonomy_terms = wp_get_post_terms($object->ID, $taxonomy);
 
@@ -96,6 +209,7 @@ if (!function_exists('generate_crumbs')) {
         return $breadcrumbs;
     }
 }
+
 
 if (!function_exists('get_term_path')) {
     function get_term_path($term)

@@ -232,18 +232,43 @@ if (seoWrapper) {
     const selectedValue = document.querySelector(".selected-value");
     const optionsList = document.querySelectorAll(".select-dropdown li");
 
-// add click event to select button
-    selectBtn.forEach(item=> {
+
+    document.addEventListener("click", (event) => {
+      // Проверяем, был ли клик вне customSelect
+      if (!customSelect.contains(event.target) && customSelect.classList.contains("active")) {
+        customSelect.classList.remove("active");
+        selectBtn.forEach(item => {
+          item.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+
+    selectBtn.forEach(item => {
       item.addEventListener("click", () => {
-        // add/remove active class on the container element
+        // добавляем/удаляем класс active у элемента контейнера
         customSelect.classList.toggle("active");
-        // update the aria-expanded attribute based on the current state
-        selectBtn.setAttribute(
+        // обновляем атрибут aria-expanded в зависимости от текущего состояния
+        item.setAttribute(
           "aria-expanded",
-          selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+          item.getAttribute("aria-expanded") === "true" ? "false" : "true"
         );
       });
-    })
+    });
+
+
+// // add click event to select button
+//     selectBtn.forEach(item=> {
+//       item.addEventListener("click", () => {
+//         // add/remove active class on the container element
+//         customSelect.classList.toggle("active");
+//         // update the aria-expanded attribute based on the current state
+//         item.setAttribute(
+//           "aria-expanded",
+//           item.getAttribute("aria-expanded") === "true" ? "false" : "true"
+//         );
+//       });
+//     })
+
 
     optionsList.forEach((option) => {
       function handler(e) {

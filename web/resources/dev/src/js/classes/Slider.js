@@ -63,7 +63,7 @@ export default class Slider {
                 centeredSlides: false,
                 loop: false,
                 breakpoints: {
-                    360: {
+                    320: {
                         slidesPerView: 1.15,
                         spaceBetween: 8,
                     },

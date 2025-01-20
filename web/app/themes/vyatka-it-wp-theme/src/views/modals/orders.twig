@@ -9,13 +9,16 @@
       </div>
       <div class="form__inputs">
         <div class="form__input modal__input">
-          <input type="text" required="" placeholder="Ваше имя" class="validate-name required" name="name">
+          <input id="ordersname" type="text" required="" placeholder=" " class="validate-name required" name="name">
+          <label class="form__label modal__label" for="ordersname">Ваше имя</label>
         </div>
         <div class="form__input modal__input">
-          <input type="tel" required placeholder="Ваш телефон" class="tel" name="phone">
+          <input id="ordersphone" type="tel" required placeholder=" " class="tel" name="phone">
+          <label class="form__label modal__label" for="ordersphone">Ваш телефон</label>
         </div>
         <div class="form__textarea">
-          <textarea name="messege" id="messege" cols="55" rows="3" placeholder="Сообщение"></textarea>
+          <textarea name="messege" id="ordersmessege" cols="55" rows="3" placeholder=" "></textarea>
+          <label class="form__label modal__label" for="ordersmessege">Сообщение</label>
         </div>
       </div>
       <button class="form__button btn-black Uppercase-M">Оставить заявку</button>

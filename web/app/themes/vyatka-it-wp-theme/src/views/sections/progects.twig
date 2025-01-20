@@ -28,11 +28,8 @@
             </div>
           {% endfor %}
 
-
         </div>
       </div>
-
-
 
     </div>
     <a class="projects__link text-caption Uppercase-M" href="/nashi-proekty-s-realnymi-foto/">Смотреть все проекты<svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,64 +42,67 @@
 
 
 {% for item in posts  %}
-<div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
-  <div class="modal__wrapper form__wrapper modal__wrapperProject">
+  {% if item.project_photos %}
+    <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
+      <div class="modal__wrapper form__wrapper modal__wrapperProject">
+        <div class="swiper modal__swiper">
+          <div class="swiper-wrapper">
+            {% for pico in item.project_photos %}
+              {% if pico.photo %}
+                <img class="modal__wrapperProjectImage" src="{{ pico.photo }}" alt>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
 
-    <div class="swiper modal__swiper">
-      <div class="swiper-wrapper">
-        {% for pico in item.project_photos %}
-          {% if pico.photo %}
-            <img class="modal__wrapperProjectImage" src="{{ pico.photo }}" alt>
-          {% endif %}
+        <div class="modal__imgPagination">
+          {% for pico in item.project_photos %}
+            {% if pico.photo %}
+              <img src="{{ pico.photo }}" alt data-slide-target="{{ loop.index0 }}">
+            {% endif %}
+          {% endfor %}
+        </div>
 
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="modal__imgPagination">
-      {% for pico in item.project_photos %}
-        {% if pico.photo %}
-          <img src="{{ pico.photo }}" alt data-slide-target="{{ loop.index0 }}">
+        {% if item.project_photos %}
+          <div class="slider__arrows">
+            <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+            <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
+              </svg>
+            </button>
+          </div>
         {% endif %}
-      {% endfor %}
-    </div>
 
-    {% if item.project_photos %}
-      <div class="slider__arrows">
-        <button class="slider__arrow slider__arrow--prev"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.5 4L15 3L6 12.0001L15 21L16.5 20L8.5 12L16.5 4Z" fill="#0C0C0C"/>
-          </svg>
+        <button class="modal__close modal__close--fixed" type="button">
         </button>
-        <button class="slider__arrow slider__arrow--next"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 4L7.5 3L16.5 12.0001L7.5 21L6 20L14 12L6 4Z" fill="#0C0C0C"/>
-          </svg>
-        </button>
+
+
+        <div class="modal__wrapperProjectInfo">
+          <div class="h5 text-caption">{{ item.title }}</div>
+          <div class="Control_L text-body">{{ item.post_content }}</div>
+        </div>
+
       </div>
-    {% endif %}
+    </div>
+  {% else %}
 
+    <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
+      <div class="modal__wrapper modal__wrapperProjectNoSlides">
 
-    {#                <div class="modal__wrapperProject-mini">#}
-    {#                  <div class="swiper">#}
-    {#                    <div class="swiper-wrapper">#}
-    {#                      #}{#                    {% for item1 in item.photos_slider %}#}
-    {#                      #}{#                        <img data-slide-target="{{ loop.index }}" src="{{ item1.photo }}" alt="dot">#}
-    {#                      #}{#                    {% endfor %}#}
-    {#                      {% for pico in item.project_photos %}#}
-    {#                        <img data-slide-target="{{ loop.index }}" src="{{ pico.photo }}" alt="dot">#}
-    {#                      {% endfor %}#}
-    {#                    </div>#}
-    {#                  </div>#}
-    {#                </div>#}
+        <img class="modal__projectImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+        <div class="modal__wrapperProjectInfo">
+          <div class="h5 text-caption">{{ item.title }}</div>
+          <div class="Control_L text-body">{{ item.post_content }}</div>
+        </div>
 
-    <button class="modal__close modal__close--fixed" type="button">
-    </button>
-
-
-    <div class="modal__wrapperProjectInfo">
-      <div class="h5 text-caption">{{ item.title }}</div>
-      <div class="Control_L text-body">{{ item.post_content }}</div>
+        <button class="modal__close modal__close--fixed" type="button"></button>
+      </div>
     </div>
 
-  </div>
-</div>
+
+  {% endif %}
+
 {% endfor %}

@@ -2,7 +2,7 @@
 
 Timber::$dirname = 'src/views';
 
-const VERSION = 1.011;
+const VERSION = 1.012;
 const MODE = 0; // 0 - DEV, 1 - PROD
 define('ASSETS', get_home_url() . '/resources/' . (MODE ? 'app' : 'dev') . '/assets');
 
@@ -64,3 +64,14 @@ function svg_upload_allow( $mimes ) {
 
     return $mimes;
 }
+
+function add_custom_button() {
+    global $post;
+
+    if ($post->post_type == 'projects') {
+        echo '<div class="misc-pub-section">';
+        echo '<a href="http://example.com/download?id=' . $post->ID . '" class="button button-primary">Скачать проект</a>';
+        echo '</div>';
+    }
+}
+add_action('post_submitbox_start', 'add_custom_button');

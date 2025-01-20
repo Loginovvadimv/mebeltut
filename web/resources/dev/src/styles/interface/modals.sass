@@ -147,7 +147,7 @@
         border-bottom: 1px solid rgba(12, 12, 12, 0.4)
     &__input
       input
-        padding: 22px 24px
+        padding: 19px 22px
         border: 1px solid rgba(0, 0, 0, 0.16)
         width: 100%
         border-radius: 16px
@@ -157,11 +157,13 @@
         font-size: 20px
         line-height: 26px
         &:focus
-          font-family: "WixMadeforText", sans-serif
-          color: rgba(12, 12, 12, 0.8)
-          font-weight: 500
-          font-size: 20px
-          line-height: 26px
+          .modal__label
+            top: 12px
+            left: 23px
+            font-weight: 400
+            font-size: 12px
+            line-height: 16px
+            transition: .3s all
     &__textarea
       padding: 23px 24px
       border: 1px solid rgba(0, 0, 0, 0.16)
@@ -262,6 +264,7 @@
         input
           padding: 15px 14px
           letter-spacing: 1px
+
       &__inputs
         gap: 8px
       &__text

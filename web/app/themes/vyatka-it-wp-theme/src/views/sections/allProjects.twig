@@ -35,6 +35,9 @@
 </section>
 
 {% for item in posts %}
+  {% if item.project_photos %}
+
+
     <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
       <div class="modal__wrapper form__wrapper modal__wrapperProject" data-slide-toggle>
          <div class="swiper modal__swiper">
@@ -79,4 +82,20 @@
 
       </div>
     </div>
+  {% else %}
+
+    <div class="modal open" data-modal-type="project-{{ item.id }}" hidden>
+      <div class="modal__wrapper modal__wrapperProjectNoSlides">
+
+        <img class="modal__projectImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
+        <div class="modal__wrapperProjectInfo">
+          <div class="h5 text-caption">{{ item.title }}</div>
+          <div class="Control_L text-body">{{ item.post_content }}</div>
+        </div>
+
+        <button class="modal__close modal__close--fixed" type="button"></button>
+      </div>
+    </div>
+    {% endif %}
+
 {% endfor %}

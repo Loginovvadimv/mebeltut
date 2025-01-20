@@ -111,9 +111,18 @@
           <div class="modal-calcFormWrap" x-show="step1 == 2">
             <div class="h5 text-caption modal-calcFormWrap__title">5. Размеры шкафа по габаритам</div>
             <div class="modal__formSubmit">
-              <input class="footer__input Control_L" type="text" name="height" placeholder="Высота">
-              <input class="footer__input Control_L" type="text" name="width" placeholder="Ширина">
-              <input class="footer__input Control_L" type="text" name="depth" placeholder="Глубина">
+              <div class="form__input">
+                <input id="calcheight" class="footer__input Control_L" type="text" name="height" placeholder=" ">
+                <label class="form__label modal__label" for="calcheight">Высота</label>
+              </div>
+              <div class="form__input">
+                <input id="calcwidth" class="footer__input Control_L" type="text" name="width" placeholder=" ">
+                <label class="form__label modal__label" for="calcwidth">Ширина</label>
+              </div>
+              <div class="form__input">
+                <input id="calcdepth" class="footer__input Control_L" type="text" name="depth" placeholder=" ">
+                <label class="form__label modal__label" for="calcdepth">Глубина</label>
+              </div>
             </div>
           </div>
 
@@ -182,18 +191,26 @@
 {#                <input type="text" name="kitwidth" hidden value="Примерные размеры кухонного гарнитура по стенам">#}
 {#                <input type="text" name="code" hidden value="order">#}
 {#              </div>#}
-              <input class="footer__input Control_L" type="text" name="size" placeholder="Введите размер">
+              <div class="form__input">
+              <input id="calcsize" class="footer__input Control_L" type="text" name="size" placeholder=" ">
+                <label class="form__label modal__label" for="calcsize">Введите размер</label>
+              </div>
             </div>
           </div>
 
 
           {#          Квиз-общий_финал#}
-          <div class="modal-calcFormWrap" x-show="step1 == 1">
+          <div class="modal-calcFormWrap">
             <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
             <div class="modal__formSubmit">
-              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
-              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
-
+              <div class="form__input">
+              <input id="calcname" class="footer__input Control_L" type="text" name="name" placeholder=" ">
+                <label class="form__label modal__label" for="calcname">Ваше имя</label>
+              </div>
+              <div class="form__input">
+              <input id="calcphone" class="footer__input Control_L" type="tel" name="phone" placeholder=" ">
+                <label class="form__label modal__label" for="calcphone">Ваш телефон</label>
+              </div>
               <div class="footer__checkbox checkbox">
                 <label for="checkbox" class="form__checkbox">
                   <input type="checkbox" name="checkbox" id="checkbox" checked required>
@@ -205,38 +222,38 @@
           </div>
 
 
-          <div class="modal-calcFormWrap" x-show="step1 == 2">
-            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
-            <div class="modal__formSubmit">
-              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
-              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
+{#          <div class="modal-calcFormWrap" x-show="step1 == 2">#}
+{#            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>#}
+{#            <div class="modal__formSubmit">#}
+{#              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">#}
+{#              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">#}
 
-              <div class="footer__checkbox checkbox">
-                <label for="checkbox" class="form__checkbox">
-                  <input type="checkbox" name="checkbox" id="checkbox" checked required>
-                </label>
-                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
-              </div>
+{#              <div class="footer__checkbox checkbox">#}
+{#                <label for="checkbox" class="form__checkbox">#}
+{#                  <input type="checkbox" name="checkbox" id="checkbox" checked required>#}
+{#                </label>#}
+{#                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>#}
+{#              </div>#}
 
-            </div>
-          </div>
+{#            </div>#}
+{#          </div>#}
 
 
-          <div class="modal-calcFormWrap final-quiz-wrap" x-show="step1 == 3">
-            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>
-            <div class="modal__formSubmit">
-              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">
-              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">
+{#          <div class="modal-calcFormWrap final-quiz-wrap" x-show="step1 == 3">#}
+{#            <div class="h5 text-caption modal-calcFormWrap__title">6. Оставьте свои контакты и мы пришлем вам предварительный расчет стоимости</div>#}
+{#            <div class="modal__formSubmit">#}
+{#              <input class="footer__input Control_L" type="text" name="name" placeholder="Ваше имя">#}
+{#              <input class="footer__input Control_L" type="tel" name="phone" placeholder="Ваш телефон">#}
 
-              <div class="footer__checkbox checkbox">
-                <label for="checkbox" class="form__checkbox">
-                  <input type="checkbox" name="checkbox" id="checkbox" checked required>
-                </label>
-                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>
-              </div>
+{#              <div class="footer__checkbox checkbox">#}
+{#                <label for="checkbox" class="form__checkbox">#}
+{#                  <input type="checkbox" name="checkbox" id="checkbox" checked required>#}
+{#                </label>#}
+{#                <a class="Label_s" target="_blank" href="/privacy-policy/">Согласие на <span>обработку персональных данных</span></a>#}
+{#              </div>#}
 
-            </div>
-          </div>
+{#            </div>#}
+{#          </div>#}
 
 
 
