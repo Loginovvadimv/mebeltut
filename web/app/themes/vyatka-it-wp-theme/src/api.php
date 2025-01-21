@@ -7,6 +7,7 @@ use App\Services\WP_Mail;
 use App\Services\WP_Notification;
 use App\Services\WP_Product;
 use App\Services\WP_Review;
+use App\Services\WP_Vk;
 
 define('API_NAMESPACE', 'site/v1');
 
@@ -76,4 +77,11 @@ function register_routes()
         'methods'  => 'POST',
         'callback' => [ new WP_Checkout(), 'create' ],
     ]);
+
+    register_rest_route(API_NAMESPACE, '/vk/post', [
+        'methods'  => 'POST',
+        'callback' => [ new WP_Vk(), 'createPost' ],
+    ]);
+
 }
+

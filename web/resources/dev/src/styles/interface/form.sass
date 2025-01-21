@@ -80,3 +80,39 @@
   .form
     &__inputWrap
       width: 100%
+
+
+@media (max-width: 767px)
+  .form
+    &__input
+      input
+        &:not(:placeholder-shown)
+          &~.form__label
+            top: 4px
+            left: 15px
+            font-weight: 400
+            font-size: 12px
+            line-height: 16px
+            transition: .3s all
+    &__textarea
+      position: relative
+      textarea
+        &:not(:placeholder-shown)
+          &~.form__label
+            top: 4px
+            left: 15px
+            font-weight: 400
+            font-size: 12px
+            line-height: 16px
+            transition: .3s all
+    &__label
+      position: absolute
+      top: 16px
+      left: 15px
+      color: rgba(12, 12, 12, 0.4)
+      font-family: "WixMadeforText", sans-serif
+      font-weight: 500
+      font-size: 20px
+      line-height: 26px
+      transition: .3s all
+

@@ -112,8 +112,6 @@ Alpine.start();
 
 //seo
 
-
-
   const seoWrapper = document.querySelector('.seo__wrapper');
   const button = document.querySelector('.seo__button');
   const pic = document.querySelector('.seo__buttonUp');
@@ -256,20 +254,6 @@ if (seoWrapper) {
     });
 
 
-// // add click event to select button
-//     selectBtn.forEach(item=> {
-//       item.addEventListener("click", () => {
-//         // add/remove active class on the container element
-//         customSelect.classList.toggle("active");
-//         // update the aria-expanded attribute based on the current state
-//         item.setAttribute(
-//           "aria-expanded",
-//           item.getAttribute("aria-expanded") === "true" ? "false" : "true"
-//         );
-//       });
-//     })
-
-
     optionsList.forEach((option) => {
       function handler(e) {
         // Click Events
@@ -289,9 +273,5 @@ if (seoWrapper) {
     });
 
     // конец
-
-
-
-
   });
 

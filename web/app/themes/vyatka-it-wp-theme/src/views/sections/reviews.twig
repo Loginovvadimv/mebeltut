@@ -21,28 +21,7 @@
                 <div class="swiper">
                     <div class="swiper-wrapper">
                       {% for item in reviews.rew_rep %}
-                        <div class="reviews__wrap">
-                          <img class="reviews__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">
-
-                          <div class="reviews__wrapContainer">
-                          <div class="reviews__wrapClient">
-                            <img class="reviews__client" src="{{ item.img ? item.img : plug_client }}" alt="{{ item.name }}">
-                            <div class="reviews__wrapClientText">
-                              <div class="reviews__name Control_L text-body">{{ item.name }}</div>
-                              <div class="reviews__date text-caption Control_S">{{ item.time }}</div>
-                            </div>
-                          </div>
-
-                          <div class="reviews__descr Control_M text-body">{{ item.descr }}
-                            <div class="reviews__photos">
-                              {% for pic in item.photos %}
-                                <a class="reviews__photo" data-fancybox="reviews" href="{{ pic.photo }}"><img class="reviews__img" src="{{ pic.photo }}" alt></a>
-                              {% endfor %}
-                            </div>
-                          </div>
-                          </div>
-
-                        </div>
+                        {% include 'parts/reviews.twig' %}
                       {% endfor %}
                     </div>
                 </div>
@@ -54,23 +33,5 @@
 </section>
 
 {% for item in reviews.rew_rep %}
-<div class="modal open modal__client" data-modal-type="client" hidden>
-  <div class="modal__wrapper form__wrapper">
-
-
-    <div class="reviews__wrapClient">
-      <img class="reviews__client" src="{{ item.img ? item.img : plug_client }}" alt="{{ item.name }}">
-      <div class="reviews__wrapClientText">
-        <div class="reviews__name Control_L text-body">{{ item.name }}</div>
-        <div class="reviews__date text-caption Control_S">{{ item.time }}</div>
-      </div>
-    </div>
-
-
-
-    <button class="modal__close modal__close--fixed" type="button">
-    </button>
-  </div>
-
-</div>
+  {% include 'modals/revs.twig' %}
 {% endfor %}

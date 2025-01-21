@@ -11,13 +11,16 @@
       </div>
       <div class="form__inputs">
         <div class="form__input modal__input">
-          <input type="text" required="" placeholder="Ваше имя" class="validate-name required contacts__formInput" name="name">
+          <input id="contactsname" type="text" required="" placeholder=" " class="validate-name required contacts__formInput" name="name">
+          <label class="form__label modal__label" for="contactsname">Ваше имя</label>
         </div>
         <div class="form__input modal__input">
-          <input type="tel" required placeholder="Ваш телефон" class="tel contacts__formInput" name="phone">
+          <input id="contactstel" type="tel" required placeholder=" " class="tel contacts__formInput" name="phone">
+          <label class="form__label modal__label" for="contactstel">Ваш телефон</label>
         </div>
         <div class="form__textarea">
-          <textarea name="messege" id="messege" cols="55" rows="3" placeholder="Сообщение"></textarea>
+          <textarea id="contactsmessege" name="messege" id="messege" cols="55" rows="3" placeholder=" "></textarea>
+          <label class="form__label modal__label" for="contactsmessege">Сообщение</label>
         </div>
       </div>
       <button class="form__button btn-black Uppercase-M">Оставить заявку</button>

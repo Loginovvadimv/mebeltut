@@ -2,7 +2,7 @@
 
 Timber::$dirname = 'src/views';
 
-const VERSION = 1.012;
+const VERSION = 1.016;
 const MODE = 0; // 0 - DEV, 1 - PROD
 define('ASSETS', get_home_url() . '/resources/' . (MODE ? 'app' : 'dev') . '/assets');
 
@@ -67,25 +67,38 @@ function svg_upload_allow( $mimes ) {
 
 
 
-////Кнопка VK
-//function custom_button_next_to_update() {
-//    echo '<button id="vk-button" class="button">Опубликовать ВК</button>';
-//}
-//add_action('post_submitbox_misc_actions', 'custom_button_next_to_update');
-//
-////Стили для кнопки ВК
-//function my_custom_styles() {
-//    echo '<style>
-//        #vk-button{
-//            margin: 15px;
-//        }
-//  </style>';
-//}
-//add_action('admin_head', 'my_custom_styles');
+//Кнопка VK
+function custom_button_next_to_update() {
+    echo '
 
+
+<button id="vk-button" class="button button-primary button-large">Опубликовать ВК</button>';
+
+
+
+}
+add_action('post_submitbox_misc_actions', 'custom_button_next_to_update');
+
+//Стили для кнопки ВК
+function my_custom_styles() {
+    echo '<style>
+        #vk-button{
+            margin: 15px;
+        }
+  </style>';
+}
+add_action('admin_head', 'my_custom_styles');
+add_action('admin_head', 'my_custom_scripts');
+function my_custom_scripts(){
+    global $post;
+    echo '<script>
+window.vk_post_id ='. $post->ID.'
+  </script>';
+}
 //js для кнпоки вк
-//function enqueue_custom_script() {
-//    wp_enqueue_script('vk-button-script', get_template_directory_uri() . '/vk-script.js', array('jquery'), VERSION, true);
-//}
-//
-//add_action('admin_enqueue_scripts', 'enqueue_custom_script');
+function enqueue_custom_script() {
+    wp_enqueue_script('vk-button-script', get_home_url() . '/app/themes/vyatka-it-wp-theme/admin.js', array('jquery'), VERSION, false);
+}
+
+
+add_action('admin_enqueue_scripts', 'enqueue_custom_script');
