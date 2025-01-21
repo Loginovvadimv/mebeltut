@@ -23,6 +23,23 @@
         </div>
         <div class="allProducts__categoriesLine"></div>
       </div>
+    {% elseif (term and term.parent) %}
+      <div class="allProducts__categoriesContainer">
+        <div class="allProducts__filterSort-mob">
+          <div class="allProducts__filterSort-mobLIne"></div>
+        </div>
+        <div class="allProducts__scroller scroller">
+          <div class="allProducts__categories allProducts__categories2">
+            {% set parent = get_term(term.parent) %}
+            <a href="{{ parent.link }}" class="text-caption h5 allProducts__category">Все {{ parent.name }}</a>
+
+            {% for category in parent.children %}
+              <a href="{{ category.link }}" class="text-caption h5 allProducts__category">{{ category }}</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="allProducts__categoriesLine"></div>
+      </div>
     {% else %}
       <div class="allProducts__categoriesContainer">
         <div class="allProducts__filterSort-mob">
@@ -30,8 +47,7 @@
         </div>
         <div class="allProducts__scroller scroller">
           <div class="allProducts__categories allProducts__categories2">
-{#            <div class="text-caption h5 allProducts__category">Все {{ term.name }}</div>#}
-            {% for category in term %}
+            {% for category in categories_prod %}
               <a href="{{ category.link }}" class="text-caption h5 allProducts__category">{{ category }}</a>
             {% endfor %}
           </div>

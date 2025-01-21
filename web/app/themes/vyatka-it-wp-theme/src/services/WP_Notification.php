@@ -72,8 +72,10 @@ class WP_Notification
             $message .= "Примерные размеры кухонного гарнитура по стенам: {$request->get_param('size')} \r\n";
         }
 
-        foreach ($request->get_param('ask') as $question => $answer) {
-            $message .= "{$question}: {$answer} \r\n";
+        if ($request->get_param('ask')) {
+            foreach ($request->get_param('ask') as $question => $answer) {
+                $message .= "{$question}: {$answer} \r\n";
+            }
         }
 
         if ($request->get_param('messege')) {

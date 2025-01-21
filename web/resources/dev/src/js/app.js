@@ -233,12 +233,15 @@ if (seoWrapper) {
 
     document.addEventListener("click", (event) => {
       // Проверяем, был ли клик вне customSelect
-      if (!customSelect.contains(event.target) && customSelect.classList.contains("active")) {
-        customSelect.classList.remove("active");
-        selectBtn.forEach(item => {
-          item.setAttribute("aria-expanded", "false");
-        });
+      if (customSelect) {
+        if (!customSelect.contains(event.target) && customSelect.classList.contains("active")) {
+          customSelect.classList.remove("active");
+          selectBtn.forEach(item => {
+            item.setAttribute("aria-expanded", "false");
+          });
+        }
       }
+
     });
 
     selectBtn.forEach(item => {
