@@ -1,11 +1,16 @@
 <section class="allProjects section">
   <div class="container">
-    <h1 class="text-body">{{ post.title }}</h1>
+
+    {% if post.title %}
+      <h1 class="text-body">{{ post.title }}</h1>
+    {% endif %}
+    {% if term.title %}
+      <h1 class="text-body">{{ term.title }}</h1>
+    {% endif %}
+
     <div class="allProjects__categories">
       <a href="/nashi-proekty-s-realnymi-foto/" class="allProjects__category h5 {{ progect.id == term.term_id ? "active" : "" }}">Все</a>
       {% for progect in categories_proj %}
-{#        {% set post = get_post(item.ID) %}#}
-{#        {% set category = post.terms[0] %}#}
         <a href="{{ progect.link }}" class="allProjects__category h5 {{ progect.id == term.term_id ? "active" : "" }}">
           {{ progect.title }}
         </a>
