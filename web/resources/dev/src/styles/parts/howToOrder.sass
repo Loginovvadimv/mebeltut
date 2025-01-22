@@ -159,7 +159,7 @@
       object-fit: cover
 
 
-@media (min-width: 425px) and (max-width: 767px)
+@media (min-width: 425px) and (max-width: 550px)
   .howToOrder
     &__wrap
       flex-direction: column
@@ -168,7 +168,42 @@
       min-width: unset
       width: 100%
       padding: 116px 16px 16px 16px
-      min-height: 460px
+      min-height: 430px
+    &__wrapRec
+      display: none
+    &__wrapTextIcon
+      width: 48px
+      height: 48px
+      margin-bottom: 8px
+    &__wrapTextTitle
+      margin-bottom: 5px
+    .swiper-pagination
+      top: 16px
+      left: 16px
+      overflow-x: auto
+    &__wrapRightLogo
+      display: none
+    &__wrapRightFrame
+      display: none
+    &__wrapBottomFrame
+      display: none
+    &__wrapRight
+      height: 100%
+      object-fit: cover
+    &__wrapText
+      max-height: 530px
+
+
+@media (min-width: 551px) and (max-width: 767px)
+  .howToOrder
+    &__wrap
+      flex-direction: column
+      height: unset
+    &__wrapLeft
+      min-width: unset
+      width: 100%
+      padding: 116px 16px 16px 16px
+      min-height: 360px
     &__wrapRec
       display: none
     &__wrapTextIcon
@@ -256,7 +291,7 @@
     &__wrapBottomFrame
       display: none
     &__wrapLeft
-      min-height: 450px
+      min-height: 420px
     &__wrapRight
       height: 450px
       object-fit: cover

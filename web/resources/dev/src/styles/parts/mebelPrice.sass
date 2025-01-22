@@ -35,6 +35,8 @@
     text-align: center
   &__subtitle
     margin-bottom: 32px
+  &__bgMob
+    display: none
 
 
 @media (max-width: 767px)
@@ -47,4 +49,16 @@
       margin-bottom: 4px
     &__subtitle
       margin-bottom: 36px
+    &__bgMob
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      z-index: 1
+    &__bg
+      display: none
+
 

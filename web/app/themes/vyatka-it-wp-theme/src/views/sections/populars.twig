@@ -27,7 +27,7 @@
           <div class="swiper-wrapper">
             {% for progect in categories_prod %}
                 {% for item in progect.posts %}
-{#                  {% if item.product_hit %}#}
+                  {% if item.product_hit %}
                     <a href="{{ item.link }}" class="populars__wrap" data-modal="project">
                       <div class="populars__link"><img class="populars__linkImg" loading="lazy" src="{{ item.thumbnail ? item.thumbnail : plug_url }}" alt="{{ item.title }}">
                         <img class="populars__imgHover" src="{{ item.product_imghover ? item.product_imghover : plug_url }}" alt="{{ item.title }}">
@@ -45,7 +45,7 @@
                         </div>
 {#                        <div class="Control_S brand-3 populars__wrapDop">Хит</div>#}
                     </a>
-{#                  {% endif %}#}
+                  {% endif %}
                 {% endfor %}
 
             {% endfor %}
