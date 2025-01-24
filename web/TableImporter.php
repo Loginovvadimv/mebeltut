@@ -18,7 +18,7 @@ class TableImporter
     {
 
         $cats = $this->updateTaxonomies();
-//        $this->updateProducts($cats);
+        $this->updateProducts($cats);
     }//ok
 
     private function readExcelFile()
@@ -58,30 +58,28 @@ class TableImporter
         return    array_unique($cats);
     }//ok
 //
-//    private function getProductsOutFile()
-//    {
-//
-//        $data = [];
-//        if (!empty($file)) {
-//            $rows = $this->readExcelFile($file);
-//            foreach ($rows as $row) {
-//                $data[] = [
-//                    'category' => $row[0]->getValue(),
-//                    'name' => $row[1]->getValue(),
-//                    'd1' => $row[2]->getValue(),
-//                    'd2' => $row[3]->getValue(),
-//                    'b1' => $row[4]->getValue(),
-//                    't' => $row[5]->getValue(),
-//                    'b7' => $row[6]->getValue(),
-//                    'h' => $row[7]->getValue(),
-//                    's' => $row[8]->getValue(),
-//                    'q' => $row[9]->getValue(),
-//                    'a' => $row[10]->getValue(),
-//                ];
-//            }
-//        }
-//        return $data;
-//    }//ok
+    private function getProductsOutFile()
+    {
+
+
+            $rows = $this->readExcelFile();
+            foreach ($rows as $row) {
+                $data[] = [
+                    'category' => $row[17].'>'.$row[18],
+                    'name' => $row[1],
+                    'd1' => $row[2]->getValue(),
+                    'd2' => $row[3]->getValue(),
+                    'b1' => $row[4]->getValue(),
+                    't' => $row[5]->getValue(),
+                    'b7' => $row[6]->getValue(),
+                    'h' => $row[7]->getValue(),
+                    's' => $row[8]->getValue(),
+                    'q' => $row[9]->getValue(),
+                    'a' => $row[10]->getValue(),
+                ];
+            }
+        return $data;
+    }//ok
 //
     private function updateTaxonomies()
     {
@@ -142,117 +140,117 @@ class TableImporter
         }
     }
 //
-//    private function searchProducts($name, $cats)
-//    {
-//        $args = [
-//            'posts_per_page' => -1,
-//            'post_type' => 'product',
-//            'post_status' => 'publish',
-//            's' => $name,
-//            'meta_query' => [
-//                [
-//                    'key' => 'product_cat',
-//                    'value' => $cats, // Здесь вы должны передать категории, которые вы ищете
-//                    'compare' => 'IN'
-//                ]
-//            ]
-//        ];
+    private function searchProducts($name, $cats)
+    {
+        $args = [
+            'posts_per_page' => -1,
+            'post_type' => 'product',
+            'post_status' => 'publish',
+            's' => $name,
+            'meta_query' => [
+                [
+                    'key' => 'product_cat',
+                    'value' => $cats, // Здесь вы должны передать категории, которые вы ищете
+                    'compare' => 'IN'
+                ]
+            ]
+        ];
+
+        $products = new WP_Query($args);
+
+        if ($products->have_posts()) {
+            return $products->posts; // Возвращаем все найденные продукты
+        }
+
+        return null;
+    }
 //
-//        $products = new WP_Query($args);
+    private function updateProducts($cats)
+    {
+        $products = $this->getProductsOutFile();
+
+        foreach ($products as $product) {
+            // Ищем продукт по имени и категориям
+            $post = $this->searchProducts($product['name'], $cats);
+
+            // Если продукт не найден, создаем новый
+            if (empty($post)) {
+                $post = $this->createNewProduct($product);
+            } else {
+                $post = $post[0]; // Если нашли, берем первый продукт
+            }
+
+            // Обновляем поля продукта
+            $this->updateProductFields($post->ID, $product);
+
+            // Удаляем все текущие категории
+            wp_delete_object_term_relationships($post->ID, 'product_cat');
+
+            // Устанавливаем категории для продукта
+            $this->setProductCategories($post->ID, $product['category'], $cats);
+        }
+    }
 //
-//        if ($products->have_posts()) {
-//            return $products->posts; // Возвращаем все найденные продукты
-//        }
+    private function createNewProduct($product)
+    {
+        $new_post_info = [
+            'post_title' => $product['name'],
+            'post_status' => 'publish',
+            'post_type' => 'product',
+            'post_author' => get_current_user_id(),
+        ];
+
+        // Вставляем новый пост и получаем его ID
+        $post_id = wp_insert_post($new_post_info, true);
+
+        // Проверяем, была ли ошибка при создании поста
+        if (is_wp_error($post_id)) {
+            return null; // Или обработайте ошибку по своему усмотрению
+        }
+
+        // Возвращаем объект записи
+        return get_post($post_id);
+    }//ok
 //
-//        return null;
-//    }
+    private function updateProductFields($postID, $product)
+    {
+        update_field('product-d1', $product['d1'], $postID);
+        update_field('product-d2', $product['d2'], $postID);
+        update_field('product-b1', $product['b1'], $postID);
+        update_field('product-t', $product['t'], $postID);
+        update_field('product-b7', $product['b7'], $postID);
+        update_field('product-h', $product['h'], $postID);
+        update_field('product-s', $product['s'], $postID);
+        update_field('product-q', $product['q'], $postID);
+        update_field('product-a', $product['a'], $postID);
+    }//ok
 //
-//    private function updateProducts($cats)
-//    {
-//        $products = $this->getProductsOutFile();
-//
-//        foreach ($products as $product) {
-//            // Ищем продукт по имени и категориям
-//            $post = $this->searchProducts($product['name'], $cats);
-//
-//            // Если продукт не найден, создаем новый
-//            if (empty($post)) {
-//                $post = $this->createNewProduct($product);
-//            } else {
-//                $post = $post[0]; // Если нашли, берем первый продукт
-//            }
-//
-//            // Обновляем поля продукта
-//            $this->updateProductFields($post->ID, $product);
-//
-//            // Удаляем все текущие категории
-//            wp_delete_object_term_relationships($post->ID, 'product_cat');
-//
-//            // Устанавливаем категории для продукта
-//            $this->setProductCategories($post->ID, $product['category'], $cats);
-//        }
-//    }
-//
-//    private function createNewProduct($product)
-//    {
-//        $new_post_info = [
-//            'post_title' => $product['name'],
-//            'post_status' => 'publish',
-//            'post_type' => 'product',
-//            'post_author' => get_current_user_id(),
-//        ];
-//
-//        // Вставляем новый пост и получаем его ID
-//        $post_id = wp_insert_post($new_post_info, true);
-//
-//        // Проверяем, была ли ошибка при создании поста
-//        if (is_wp_error($post_id)) {
-//            return null; // Или обработайте ошибку по своему усмотрению
-//        }
-//
-//        // Возвращаем объект записи
-//        return get_post($post_id);
-//    }//ok
-//
-//    private function updateProductFields($postID, $product)
-//    {
-//        update_field('product-d1', $product['d1'], $postID);
-//        update_field('product-d2', $product['d2'], $postID);
-//        update_field('product-b1', $product['b1'], $postID);
-//        update_field('product-t', $product['t'], $postID);
-//        update_field('product-b7', $product['b7'], $postID);
-//        update_field('product-h', $product['h'], $postID);
-//        update_field('product-s', $product['s'], $postID);
-//        update_field('product-q', $product['q'], $postID);
-//        update_field('product-a', $product['a'], $postID);
-//    }//ok
-//
-//    private function setProductCategories($postID, $category, $cats)
-//    {
-//        $categoryNames = explode('>', $category);
-//        $search_cat = '';
-//        $_category_ids = [];
-//
-//        foreach ($categoryNames as $key => $name) {
-//            $search_cat = trim($search_cat . '>' . $name, '>');
-//
-//            // Используем array_filter для поиска категорий
-//            $matchingCats = array_filter($cats, function($cat) use ($key, $name, $search_cat) {
-//                return $cat['lvl'] === $key + 1 && $cat['name'] === $name && $search_cat === $cat['string'];
-//            });
-//
-//            // Добавляем найденные категории в массив ID
-//            foreach ($matchingCats as $cat) {
-//                $_category_ids[] = $cat['id'];
-//            }
-//        }
-//
-//        // Устанавливаем категории для поста только если есть найденные категории
-//        if (!empty($_category_ids)) {
-//            // Используем wp_set_post_terms для установки категорий
-//            wp_set_post_terms($postID, $_category_ids, 'product_cat', true);
-//        }
-//    }
+    private function setProductCategories($postID, $category, $cats)
+    {
+        $categoryNames = explode('>', $category);
+        $search_cat = '';
+        $_category_ids = [];
+
+        foreach ($categoryNames as $key => $name) {
+            $search_cat = trim($search_cat . '>' . $name, '>');
+
+            // Используем array_filter для поиска категорий
+            $matchingCats = array_filter($cats, function($cat) use ($key, $name, $search_cat) {
+                return $cat['lvl'] === $key + 1 && $cat['name'] === $name && $search_cat === $cat['string'];
+            });
+
+            // Добавляем найденные категории в массив ID
+            foreach ($matchingCats as $cat) {
+                $_category_ids[] = $cat['id'];
+            }
+        }
+
+        // Устанавливаем категории для поста только если есть найденные категории
+        if (!empty($_category_ids)) {
+            // Используем wp_set_post_terms для установки категорий
+            wp_set_post_terms($postID, $_category_ids, 'product_cat', true);
+        }
+    }
 //
     private function getCurrentCatInfo($id, $result = ['string' => '', 'lvl' => 1])
     {
