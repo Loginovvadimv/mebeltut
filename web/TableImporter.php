@@ -1,6 +1,4 @@
 <?php
-
-
 class TableImporter
 {
 
@@ -8,6 +6,7 @@ class TableImporter
     private $delimiter = ';';
     private $data = null;
     private $taxonomy = 'categories-product';
+    private $type = 'product';
 
     public function __construct()
     {
@@ -16,7 +15,7 @@ class TableImporter
 
     public function updateChainsHook()
     {
-
+//        $cats= null;
         $cats = $this->updateTaxonomies();
         $this->updateProducts($cats);
     }//ok
@@ -63,20 +62,17 @@ class TableImporter
 
 
             $rows = $this->readExcelFile();
+            $data = [];
             foreach ($rows as $row) {
-                $data[] = [
-                    'category' => $row[17].'>'.$row[18],
-                    'name' => $row[1],
-                    'd1' => $row[2]->getValue(),
-                    'd2' => $row[3]->getValue(),
-                    'b1' => $row[4]->getValue(),
-                    't' => $row[5]->getValue(),
-                    'b7' => $row[6]->getValue(),
-                    'h' => $row[7]->getValue(),
-                    's' => $row[8]->getValue(),
-                    'q' => $row[9]->getValue(),
-                    'a' => $row[10]->getValue(),
-                ];
+                if (empty($data[$row[2]])) {
+                    $data[$row[2]]['category'] =$row[17].'>'.$row[18];
+                    $data[$row[2]]['name'] = $row[1];
+                    $data[$row[2]]['content'] = $row[7];
+                    $data[$row[2]]['images'][]='https://meb43.ru'.$row[15];
+                    $data[$row[2]]['price']=$row[16];
+                }else{
+                    $data[$row[2]]['images'][]='https://meb43.ru'.$row[15];
+                }
             }
         return $data;
     }//ok
@@ -86,7 +82,6 @@ class TableImporter
         echo '<pre>';
         $categories = $this->getTaxonomiesOutFile();
         $cats = $this->getCurrentCategories();
-        var_dump($cats);
 
         foreach ($categories as $cat) {
             $this->processCategory($cat, $cats);
@@ -144,17 +139,18 @@ class TableImporter
     {
         $args = [
             'posts_per_page' => -1,
-            'post_type' => 'product',
+            'post_type' => $this->type,
             'post_status' => 'publish',
             's' => $name,
             'meta_query' => [
                 [
-                    'key' => 'product_cat',
+                    'key' => $this->taxonomy,
                     'value' => $cats, // Здесь вы должны передать категории, которые вы ищете
                     'compare' => 'IN'
                 ]
             ]
         ];
+//        var_dump($args);
 
         $products = new WP_Query($args);
 
@@ -169,7 +165,9 @@ class TableImporter
     {
         $products = $this->getProductsOutFile();
 
+
         foreach ($products as $product) {
+
             // Ищем продукт по имени и категориям
             $post = $this->searchProducts($product['name'], $cats);
 
@@ -179,25 +177,59 @@ class TableImporter
             } else {
                 $post = $post[0]; // Если нашли, берем первый продукт
             }
+            $thumb = array_shift($product['images']); // Генерируем превью для product
+
+            $this->generate_featured_image($thumb, $post->ID,true);
+
 
             // Обновляем поля продукта
             $this->updateProductFields($post->ID, $product);
 
             // Удаляем все текущие категории
-            wp_delete_object_term_relationships($post->ID, 'product_cat');
+            wp_delete_object_term_relationships($post->ID,  $this->taxonomy);
 
             // Устанавливаем категории для продукта
             $this->setProductCategories($post->ID, $product['category'], $cats);
         }
     }
 //
+
+    function generate_featured_image( $image_url, $post_id, $is_thumb=false  ){
+        $upload_dir = wp_upload_dir();
+        $image_data = file_get_contents($image_url);
+        $filename = basename($image_url);
+        if(wp_mkdir_p($upload_dir['path']))
+            $file = $upload_dir['path'] . '/' . $filename;
+        else
+            $file = $upload_dir['basedir'] . '/' . $filename;
+        file_put_contents($file, $image_data);
+
+        $wp_filetype = wp_check_filetype($filename, null );
+        $attachment = array(
+            'post_mime_type' => $wp_filetype['type'],
+            'post_title' => sanitize_file_name($filename),
+            'post_content' => '',
+            'post_status' => 'inherit'
+        );
+        $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
+        require_once(ABSPATH . 'wp-admin/includes/image.php');
+        $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+        $res1= wp_update_attachment_metadata( $attach_id, $attach_data );
+        if ($is_thumb){
+            $res2= set_post_thumbnail( $post_id, $attach_id );
+        }
+        return $attach_id;
+    }
+
     private function createNewProduct($product)
     {
         $new_post_info = [
             'post_title' => $product['name'],
             'post_status' => 'publish',
-            'post_type' => 'product',
-            'post_author' => get_current_user_id(),
+            'post_type' => $this->type,
+            'post_content' =>$product['content'],
+
+//            'post_author' => get_current_user_id(),
         ];
 
         // Вставляем новый пост и получаем его ID
@@ -212,17 +244,14 @@ class TableImporter
         return get_post($post_id);
     }//ok
 //
-    private function updateProductFields($postID, $product)
-    {
-        update_field('product-d1', $product['d1'], $postID);
-        update_field('product-d2', $product['d2'], $postID);
-        update_field('product-b1', $product['b1'], $postID);
-        update_field('product-t', $product['t'], $postID);
-        update_field('product-b7', $product['b7'], $postID);
-        update_field('product-h', $product['h'], $postID);
-        update_field('product-s', $product['s'], $postID);
-        update_field('product-q', $product['q'], $postID);
-        update_field('product-a', $product['a'], $postID);
+    private function updateProductFields($postID, $product){
+        $attach_ids=[];
+        foreach ($product['images'] as $key => $image) {
+            $attach_ids[] = $this->generate_featured_image($image, $postID);
+        }
+        update_field("product_imgs", $attach_ids, $postID );
+        update_field('price', $product['price'], $postID);
+
     }//ok
 //
     private function setProductCategories($postID, $category, $cats)
@@ -248,7 +277,7 @@ class TableImporter
         // Устанавливаем категории для поста только если есть найденные категории
         if (!empty($_category_ids)) {
             // Используем wp_set_post_terms для установки категорий
-            wp_set_post_terms($postID, $_category_ids, 'product_cat', true);
+            wp_set_post_terms($postID, $_category_ids, $this->taxonomy, true);
         }
     }
 //
@@ -265,5 +294,3 @@ class TableImporter
         }
     }//ok
 }
-
-new TableImporter();

@@ -1,4 +1,6 @@
 <?php
+set_time_limit(0);
+ignore_user_abort(true);
 $root = '/home/vadim/www/mebel.loc/public_html/web';
 
 

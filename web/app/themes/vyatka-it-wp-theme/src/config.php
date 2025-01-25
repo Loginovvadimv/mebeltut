@@ -91,9 +91,12 @@ add_action('admin_head', 'my_custom_styles');
 add_action('admin_head', 'my_custom_scripts');
 function my_custom_scripts(){
     global $post;
-    echo '<script>
-window.vk_post_id ='. $post->ID.'
+    if ($post){
+        echo '<script>
+        window.vk_post_id ='. $post->ID??null.'
   </script>';
+    }
+
 }
 //js для кнпоки вк
 function enqueue_custom_script() {
