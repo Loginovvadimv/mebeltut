@@ -5,8 +5,8 @@ class TableImporter
     private $file = 'test.csv';
     private $delimiter = ';';
     private $data = null;
-    private $taxonomy = 'categories-product';
-    private $type = 'product';
+    private $taxonomy = 'categories-project';
+    private $type = 'project';
 
     public function __construct()
     {
@@ -52,7 +52,7 @@ class TableImporter
 
         $cats = [];
             foreach ($data as $row) {
-                $cats[] = $row[17].'>'.$row[18]; // Предполагаем, что категория в первой ячейке
+                $cats[] = $row[18]; // Предполагаем, что категория в первой ячейке
             }
         return    array_unique($cats);
     }//ok
@@ -65,9 +65,10 @@ class TableImporter
             $data = [];
             foreach ($rows as $row) {
                 if (empty($data[$row[2]])) {
-                    $data[$row[2]]['category'] =$row[17].'>'.$row[18];
+                    $data[$row[2]]['category'] =$row[18];
                     $data[$row[2]]['name'] = $row[1];
                     $data[$row[2]]['content'] = $row[7];
+                    $data[$row[2]]['images'][]='https://meb43.ru'.$row[9];
                     $data[$row[2]]['images'][]='https://meb43.ru'.$row[15];
                     $data[$row[2]]['price']=$row[16];
                 }else{
@@ -126,7 +127,7 @@ class TableImporter
                     $cats[] = [
                         'id' => $data['term_id'],
                         'name' => $cex,
-                        'slug' => sanitize_title($cex),
+//                        'slug' => sanitize_title($cex),
                         'string' => $search_cat,
                         'lvl' => $key + 1,
                     ];
@@ -150,7 +151,6 @@ class TableImporter
                 ]
             ]
         ];
-//        var_dump($args);
 
         $products = new WP_Query($args);
 
@@ -164,8 +164,6 @@ class TableImporter
     private function updateProducts($cats)
     {
         $products = $this->getProductsOutFile();
-
-
         foreach ($products as $product) {
 
             // Ищем продукт по имени и категориям
@@ -245,12 +243,16 @@ class TableImporter
     }//ok
 //
     private function updateProductFields($postID, $product){
-        $attach_ids=[];
+        $value=[];
         foreach ($product['images'] as $key => $image) {
-            $attach_ids[] = $this->generate_featured_image($image, $postID);
+            $value[] = ['photo'=>$this->generate_featured_image($image, $postID)];
         }
-        update_field("product_imgs", $attach_ids, $postID );
-        update_field('price', $product['price'], $postID);
+        $field_key = "project_photos";
+
+//        $value = [$values];
+        update_field( $field_key, $value,$postID );
+//        update_field("project_photos", $attach_ids, $postID );
+//        update_field('price', $product['price'], $postID);
 
     }//ok
 //

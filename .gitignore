@@ -10,6 +10,7 @@ web/app/upgrade
 !web/app/uploads/.gitkeep
 web/app/cache/*
 web/resources/node_modules/
+web/app/uploads/*
 
 # WordPress
 web/wp
