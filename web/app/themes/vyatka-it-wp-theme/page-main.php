@@ -10,9 +10,9 @@ $context['products'] = Timber::get_posts([
     'post_type' => 'product',
 ]);
 
-$context['posts'] = Timber::get_posts([
+$context['projects'] = Timber::get_posts([
     'post_type' => 'project',
-    'posts_per_page' => '-1'
+    'posts_per_page' => 10
 ]);
 
 

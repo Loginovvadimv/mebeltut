@@ -18,7 +18,7 @@
       <div class="swiper">
         <div class="swiper-wrapper">
 
-          {% for item in post.projects.project_obj %}
+          {% for item in projects %}
             {% set post = get_post(item.ID) %}
 {#            {% set category = post.terms[0] %}#}
             <div class="projects__wrap swiper-slide" data-modal="project-{{ post.id }}">

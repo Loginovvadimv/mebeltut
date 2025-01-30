@@ -248,6 +248,7 @@ class CLI extends \WP_CLI_Command
     {
         $config = Config::loadConfigAndFix();
 
+
         $onlyPng = isset($assoc_args['only-png']);
 
         if ($onlyPng) {
