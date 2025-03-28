@@ -11,6 +11,7 @@ web/app/upgrade
 web/app/cache/*
 web/resources/node_modules/
 web/app/uploads/*
+web/app/webp-express/webp-images/*
 
 # WordPress
 web/wp
