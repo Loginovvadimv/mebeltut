@@ -12,7 +12,7 @@
 
 
     <div class="pageRevs__wrapper">
-      {% for item in reviews.rew_rep %}
+      {% for item in reviews %}
 {#        <div class="reviews__wrap">#}
 {#          <img class="reviews__wrapFrame" src="{{ assets }}/images/projects/Frame.svg">#}
 {#          <div class="reviews__wrapClient">#}
@@ -52,6 +52,6 @@
 {#  </div>#}
 {#{% endfor %}#}
 
-{% for item in reviews.rew_rep %}
+{% for item in reviews %}
   {% include 'modals/revs.twig' %}
 {% endfor %}

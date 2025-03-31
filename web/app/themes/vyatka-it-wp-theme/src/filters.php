@@ -1,5 +1,6 @@
 <?php
 use App\Resources\Service;
+use App\Services\WP_Vk;
 
 // Global Context
 add_filter('timber/context', function ($context) {
@@ -27,7 +28,8 @@ add_filter('timber/context', function ($context) {
     $context['calculation'] = get_field('calculation', 'options');
     $context['vk_groupe'] = get_field('vk_groupe', 'options');
     $context['howorder'] = get_field('howorder', 'options');
-    $context['reviews'] = get_field('reviews', 'options');
+//    $context['reviews'] = get_field('reviews', 'options');
+    $context['reviews'] = WP_Vk::getVKReviews();
 
     $context['categories_prod'] = Timber::get_terms([
         'taxonomy' => 'categories-product',
